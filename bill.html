@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matt's Artwork</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+    <section class="products-section">
+
+    <h1 class="lineup-title">
+        Vision. Passion. Creation.
+    </h1>
+
+    <nav class="category-tabs">
+
+        <a href="index.html">
+            All Artwork
+        </a>
+
+        <a href="arts.html">
+            Arts
+        </a>
+
+        <a href="graphics.html">
+            Graphics
+        </a>
+
+        <a href="paint.html">
+            Paints
+        </a>
+
+        <a href="materials.html">
+            Materials
+        </a>
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+        <a href="bill.html" class="active">
+            Billing
+        </a>
+
+        <input type="text" id="artSearch" class="tab-search" placeholder="Search artwork...">
+
+    </nav>
+
+    <div class="bill-wrap">
+    <div class="bill-header">
+        <h2>Billing &amp; Payment</h2>
+        <p class="bill-sub">Review your commission, add your details, and submit your request.</p>
+        <p class="estimate-note">Prices shown are starting estimates. The artist will confirm the final quotation before work begins.</p>
+    </div>
+
+    <div class="bill-layout">
+        <div class="bill-main">
+
+            <section class="card">
+                <h3>Shopping Cart<span class="count-badge" id="itemCount">0</span></h3>
+                <div class="cart-head"><span>Item</span><span>Price &amp; Qty</span></div>
+                <div id="cartList"></div>
+                <p class="empty-msg" id="emptyMsg" hidden>No items yet. <a href="index.html">Browse artwork</a> to add a commission.</p>
+            </section>
+
+            <section class="card">
+                <h3>Checkout Details</h3>
+                <div class="field-grid">
+                    <div class="field">
+                        <label for="fullName">Name</label>
+                        <input id="fullName" placeholder="Your full name" autocomplete="name">
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" placeholder="you@email.com" autocomplete="email">
+                    </div>
+                    <div class="field full">
+                        <label for="artCommission">Commission Description</label>
+                        <textarea id="artCommission" rows="4" placeholder="Describe the artwork you want (subject, size, style, colors)"></textarea>
+                    </div>
+                    <div class="field">
+                        <label for="deadline">Preferred Deadline</label>
+                        <input id="deadline" type="date">
+                    </div>
+
+                    <div class="field">
+                        <label for="payMethod">Payment Preference</label>
+                        <select id="payMethod">
+                            <option>GCash</option>
+                            <option>Bank Transfer</option>
+                            <option>Cash on Meet-up / Delivery</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h3>Submit Request</h3>
+                <label class="terms">
+                    <input type="checkbox" id="agree">
+                    <span>I understand prices are estimates and the final quotation will be confirmed by the artist.</span>
+                </label>
+                <button type="button" class="submit-btn" id="payBtn">Submit Commission Request</button>
+            </section>
+        </div>
+        <aside class="bill-side">
+            <section class="card summary">
+                <h3>Order Summary</h3>
+                <div class="summary-items" id="summaryItems"></div>
+                <div class="summary-line"><span>Subtotal</span><strong id="subtotalDisplay">&#8369;0.00</strong></div>
+                <div class="summary-line"><span>Delivery</span><strong>Free</strong></div>
+                <div class="summary-line total"><span>Estimated Total</span><strong id="totalDisplay">&#8369;0.00</strong></div>
+                <p class="summary-note">Estimate only. Final price will be confirmed before work begins.</p>
+                <button type="button" class="ghost-btn" id="downloadBtn">Download order summary</button>
+            </section>
+        </aside>
+    </div>
+    </div>
+</section>
+
+<div class="bill-toast" id="toast" role="status" aria-live="polite"></div>
+<script src="bill.js"></script>
+<script src="search.js"></script>
+</body>
+</html>

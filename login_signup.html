@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in or Create an Account | Michael Faustino</title>
+    <link rel="icon" href="../logo/website logo tab.png" type="image/png" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script src="login_signup.js" defer></script>
+  </head>
+  <body class="auth-site-page">
+    <main class="auth-page">
+      <section class="intro-panel">
+        <div class="brand" aria-label="PMC">
+          <img class="brand-logo" src="../logo/logo.png" alt="" />
+          <span class="brand-name">PMC</span>
+        </div>
+        <div class="intro-copy">
+          <h1>A place for art.<br />A space for artists.</h1>
+          <p>
+            Discover original drawings, connect with the artist, and bring a
+            little handmade into your world.
+          </p>
+          <div class="art-preview">
+            <img src="drawing/jaguar.jpg" alt="Graphite drawing of a jaguar" />
+            <div class="art-preview-caption">Jaguar · graphite drawing</div>
+          </div>
+        </div>
+        <p class="panel-note">
+          TRADITIONAL MATERIALS. ORIGINAL EXPRESSION.<br /><br />© 2026 PMC.
+        </p>
+      </section>
+
+      <section class="form-panel">
+        <div class="form-content">
+          <div id="loginContent">
+            <p class="eyebrow">WELCOME TO THE STUDIO</p>
+            <h2>Welcome back.</h2>
+            <p class="form-intro">
+              Sign in to discover art or manage your studio.
+            </p>
+
+            <form id="loginForm">
+              <label class="form-label" for="loginEmail">Email address *</label>
+              <input
+                class="input"
+                id="loginEmail"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+
+              <label class="form-label" for="loginPasswordInput"
+                >Password *</label
+              >
+              <span class="password-row">
+                <input
+                  class="input"
+                  id="loginPasswordInput"
+                  name="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  autocomplete="current-password"
+                  required
+                />
+                <button
+                  class="password-button"
+                  id="loginPasswordButton"
+                  type="button"
+                >
+                  Show
+                </button>
+              </span>
+
+              <div class="form-options">
+                <label class="check-label"
+                  ><input type="checkbox" name="remember" /> Remember me</label
+                >
+                <a href="#loginForm">Forgot password?</a>
+              </div>
+
+              <button class="submit-button" id="loginButton" type="submit">
+                Sign in <span aria-hidden="true">→</span>
+              </button>
+              <p
+                class="message"
+                id="loginMessage"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+
+            <hr />
+            <p class="account-link">
+              New to the studio?
+              <button class="text-button" id="showSignup" type="button">
+                Create an account
+              </button>
+            </p>
+          </div>
+
+          <div id="signupContent">
+            <p class="eyebrow">WELCOME TO THE STUDIO</p>
+            <h2>Find your place.</h2>
+            <p class="form-intro">
+              Join as a buyer or open your own artist studio.
+            </p>
+
+            <form id="signupForm">
+              <fieldset class="role-options">
+                <legend>Choose your account type</legend>
+                <label class="role-choice">
+                  <input
+                    id="buyerOption"
+                    type="radio"
+                    name="role"
+                    value="buyer"
+                    checked
+                  />
+                  <span
+                    ><strong>I'm a buyer</strong
+                    ><small>Discover and collect art</small></span
+                  >
+                </label>
+                <label class="role-choice">
+                  <input
+                    id="artistOption"
+                    type="radio"
+                    name="role"
+                    value="artist"
+                  />
+                  <span
+                    ><strong>I'm an artist</strong
+                    ><small>Share and manage my work</small></span
+                  >
+                </label>
+              </fieldset>
+
+              <label class="form-label" for="signupName">Full name *</label>
+              <input
+                class="input"
+                id="signupName"
+                name="name"
+                type="text"
+                placeholder="Your full name"
+                autocomplete="name"
+                required
+              />
+
+              <label class="form-label" for="signupEmail"
+                >Email address *</label
+              >
+              <input
+                class="input"
+                id="signupEmail"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+
+              <label class="form-label" for="signupPasswordInput"
+                >Password *</label
+              >
+              <span class="password-row">
+                <input
+                  class="input"
+                  id="signupPasswordInput"
+                  name="password"
+                  type="password"
+                  placeholder="Create a password"
+                  minlength="8"
+                  autocomplete="new-password"
+                  required
+                />
+                <button
+                  class="password-button"
+                  id="signupPasswordButton"
+                  type="button"
+                >
+                  Show
+                </button>
+              </span>
+              <small class="field-hint">Use at least 8 characters.</small>
+
+              <label class="check-label terms-check">
+                <input type="checkbox" name="terms" required />
+                <span
+                  >I agree to the
+                  <a href="#termsOfUse" data-policy-dialog="termsOfUse"
+                    >Terms of Use</a
+                  >
+                  and
+                  <a href="#privacyPolicy" data-policy-dialog="privacyPolicy"
+                    >Privacy Policy</a
+                  >.</span
+                >
+              </label>
+
+              <button class="submit-button" type="submit">
+                Create account <span aria-hidden="true">→</span>
+              </button>
+              <p
+                class="message"
+                id="signupMessage"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+
+            <hr />
+            <p class="account-link">
+              Already part of the studio?
+              <button class="text-button" id="showLogin" type="button">
+                Sign in
+              </button>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="policy-dialog" id="termsOfUse" aria-labelledby="termsTitle">
+      <button
+        class="policy-close"
+        type="button"
+        aria-label="Close Terms of Use"
+      >
+        ×
+      </button>
+      <h2 id="termsTitle">Terms of Use</h2>
+      <p>
+        By using this website, you agree to use it lawfully and respectfully.
+        Artwork and other materials on this site are presented for viewing and
+        inquiry; you may not copy, sell, or reuse them without permission from
+        their creator.
+      </p>
+      <p>
+        Artwork details, availability, and prices are informational and may
+        change. An inquiry or order request is not confirmed until the artist
+        has reviewed and agreed to it.
+      </p>
+      <p>
+        This website is a portfolio experience. Account registration, sign-in,
+        and related services are not connected to an account system.
+      </p>
+    </dialog>
+
+    <dialog
+      class="policy-dialog"
+      id="privacyPolicy"
+      aria-labelledby="privacyTitle"
+    >
+      <button
+        class="policy-close"
+        type="button"
+        aria-label="Close Privacy Policy"
+      >
+        ×
+      </button>
+      <h2 id="privacyTitle">Privacy Policy</h2>
+      <p>
+        This portfolio does not create or store user accounts. The sign-in form
+        only opens the artwork page, and the account creation form does not save
+        the information entered.
+      </p>
+      <p>
+        If you contact the artist using an external email link or submit
+        information through another service, that service may process your
+        information under its own privacy policy.
+      </p>
+      <p>
+        This site may load fonts from Google Fonts. Your browser may connect to
+        Google to retrieve those fonts.
+      </p>
+    </dialog>
+  </body>
+</html>

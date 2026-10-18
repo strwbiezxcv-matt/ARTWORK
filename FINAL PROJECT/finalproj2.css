@@ -1,0 +1,585 @@
+#content3 {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100vh;
+    background-color: transparent;
+    margin: 0;
+}
+#glasstab{
+    height : 200px;
+    width: 1000px;
+    text-align: center;
+    margin:auto ;
+    margin-top: 40px;
+    
+
+    /* Glass effect */
+    background: rgba(252, 252, 247, 0.3);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+
+    /* Border at shape */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+
+    /* Shadow */
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+
+    /* Padding */
+    padding: 12px 24px;
+}
+
+#content3artistsep {
+    position: relative;
+    z-index: 2;
+    margin-top: 40px;
+    width: 100%;
+    height: auto;
+    background-color: #0e2011 ;
+    overflow: hidden;              /* para walang horizontal scroll galing sa mga gilid na card */
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 650px;
+}
+
+.artisttab {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 550px;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+     /* Glass effect */
+    background: #ffffff;
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+
+    /* Border at shape */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+
+    /* Shadow */
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+
+    /* Padding */
+    padding: 12px 24px;
+
+    /* default = gilid na card: maliit, blurred, medyo dim */
+    transform: translate(calc(-50% + var(--offset) * 440px), -50%) scale(0.85);
+    filter: blur(4px);
+    opacity: 0.6;
+    z-index: 1;
+    transition: transform 0.5s ease, filter 0.5s ease, opacity 0.5s ease;
+}
+
+/* napiling artist: nakaangat, malinaw, mas malaki */
+.artisttab.active {
+    transform: translate(-50%, calc(-50% - 30px)) scale(1);
+    filter: none;
+    opacity: 1;
+    z-index: 3;
+    box-shadow: 0 25px 50px rgba(126, 187, 128, 0.35);
+    cursor: default;
+}
+
+/* yung 2 card na wala sa screen */
+.artisttab.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.artistheader {
+    display: flex;
+    align-items: center;     /* vertical center: kapantay ng circle ang text */
+    gap: 16px;
+    margin-top: 10px;
+    text-align: left;
+}
+.circle {
+    flex: 0 0 auto;         
+    margin: 0;    
+    height: 100px;
+    width: 100px;
+    background-color: pink;
+    border-radius: 100%;
+}
+.artistinfo h3{
+    margin: 0 0 4px;
+    font-family: "Surt", sans-serif;
+}
+.artistinfo p {
+    margin: 0;
+}
+
+.artisttab h3 {
+    margin: 0;
+    font-family: "Surt", sans-serif;
+}
+
+.artistposts {
+    column-count: 3;                /* 3 na column */
+    column-gap: 3px;                /* manipis na gap sa gilid */
+    margin-top: 12px;
+    max-height: 340px;              /* para hindi lumampas sa card */
+    overflow-y: auto;               /* scroll sa loob kung marami ang post */
+    border-radius: 8px;
+}
+
+.artistposts img {
+    width: 100%;
+    height: auto;                   /* nananatili ang orig na ratio */
+    display: block;
+    margin-bottom: 3px;             /* manipis na gap sa pagitan pataas-pababa */
+    break-inside: avoid;            /* hindi mahahati ang larawan sa pagitan ng column */
+    border-radius: 4px;
+}
+
+.artisttab hr {
+    border: none;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.5);
+    margin: 16px 0 0;
+}
+
+#cont3texttab{
+    
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 80px;
+    color: hsl(0, 0%, 100%);
+}
+#cont3texttab h3{
+   font-family: "SurtBold";
+   font-size: large;
+}
+#cont3texttab p{
+   font-family: "Cabinet Grotesk";
+   font-size: medium;
+}
+
+
+/* arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.arrow:hover { background: #7ebb80; }
+#prev { left: 20px; }
+#next { right: 20px; }
+
+
+/* content 2 art gallery * /
+
+#content2 {
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    width: 100%;
+    height: 180vh;
+    background-color: transparent;
+    overflow: clip;
+    display: block;
+}
+
+#content2stage {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#gallview {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+    margin: 0 0 0 10px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+}
+
+#column1,
+#column2 {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0 24px;
+    margin-top: 0;
+}
+
+#column2 {
+    margin-left: 10px;
+}
+
+.columnanimate {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+}
+
+#column1 .columnanimate {
+    animation: scrollUp 40s linear infinite;
+}
+
+#column2 .columnanimate {
+    animation: scrollDown 40s linear infinite;
+}
+
+.gallery {
+    display: block;
+    flex: 0 0 auto;
+    height: 500px;
+    width: 375px;
+    object-fit: cover;
+    margin: 0 0 30px 0;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+    outline: 2px solid rgba(126, 187, 128, 0.3);
+    outline-offset: 8px;
+    will-change: transform, filter, opacity;
+    transform-origin: center center;
+}
+
+#overviewtext {
+    flex: 0 1 500px;
+    margin-left: 60px;
+    padding: 0 20px 0 0;
+    align-self: center;
+    text-align: left;
+}
+
+#overviewTitle {
+    font-family: "Recife";
+    font-size: 3em;
+    color: #232323;
+}
+
+#overviewdescription {
+    font-family: "Cabinet Grotesk";
+    font-size: 1.5em;
+    color: #8b6b4a;
+    text-align: justify;
+    margin: 0;
+    line-height: 1.5;
+}
+
+@keyframes scrollUp {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-1590px); }
+}
+
+@keyframes scrollDown {
+    from { transform: translateY(-1590px); }
+    to   { transform: translateY(0); }
+}
+
+#gallview:hover .columnanimate {
+    animation-play-state: paused;
+}
+
+
+ ===========================================================================
+
+ #content2 {
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    width: 100%;
+    height: 180vh;
+    background-color: transparent;
+    overflow: clip;
+    display: block;
+}
+
+#content2stage {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#gallview {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+    margin: 0 0 0 10px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+}
+
+#column1,
+#column2 {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0 24px;
+    margin-top: 0;
+}
+
+#column2 {
+    margin-left: 10px;
+}
+
+.columnanimate {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+}
+
+#column1 .columnanimate {
+    animation: scrollUp 40s linear infinite;
+}
+
+#column2 .columnanimate {
+    animation: scrollDown 40s linear infinite;
+}
+
+.gallery {
+    display: block;
+    flex: 0 0 auto;
+    height: 500px;
+    width: 375px;
+    object-fit: cover;
+    margin: 0 0 30px 0;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+    outline: 2px solid rgba(126, 187, 128, 0.3);
+    outline-offset: 8px;
+    will-change: transform, filter, opacity;
+    transform-origin: center center;
+}
+
+#overviewtext {
+    flex: 0 1 500px;
+    margin-left: 60px;
+    padding: 0 20px 0 0;
+    align-self: center;
+    text-align: left;
+}
+
+#overviewTitle {
+    font-family: "Recife";
+    font-size: 3em;
+    color: #232323;
+}
+
+#overviewdescription {
+    font-family: "Cabinet Grotesk";
+    font-size: 1.5em;
+    color: #8b6b4a;
+    text-align: justify;
+    margin: 0;
+    line-height: 1.5;
+}
+
+@keyframes scrollUp {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-1590px); }
+}
+
+@keyframes scrollDown {
+    from { transform: translateY(-1590px); }
+    to   { transform: translateY(0); }
+}
+
+#gallview:hover .columnanimate {
+    animation-play-state: paused;
+}
+
+
+===============================================================
+
+#content4 {
+    --bg: #e6e9ef;
+    --shadow-dark: #c3c7d1;
+    --shadow-light: #ffffff;
+    --ink: #2d3142;
+    --muted: #5b6070;
+    --accent: #4a9a50;
+    --accent-soft: #7ebb80;
+    --line: rgba(45, 49, 66, 0.1);
+
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(160deg, #eef0f5 0%, var(--bg) 55%, #dfe3ea 100%);
+    z-index: 2;
+}
+
+#cont4tab {
+    padding: 80px 30px 70px;
+    box-sizing: border-box;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);   /* 3 columns 
+    gap: 0;
+    align-items: stretch;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* ---------- Cell: litrato sa taas, text sa baba ---------- */
+.producttab {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    box-sizing: border-box;
+    padding: 36px 32px;
+    background: transparent;
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    cursor: pointer;
+    opacity: 0;
+    animation: riseIn 0.7s ease forwards;
+}
+
+/* walang line sa kanan ng pinakahuling column ng bawat row */
+.producttab:nth-child(3n) { border-right: none; }
+
+/* walang line sa pinakababang row */
+.producttab:nth-last-child(-n+3):nth-child(3n+1),
+.producttab:nth-last-child(-n+2):nth-child(3n+2),
+.producttab:last-child { border-bottom: none; }
+
+.producttab:nth-child(3n+2) { animation-delay: 0.1s; }
+.producttab:nth-child(3n)   { animation-delay: 0.2s; }
+
+@keyframes riseIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Artwork (neomorphism, buong itsura ng litrato) ---------- */
+.product-img {
+    width: 100%;
+    height: auto;                      /* tunay na ratio, walang crop */
+    margin: auto 0;                    /* ito ang nag-i-center (taas at baba) */
+    display: block;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid rgba(16, 16, 16, 0.41);
+    border-radius: 0;
+    background: var(--bg);
+    box-shadow: 8px 8px 16px var(--shadow-dark),
+               -8px -8px 16px var(--shadow-light);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.producttab:hover .product-img {
+    transform: translateY(-5px);
+    box-shadow: 11px 13px 22px var(--shadow-dark),
+               -10px -10px 20px var(--shadow-light);
+}
+
+/* ---------- Text ---------- */
+.product-info {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "name   buy"
+        "artist buy"
+        "desc   buy";
+    column-gap: 18px;
+    align-items: start;
+    margin-top: 22px;
+    text-align: left;
+}
+
+.product-name {
+    grid-area: name;
+    margin: 0 0 4px;
+    font-family: "Pinsans";
+    font-size: clamp(20px, 1.8vw, 26px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-artist {
+    grid-area: artist;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-family: "Surt", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.product-desc {
+    grid-area: desc;
+    margin: 14px 0 0;
+    font-family: "Cabinet Grotesk";
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+    height: calc(1.6em * 3);           /* laging 3 linya, kaya pantay ang text ng lahat */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.buy-btn {
+    grid-area: buy;
+    align-self: center;                /* nasa gitna ng buong text block */
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--accent);
+    font-family: "Surt", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+               -5px -5px 10px var(--shadow-light);
+    transition: box-shadow 0.2s ease, color 0.2s ease;
+}

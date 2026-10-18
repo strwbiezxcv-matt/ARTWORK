@@ -1,0 +1,61 @@
+﻿
+Name                   
+----                   
+107.png                
+4.png                  
+70.png                 
+allArtwork.html        
+ANGARA ATHLETES (5).png
+anime.jpg              
+arch.jpg               
+arch.png               
+artist2.html           
+arts.html              
+athletes (3).png       
+bill.html              
+bill.js                
+bill2.html             
+bill2.js               
+col.jpg                
+COMM.png               
+CONST.png              
+contact.html           
+contact2.html          
+DOG.png                
+father.jpg             
+finalproj.css          
+finalproj.html         
+finalproj.js           
+general.html           
+graphics.html          
+graphics2.html         
+index.html             
+lace.jpg               
+LEAF.png               
+login_signup.html      
+login_signup.js        
+lola.jpg               
+materials.html         
+medal (3).png          
+medal.png              
+men.jpg                
+OIL.png                
+OS.png                 
+paint.html             
+PAINT.png              
+paint2.html            
+peynt.jpg              
+pisa.jpg               
+PUBMATS (19).png       
+PUP.png                
+search.js              
+settings.html          
+structural2.html       
+stylesheet.css         
+stylesheet2.css        
+three.jpg              
+TWO.png                
+Untitled design (2).png
+_tmp_list.txt          
+
+

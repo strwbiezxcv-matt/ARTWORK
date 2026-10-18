@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>General | PMC Art</title>
+    <link href="stylesheet2.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
+
+    <!-- HEADER -->
+        <header>
+            <link rel="stylesheet" href="finalproj.css">
+            <div id="topbar">
+
+                <div id="leftbar">
+                    <img src="images/LOGO.png" alt="PMC art logo" width="45" height="45">
+                    <p id="logo-text">PMC Art</p>
+                </div>
+
+                <nav class="navbar">
+                    <a href="finalproj.html" class="buttonbar"><i data-lucide="house" class="icon-xs icon-inline"></i>Home</a>
+                    <a href="index.html" class="buttonbar"><i data-lucide="images" class="icon-xs icon-inline"></i>Artwork</a>
+                    <a href="index2.html" class="buttonbar"><i data-lucide="palette" class="icon-xs icon-inline"></i>Commissions</a>
+                </nav>
+
+                <div class="rightbar">
+                    <a href="index2.html" class="buttonbar"><i data-lucide="log-in" class="icon-xs icon-inline"></i>Login</a>
+                    <a href="index2.html" id="sign-up" class="buttonbar"><i data-lucide="user-plus" class="icon-xs icon-inline"></i>Sign Up</a>
+                </div>
+            </div>
+        </header>
+    
+    <style>
+      .people-online { margin: 0 0 28px; padding: 16px 18px; background: #fff; border: 1px solid #e8e8ec; border-radius: 16px; }
+      .people-online-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+      .people-online-head h2 { font-size: 17px; margin: 0; display: flex; gap: 8px; align-items: center; }
+      .people-online-head h2 i { color: #7ebb80; }
+      .people-online-note { font-size: 12px; color: #888; margin: 0; }
+      .people-row { display: flex; gap: 18px; overflow-x: auto; padding: 4px 2px 8px; }
+      .person { text-decoration: none; padding: 8px 10px 12px; border-radius: 14px; display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 95px; position: relative; }
+      .person:hover { background: #f0f0f3; }
+      .avatar-wrap { position: relative; width: 75px; height: 75px; }
+      .avatar-wrap img { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; display: block; border: 2px solid #e8e8ec; }
+      .online-dot { display: none; }
+      .person-name { font-size: 13.5px; color: #333; max-width: 95px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .person::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 2px; height: 3px; border-radius: 3px; background: #7ebb80; transform: scaleX(0); transform-origin: center; transition: transform 0.2s ease; }
+      .person.active::after { transform: scaleX(1); }
+    </style>
+  </head>
+  <body class="site-page">
+    <section class="products-section">
+      <section class="people-online" aria-label="People Online">
+        <div class="people-online-head">
+          <h2><i class="fa-solid fa-user-group"></i>Artists</h2>
+          <p class="people-online-note">Explore the Artists</p>
+        </div>
+        <div class="people-row" role="list">
+          <a href="index.html" class="person" aria-label="Open Matt Bianzon page"><span class="avatar-wrap"><img src="drawing/men.jpg" alt="Matt Bianzon" /><span class="online-dot"></span></span><span class="person-name">Matt Bianzon</span></a>
+          <a href="allArtwork.html" class="person" aria-label="Open Michael Faustino page"><span class="avatar-wrap"><img src="drawing/michaelart1.jpg" alt="Michael Faustino" /><span class="online-dot"></span></span><span class="person-name">Michael Faustino</span></a>
+          <a href="michael-john-santos.html" class="person" aria-label="Open Michael John Santos page"><span class="avatar-wrap"><img src="drawing/scenary.jpg" alt="Santos" /><span class="online-dot"></span></span><span class="person-name">Michael John Santos</span></a>
+          <a href="paule-daniel-reyes.html" class="person" aria-label="Open Paule Daniel Reyes page"><span class="avatar-wrap"><img src="drawing/Gundan.jpg" alt="Reyes" /><span class="online-dot"></span></span><span class="person-name">Paule Reyes</span></a>
+          <a href="chena-balagtas.html" class="person" aria-label="Open Chena Balagtas page"><span class="avatar-wrap"><img src="drawing/goku 4.jpg" alt="Balagtas" /><span class="online-dot"></span></span><span class="person-name">Chena Balagtas</span></a>
+          <a href="art-collector.html" class="person" aria-label="Open Art Collector page"><span class="avatar-wrap"><img src="drawing/baki 2.jpg" alt="Collector" /><span class="online-dot"></span></span><span class="person-name">Art Collector</span></a>
+        </div>
+      </section>
+      <h1 class="lineup-title">Vision. Passion. Creation.</h1>
+      <p class="gallery-empty">No artwork to show right now.</p>
+    </section>
+    <script>
+    (function () {
+      var KEY = "pmc_active_artist_v1";
+      function currentFile() {
+        var p = window.location.pathname.split("/").pop().split("?")[0].split("#")[0];
+        return (p || "index.html").toLowerCase();
+      }
+      function markActive() {
+        var saved = null;
+        try { saved = localStorage.getItem(KEY); } catch (e) {}
+        var page = currentFile();
+        Array.prototype.forEach.call(document.querySelectorAll(".person"), function (a) {
+          var href = (a.getAttribute("href") || "").split("?")[0].split("#")[0].toLowerCase();
+          if (href === page || (saved && href === saved)) a.classList.add("active");
+        });
+      }
+      Array.prototype.forEach.call(document.querySelectorAll(".person"), function (a) {
+        a.addEventListener("click", function () {
+          var href = (a.getAttribute("href") || "").split("?")[0].split("#")[0].toLowerCase();
+          try { localStorage.setItem(KEY, href); } catch (e) {}
+          Array.prototype.forEach.call(document.querySelectorAll(".person"), function (x) { x.classList.remove("active"); });
+          a.classList.add("active");
+        });
+      });
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest || !e.target.closest(".people-online")) {
+          try { localStorage.removeItem(KEY); } catch (err) {}
+        }
+      });
+      markActive();
+    })();
+    </script>
+  </body>
+</html>

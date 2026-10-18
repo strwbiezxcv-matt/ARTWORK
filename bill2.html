@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../logo/website logo tab.png" type="image/png" />
+
+    <title>Michael Faustino | Original Art &amp; Drawings</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body class="site-page">
+    <section class="products-section">
+      <h1 class="lineup-title">Vision. Passion. Creation.</h1>
+
+      <div class="site-nav-row">
+        <div class="site-brand" aria-label="PMC">
+          <img src="../logo/logo.png" alt="" />
+          <span>PMC</span>
+        </div>
+        <nav class="category-tabs">
+          <a href="allArtwork.html"> All Artwork </a>
+
+          <a href="artist.html"> Artist </a>
+
+          <a href="graphics.html"> Graphics </a>
+
+          <a href="paint.html"> Paints </a>
+
+          <a href="structural.html"> Structural </a>
+
+          <a href="contact.html"> Contact Us </a>
+
+          <a href="bill.html" class="active"> Billing </a>
+          <span class="dashboard-tab">Dashboard</span>
+        </nav>
+        <div class="account-actions" aria-label="Account and bag design">
+          <a class="account-link" href="bill.html">Bag</a>
+          <a class="account-link" href="login_signup.html#signupContent"
+            >Sign up</a
+          >
+          <a class="account-link" href="login_signup.html#loginContent"
+            >Log in</a
+          >
+          <a
+            class="account-link settings-link"
+            href="settings.html"
+            aria-label="Settings"
+            title="Settings"
+          >
+            <img src="icon/settings.svg" alt="" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+
+      <div class="bill-wrap">
+        <div class="bill-header">
+          <h2>Billing &amp; Payment</h2>
+          <p class="bill-sub">
+            Review your order and provide your contact and billing details.
+          </p>
+          <p class="estimate-note">
+            Prices shown are starting estimates. The artist will confirm the
+            final quotation before work begins.
+          </p>
+        </div>
+
+        <div class="bill-layout">
+          <div class="bill-main">
+            <section class="card">
+              <h3>
+                Shopping Cart<span class="count-badge" id="itemCount">0</span>
+              </h3>
+              <div class="cart-head">
+                <span>Item</span><span>Price &amp; Qty</span>
+              </div>
+              <div id="cartList"></div>
+              <p class="empty-msg" id="emptyMsg" hidden>
+                No items yet. <a href="allArtwork.html">Browse artwork</a> to
+                add a commission.
+              </p>
+            </section>
+
+            <section class="card">
+              <h3>Billing Details</h3>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="fullName">Full name</label>
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Your full name"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="you@email.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="phone">Phone number</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Your phone number"
+                    autocomplete="tel"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="address">Street address</label>
+                  <input
+                    id="address"
+                    name="address"
+                    placeholder="House number and street"
+                    autocomplete="street-address"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="city">City / municipality</label>
+                  <input
+                    id="city"
+                    name="city"
+                    placeholder="City or municipality"
+                    autocomplete="address-level2"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="province">Province / region</label>
+                  <input
+                    id="province"
+                    name="province"
+                    placeholder="Province or region"
+                    autocomplete="address-level1"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="postalCode">Postal code</label>
+                  <input
+                    id="postalCode"
+                    name="postalCode"
+                    placeholder="Postal code"
+                    autocomplete="postal-code"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="payMethod">Payment preference</label>
+                  <select id="payMethod" name="payMethod">
+                    <option>GCash</option>
+                    <option>Bank Transfer</option>
+                    <option>Cash on Meet-up / Delivery</option>
+                  </select>
+                </div>
+              </div>
+              <label class="terms">
+                <input type="checkbox" id="saveInfo" />
+                <span
+                  >Save my billing details on this device for next time. Saved
+                  details stay in this browser and can be removed by unchecking
+                  this box.</span
+                >
+              </label>
+            </section>
+
+            <section class="card">
+              <h3>Confirm Billing Details</h3>
+              <label class="terms">
+                <input type="checkbox" id="agree" />
+                <span
+                  >I understand prices are estimates and the artist will confirm
+                  the final quotation and delivery details.</span
+                >
+              </label>
+              <button type="button" class="submit-btn" id="payBtn">
+                Confirm details
+              </button>
+            </section>
+          </div>
+          <aside class="bill-side">
+            <section class="card summary">
+              <h3>Order Summary</h3>
+              <div class="summary-items" id="summaryItems"></div>
+              <div class="summary-line">
+                <span>Subtotal</span
+                ><strong id="subtotalDisplay">&#8369;0.00</strong>
+              </div>
+              <div class="summary-line">
+                <span>Delivery</span><strong>Free</strong>
+              </div>
+              <div class="summary-line total">
+                <span>Estimated Total</span
+                ><strong id="totalDisplay">&#8369;0.00</strong>
+              </div>
+              <p class="summary-note">
+                Estimate only. Final price will be confirmed before work begins.
+              </p>
+              <button type="button" class="ghost-btn" id="downloadBtn">
+                Download order summary
+              </button>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <div class="bill-toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="bill.js"></script>
+  </body>
+</html>

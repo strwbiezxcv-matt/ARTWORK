@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matt's Artwork</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+
+<section class="products-section">
+
+    <h1 class="lineup-title">
+        Vision. Passion. Creation.
+    </h1>
+
+    <nav class="category-tabs">
+
+        <a href="index.html">
+            All Artwork
+        </a>
+
+        <a href="arts.html">
+            Arts
+        </a>
+
+        <a href="graphics.html">
+            Graphics
+        </a>
+
+        <a href="paint.html">
+            Paints
+        </a>
+
+        <a href="materials.html">
+            Materials
+        </a>
+
+        <a href="contact.html" class="active">
+            Contact Us
+        </a>
+
+        <a href="bill.html">
+            Billing
+        </a>
+
+        <input type="text" id="artSearch" class="tab-search" placeholder="Search artwork...">
+
+    </nav>
+
+<section class="contact-section" id="contact">
+    <div class="contact-heading">
+        <h2>Let's Connect<span>.</span></h2>
+        <p>
+            Have a project in mind or simply want to say hello?
+            I'd love to hear from you!
+        </p>
+    </div>
+
+    <div class="contact-container">
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p class="contact-intro">
+                Whether it's a creative collaboration, a design inquiry,
+                or just a friendly conversation, my inbox is always open.
+            </p>
+
+            <div class="contact-detail">
+                
+                <div>
+                    <h4>Email</h4>
+                    <a href="mattbianzon43@gmail.com">
+                        mattbianzon43@email.com
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-detail">
+                <div>
+                    <h4>Facebook</h4>
+                    <a href="https://facebook.com/mattbianzon.2227"
+                       target="_blank" rel="noopener noreferrer">
+                        Matt Bianzon
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-detail">
+               
+                <div>
+                    <h4>Instagram</h4>
+                    <a href="https://instagram.com/yourprofile"
+                       target="_blank" rel="noopener noreferrer">
+                        _strwbiezxcv
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-social">
+                <span>Let's create something meaningful.</span>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-card">
+            <h3>Send Me a Message</h3>
+            <p>Fill out the details below to get in touch.</p>
+
+            <form action="mailto:your@email.com"
+                  method="post"
+                  enctype="text/plain">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contact-name">Your Name</label>
+                        <input type="text" id="contact-name"
+                               name="Name"
+                               placeholder="Enter your name"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-email">Your Email</label>
+                        <input type="email" id="contact-email"
+                               name="Email"
+                               placeholder="Enter your email"
+                               required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-subject">Subject</label>
+                    <input type="text" id="contact-subject"
+                           name="Subject"
+                           placeholder="What would you like to discuss?"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-message">Your Message</label>
+                    <textarea id="contact-message"
+                              name="Message"
+                              rows="5"
+                              placeholder="Write your message here..."
+                              required></textarea>
+                </div>
+
+                <button type="submit" class="contact-submit">
+                    Send Message <span>↗</span>
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+<script src="search.js"></script>
+</body>
+</html>

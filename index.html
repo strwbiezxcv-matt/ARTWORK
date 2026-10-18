@@ -1,0 +1,2418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matt's Artwork</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        /* People Online - Messenger-inspired, matches site palette */
+        .people-online {
+            margin: 0 0 28px;
+            padding: 16px 18px;
+            background: #fff;
+            border: 1px solid #e8e8ec;
+            border-radius: 16px;
+        }
+        .lineup-title {
+            margin-top: 0;
+        }
+        .people-online-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .people-online-head h2 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #111;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .people-online-head h2 i {
+            color: #7ebb80;
+            font-size: 15px;
+        }
+        .people-online-note {
+            font-size: 12px;
+            color: #888;
+            margin: 0;
+        }
+        .people-row {
+            display: flex;
+            gap: 18px;
+            overflow-x: auto;
+            padding: 4px 2px 8px;
+            scrollbar-width: thin;
+        }
+        .person {
+            background: none;
+            border: 0;
+            text-decoration: none;
+            padding: 8px 10px 12px;
+            border-radius: 14px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            min-width: 95px;
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.2s ease, transform 0.2s ease;
+            position: relative;
+        }
+        .person:hover {
+            background: #f0f0f3;
+            transform: translateY(-2px);
+        }
+        .person:focus-visible {
+            outline: 2px solid #7ebb80;
+            outline-offset: 2px;
+        }
+        .avatar-wrap {
+            position: relative;
+            width: 75px;
+            height: 75px;
+        }
+        .avatar-wrap img {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid #e8e8ec;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .person:hover .avatar-wrap img {
+            transform: scale(1.05);
+            border-color: #7ebb80;
+        }
+        .online-dot {
+            display: none;
+        }
+        .person-name {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #333;
+            text-align: center;
+            line-height: 1.3;
+            max-width: 95px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .person::after {
+            content: "";
+            position: absolute;
+            left: 14px;
+            right: 14px;
+            bottom: 2px;
+            height: 3px;
+            border-radius: 3px;
+            background: #7ebb80;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.2s ease;
+        }
+        .person.active::after {
+            transform: scaleX(1);
+        }
+        @media (max-width: 600px) {
+            .people-online { padding: 14px 12px; }
+            .person { min-width: 96px; }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+        <header>
+            <link rel="stylesheet" href="finalproj.css">
+            <div id="topbar">
+
+                <div id="leftbar">
+                    <img src="images/LOGO.png" alt="PMC art logo" width="45" height="45">
+                    <p id="logo-text">PMC Art</p>
+                </div>
+
+                <nav class="navbar">
+                    <a href="finalproj.html" class="buttonbar"><i data-lucide="house" class="icon-xs icon-inline"></i>Home</a>
+                    <a href="index.html" class="buttonbar"><i data-lucide="images" class="icon-xs icon-inline"></i>Artwork</a>
+                    <a href="index2.html" class="buttonbar"><i data-lucide="palette" class="icon-xs icon-inline"></i>Commissions</a>
+                </nav>
+
+                <div class="rightbar">
+                    <a href="index2.html" class="buttonbar"><i data-lucide="log-in" class="icon-xs icon-inline"></i>Login</a>
+                    <a href="index2.html" id="sign-up" class="buttonbar"><i data-lucide="user-plus" class="icon-xs icon-inline"></i>Sign Up</a>
+                </div>
+            </div>
+        </header>
+
+<section class="products-section">
+
+    <section class="people-online" aria-label="People Online">
+        <div class="people-online-head">
+            <h2><i class="fa-solid fa-user-group"></i>Artists</h2>
+            <p class="people-online-note">Explore the Artists</p>
+        </div>
+        <div class="people-row" role="list">
+            <!-- Palitan mo lang ang href ng bawat artist ng sarili mong html file -->
+            <a href="index.html" class="person" role="listitem" aria-label="Open Matt Bianzon page">
+                <span class="avatar-wrap"><img src="men.jpg" alt="Matt Bianzon"><span class="online-dot" aria-hidden="true"></span></span>
+                <span class="person-name">Matt Bianzon</span>
+            </a>
+            <a href="allArtwork.html" class="person" role="listitem" aria-label="Open Michael Faustino page">
+                <span class="avatar-wrap"><img src="anime.jpg" alt="Michael Faustino"><span class="online-dot" aria-hidden="true"></span></span>
+                <span class="person-name">Michael Faustino</span>
+            </a>
+            <a href="michael-john-santos.html" class="person" role="listitem" aria-label="Open Michael John Santos page">
+                <span class="avatar-wrap"><img src="three.jpg" alt="Michael John Santos"><span class="online-dot" aria-hidden="true"></span></span>
+                <span class="person-name">Michael John Santos</span>
+            </a>
+            <a href="paule-daniel-reyes.html" class="person" role="listitem" aria-label="Open Paule Daniel Reyes page">
+                <span class="avatar-wrap"><img src="lola.jpg" alt="Paule Daniel Reyes"><span class="online-dot" aria-hidden="true"></span></span>
+                <span class="person-name">Paule Reyes</span>
+            </a>
+            <a href="chena-balagtas.html" class="person" role="listitem" aria-label="Open Chena Balagtas page">
+                <span class="avatar-wrap"><img src="lace.jpg" alt="Chena Balagtas"><span class="online-dot" aria-hidden="true"></span></span>
+                <span class="person-name">Chena Balagtas</span>
+            </a>
+            <a href="art-collector.html" class="person" role="listitem" aria-label="Open Art Collector page">
+                <span class="avatar-wrap"><img src="peynt.jpg" alt="Art Collector"><span class="online-dot" aria-hidden="true"></span></span>
+                <span class="person-name">Art Collector</span>
+            </a>
+        </div>
+    </section>
+
+    <h1 class="lineup-title">
+        Vision. Passion. Creation.
+    </h1>
+
+    <nav class="category-tabs">
+
+        <a href="finalproj.html">
+            Dashboard
+        </a>
+
+        <a href="index.html" class="active">
+            All Artwork
+        </a>
+
+        <a href="arts.html">
+            Arts
+        </a>
+
+        <a href="graphics.html">
+            Graphics
+        </a>
+
+        <a href="paint.html">
+            Paints
+        </a>
+
+        <a href="materials.html">
+            Materials
+        </a>
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+        <a href="bill.html">
+            Billing
+        </a>
+
+        <input type="text" id="artSearch" class="tab-search" placeholder="Search artwork...">
+
+    </nav>
+
+    <!-- ARTS CONTENT -->
+
+    <section class="artwork-intro">
+
+    <h2>Structural and</h2>
+    <h2>Material Works.</h2>
+        <br>
+    
+        <i>
+    <h3>Discover my world of art, where imagination meets passion and</h3>
+    <h3>every piece tells a story.</h3>
+        </i>
+
+        </section>
+        <br>
+
+    <div class="product-grid">
+
+        <!-- ARTWORK 1 -->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="pisa.jpg"
+                     alt="Pisa Cathedral">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Pisa Cathedral Pointilism
+            </h2>
+
+            <p class="description">
+                Pisa, Tuscany, Italy.
+            </p>
+
+            <p class="details">
+                Arts in Everywhere.
+            </p>
+
+            <div class="actions">
+
+                
+<a href="#pisaModal" class="learn-more-btn">Learn more</a>
+
+<div id="pisaModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="pisa.jpg" alt="Pisa Cathedral Pointillism">
+
+        <h2>Pisa Cathedral Pointillism</h2>
+        <p class="modal-location">Pisa, Tuscany, Italy</p>
+
+        <div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Panda Black Ink Pen</li>
+        <li>Bond Paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Pisa%20Cathedral%20Pointilism"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- ARTWORK 2 -->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="col.jpg"
+                     alt="Colosseum">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator dark"></span>
+                <span class="indicator light"></span>
+
+            </div>
+
+            <h2>
+                Colosseum Pointilism
+            </h2>
+
+            <p class="description">
+                Rome, Italy.
+            </p>
+
+            <p class="details">
+                Arts in Everywhere.
+            </p>
+
+            <div class="actions">
+
+                <a href="#colosseumModal" class="learn-more-btn">Learn more</a>
+
+<div id="colosseumModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="col.jpg" alt="Pisa Cathedral Pointillism">
+
+        <h2>Colosseum Pointillism</h2>
+        <p class="modal-location">Rome, Italy</p>
+
+        <div class="modal-description">
+
+    <p>
+        This image shows a hand-drawn illustration of the Colosseum in 
+        Rome, Italy, an ancient Roman amphitheater. It features 
+        multiple levels of arches, stone structures, and a partially
+        ruined exterior. The drawing uses black-and-white shading and 
+        detailed linework to emphasize its historical character, 
+        architectural patterns, and aged appearance.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Colosseum%20Pointilism"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- ARTWORK 3 -->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="arch.png"
+                     alt="Architectural House">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator dark"></span>
+                <span class="indicator green"></span>
+
+            </div>
+
+            <h2>
+                Architectural Two-Storey House
+            </h2>
+
+            <p class="description">
+                Villa, Homa.
+            </p>
+
+            <p class="details">
+                Structural.
+            </p>
+
+            <div class="actions">
+
+                <a href="#archiModal" class="learn-more-btn">Learn more</a>
+
+<div id="archiModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="arch.png" alt="Pisa Cathedral Pointillism">
+
+        <h2>Architectural Two-Storey House</h2>
+        <p class="modal-location">Villa, Homa</p>
+
+<div class="modal-description">
+
+    <p>
+        This artwork presents a colored perspective drawing of 
+        a modern two-story house. It features large glass windows, g
+        eometric forms, a flat roof, and a combination of dark structural 
+        frames and reddish-brown accents. The design also includes a 
+        swimming pool, landscaped greenery, stairs, and a driveway, 
+        highlighting a contemporary and luxurious residential style.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Architectural%20Two-Storey%20House"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- ARTWORK 4 -->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="DOG.png"
+                     alt="Dog Portrait">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Animal Portraying
+            </h2>
+
+            <p class="description">
+                Dogs.
+            </p>
+
+            <p class="details">
+                I love Animals.
+            </p>
+
+            <div class="actions">
+
+                
+<a href="#dogModal" class="learn-more-btn">Learn more</a>
+
+<div id="dogModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="DOG.png" alt="Animal Portraying">
+
+        <h2>Animal Portraying</h2>
+        <p class="modal-location">Dogs</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork shows a pencil sketch of a small, fluffy dog with pointed ears, 
+        expressive eyes, and an open mouth. The artist uses fine lines, shading, and sketching
+         techniques to capture the dog's facial features, fur texture, and lively expression.
+          The drawing demonstrates observational drawing skills and attention to detail.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Animal%20Portraying"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- ARTWORK 5 -->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="PUP.png"
+                     alt="Puppy">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator dark"></span>
+                <span class="indicator light"></span>
+
+            </div>
+
+            <h2>
+                Animal Portraying
+            </h2>
+
+            <p class="description">
+                Puppy.
+            </p>
+
+            <p class="details">
+                I Love Animals.
+            </p>
+
+            <div class="actions">
+
+                <a href="#pupModal" class="learn-more-btn">Learn more</a>
+
+<div id="pupModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="PUP.png" alt="Pisa Cathedral Pointillism">
+
+        <h2>Animal Portraying</h2>
+        <p class="modal-location">Puppy.</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a lightly drawn portrait of a Chihuahua, 
+        highlighting its large ears, round eyes, small nose, and delicate facial features. 
+        The soft pencil strokes create a subtle outline and basic shading, emphasizing the 
+        dog's head shape and expression. This artwork demonstrates the use of simple sketching 
+        techniques to capture an animal's appearance.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Animal%20Portraying"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- ARTWORK 6 -->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="LEAF.png"
+                     alt="Leaf Carve">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator dark"></span>
+                <span class="indicator green"></span>
+
+            </div>
+
+            <h2>
+                Leaf Carving
+            </h2>
+
+            <p class="description">
+                Leaf Art.
+            </p>
+
+            <p class="details">
+                Carve.
+            </p>
+
+            <div class="actions">
+
+                <a href="#leafModal" class="learn-more-btn">Learn more</a>
+
+<div id="leafModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="LEAF.png" alt="Pisa Cathedral Pointillism">
+
+        <h2>Leaf Carving</h2>
+        <p class="modal-location">Leaf Art.</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        The third image presents a nature-inspired artwork depicting a green, 
+        curved landform with two trees and a small animal silhouette. The use 
+        of green and yellow tones creates texture across the landscape, while
+        the dark tree silhouettes provide contrast. The composition gives the
+        impression of a small, isolated natural environment and highlights 
+        the relationship between land, trees, and wildlife.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Leaf%20Carving"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+         <!-- ARTWORK 7 -->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="lola.jpg"
+                     alt="Portrait">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Art Portraying
+            </h2>
+
+            <p class="description">
+                Grandmother
+            </p>
+
+            <p class="details">
+                Portraying People.
+            </p>
+
+            <div class="actions">
+
+                
+<a href="#lolaModal" class="learn-more-btn">Learn more</a>
+
+<div id="lolaModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="lola.jpg" alt="Art Portraying">
+
+        <h2>Art Portraying</h2>
+        <p class="modal-location">Portrait</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a pencil portrait of a grandmother, highlighting her facial 
+        features, wrinkles, hairstyle, and clothing. The artist uses light pencil strokes 
+        and shading to capture her age, expression, and personality. The drawing emphasizes 
+        the beauty of aging and the importance of family, demonstrating observational skills 
+        and attention to human details.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Art%20Portraying"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- ARTWORK 5 -->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="anime.jpg"
+                     alt="Anime">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator dark"></span>
+                <span class="indicator light"></span>
+
+            </div>
+
+            <h2>
+                Anime Art
+            </h2>
+
+            <p class="description">
+                Haikyuu
+            </p>
+
+            <p class="details">
+                Anime.
+            </p>
+
+            <div class="actions">
+
+                <a href="#haikyuuModal" class="learn-more-btn">Learn more</a>
+
+<div id="haikyuuModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="anime.jpg" alt="Haikyuu">
+
+        <h2>Anime Art</h2>
+        <p class="modal-location">Anime</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork depicts a volleyball game, showing a player reaching toward 
+        the ball while other players raise their hands in preparation to receive 
+        it. The illustration uses linework to portray movement, body posture, and 
+        the interaction between players. It captures the energy, teamwork, and 
+        coordination involved in sports.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Anime%20Art"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- ARTWORK 6 -->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="three.jpg"
+                     alt="Portrait">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator dark"></span>
+                <span class="indicator green"></span>
+
+            </div>
+
+            <h2>
+                Art Portraying
+            </h2>
+
+            <p class="description">
+                Frontliners.
+            </p>
+
+            <p class="details">
+                Thank you for your service.
+            </p>
+
+            <div class="actions">
+
+                <a href="#threeModal" class="learn-more-btn">Learn more</a>
+
+<div id="threeModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="three.jpg" alt="Art Portraying">
+
+        <h2>Art Portraying</h2>
+        <p class="modal-location">Frontliners.</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork portrays frontliners wearing face masks, with one figure wearing a graduation 
+        cap in the foreground and another figure standing behind. The pencil drawing highlights 
+        facial details, clothing, and protective masks. It reflects appreciation for the people 
+        who continued serving their communities during the COVID-19 pandemic, recognizing their 
+        dedication, sacrifice, and service.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Art%20Portraying"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <section class="artwork-intro">
+
+    <h2>Graphic Works.</h2>
+    <br>
+    <h3>Explore my graphic design visuals, where bold ideas, creative</h3>
+    <h3>details, and visual storytelling come together.</h3>
+
+        </section>
+        <div class="product-grid"></div>
+        <br>
+
+        <!---Artwork 7--->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="4.png"
+                     alt="Evaluation Results">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+               Engr. Ryan Nolasco
+            </h2>
+
+            <p class="description">
+                Evaluation Results
+            </p>
+
+            <p class="details">
+                CpE Faculty that is always manifested.
+            </p>
+
+            <div class="actions">
+
+                <a href="#evalModal" class="learn-more-btn">Learn more</a>
+
+<div id="evalModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="4.png" alt="Pisa Cathedral Pointillism">
+
+        <h2>CpE Faculty Evaluation Result</h2>
+        <p class="modal-location">Engr. Ryan Nolasco</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This graphic design highlights Engr. Ryan Nolasco's faculty evaluation results 
+        for Academic Year 2025–2026, featuring a warm orange and brown color scheme. 
+        The layout emphasizes his portrait, the phrase “Always Manifested,” and his 97.25% 
+        faculty evaluation rating. The glowing effects, bold typography, and layered background 
+        create a professional recognition poster celebrating his performance as a Computer 
+        Engineering faculty member.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Engr.%20Ryan%20Nolasco"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Artwork 8-->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="70.png"
+                     alt="Outstanding Professor">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Engr. Ryan Nolasco
+            </h2>
+
+            <p class="description">
+                Outstanding Professor
+            </p>
+
+            <p class="details">
+                Cpe Faculty that is always manifested.
+            </p>
+
+            <div class="actions">
+
+                <a href="#outModal" class="learn-more-btn">Learn more</a>
+
+<div id="outModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="70.png" alt="Pisa Cathedral Pointillism">
+
+        <h2>CpE Faculty Outstanding Professors</h2>
+        <p class="modal-location">Engr. Ryan Nolasco</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This design recognizes Engr. Ryan Nolasco as an outstanding professor, 
+        using a deep blue background with circular light effects and geometric 
+        elements. His portrait is positioned at the center, while the large headline 
+        “Outstanding Professors” establishes the main focus. The 95.51% rating and 
+        “Always Manifested” label highlight his achievement, giving the poster a 
+        formal and celebratory appearance.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Engr.%20Ryan%20Nolasco"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Artwork 9-->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="107.png"
+                     alt="Top Performing CpE Faculty Member">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Engr. Ryan Nolasco
+            </h2>
+
+            <p class="description">
+                Top Performing CpE Faculty Member
+            </p>
+
+            <p class="details">
+                CpE Faculty that is always manifested.
+            </p>
+
+            <div class="actions">
+
+                <a href="#topModal" class="learn-more-btn">Learn more</a>
+
+<div id="topModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="107.png" alt="Pisa Cathedral Pointillism">
+
+        <h2>Top Performing CpE Faculty Professors</h2>
+        <p class="modal-location">Engr. Ryan Nolasco</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This poster celebrates Engr. Ryan Nolasco as a top-performing Computer Engineering faculty 
+        member. It features a dark blue and purple background, gold typography, spotlight effects, 
+        and decorative confetti. His portrait takes center stage, complemented by his name and a 
+        caption highlighting his 97.25% faculty evaluation rating for Academic Year 2025–2026. 
+        The overall design conveys achievement, excellence, and appreciation.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Engr.%20Ryan%20Nolasco"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+    
+        <!---Artwork 10--->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="father.jpg"
+                     alt="Happy Father's Day">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+               Happy Father's Day
+            </h2>
+
+            <p class="description">
+                Graphic Design Material
+            </p>
+
+            <p class="details">
+                Happy Father's Day to all Dads out there.
+            </p>
+
+            <div class="actions">
+
+                <a href="#fatherModal" class="learn-more-btn">Learn more</a>
+
+<div id="fatherModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="father.jpg" alt="Pisa Cathedral Pointillism">
+
+        <h2>Happy Father's Day</h2>
+        <p class="modal-location">Holiday</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+<div>
+
+                <a href="bill.html?art=Happy%20Father's%20Day"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Artwork 11-->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="men.jpg"
+                     alt="Men's Mental Health">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Men's Mental Health
+            </h2>
+
+            <p class="description">
+                Graphic Design Material
+            </p>
+
+            <p class="details">
+                We all matters.
+            </p>
+
+            <div class="actions">
+
+                <a href="#menModal" class="learn-more-btn">Learn more</a>
+
+<div id="menModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="men.jpg" alt="Pisa Cathedral Pointillism">
+
+        <h2>Men's Mental Health</h2>
+        <p class="modal-location">Graphic Design</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+<div>
+
+                <a href="bill.html?art=Men's%20Mental%20Health"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Artwork 12-->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="lace.jpg"
+                     alt="Lace Design">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Lace Design
+            </h2>
+
+            <p class="description">
+                Graphic Design Material
+            </p>
+
+            <p class="details">
+                Lace pattern graphic design.
+            </p>
+
+            <div class="actions">
+
+                <a href="#laceModal" class="learn-more-btn">Learn more</a>
+
+<div id="laceModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="lace.jpg" alt="Pisa Cathedral Pointillism">
+
+        <h2>Lace Design</h2>
+        <p class="modal-location">Graphic Design Material</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Lace%20Design"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!---Artwork 13--->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="PUBMATS (19).png"
+                     alt="Midterm Examination">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+               Midterm Examination
+            </h2>
+
+            <p class="description">
+                Graphic Design Material
+            </p>
+
+            <p class="details">
+                1st Semester Midterm Examination.
+            </p>
+
+            <div class="actions">
+
+                <a href="#examModal" class="learn-more-btn">Learn more</a>
+
+<div id="examModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="PUBMATS (19).png" alt="Midterm Examination">
+
+        <h2>Midterm Examination</h2>
+        <p class="modal-location">Graphic Design Material</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Midterm%20Examination"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Artwork 14-->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="Untitled design (2).png"
+                     alt="Mental Health Logo">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Mental Health Logo Creation
+            </h2>
+
+            <p class="description">
+                Graphic Design Material
+            </p>
+
+            <p class="details">
+                We all matters.
+            </p>
+
+            <div class="actions">
+
+                <a href="#logoModal" class="learn-more-btn">Learn more</a>
+
+<div id="logoModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="Untitled design (2).png" alt="Logo Creation">
+
+        <h2>Mental Health Logo</h2>
+        <p class="modal-location">Graphic Design Material</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Mental%20Health%20Logo%20Creation"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Artwork 15-->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="medal (3).png"
+                     alt="All Soul's Day">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                All Soul's Day
+            </h2>
+
+            <p class="description">
+                Graphic Design Material
+            </p>
+
+            <p class="details">
+                Holiday.
+            </p>
+
+            <div class="actions">
+
+                <a href="#soulModal" class="learn-more-btn">Learn more</a>
+
+<div id="soulModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="medal (3).png" alt="All Soul's Day">
+
+        <h2>All Soul's Day</h2>
+        <p class="modal-location">Graphic Design Material</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=All%20Soul's%20Day"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!---Artwork 16--->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="athletes (3).png"
+                     alt="Chess Tournament">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+               Angara Cup: Chess Tournament
+            </h2>
+
+            <p class="description">
+                Graphic Design Material
+            </p>
+
+            <p class="details">
+                Chess Team Tournament - Angara Cup.
+            </p>
+
+            <div class="actions">
+
+                <a href="#athleteModal" class="learn-more-btn">Learn more</a>
+ 
+<div id="athleteModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="athletes (3).png" alt="Angara Cup">
+
+        <h2>Angara Cup: Chess Tournament</h2>
+        <p class="modal-location">Graphic Design Material</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Angara%20Cup%3A%20Chess%20Tournament"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Artwork 17-->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="ANGARA ATHLETES (5).png"
+                     alt="Chess Tournament">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Angara Cup: Chess Tournament
+            </h2>
+
+            <p class="description">
+                Graphic Design Material
+            </p>
+
+            <p class="details">
+                Chess Tournament - Advanced Division.
+            </p>
+
+            <div class="actions">
+
+                <a href="#athletecModal" class="learn-more-btn">Learn more</a>
+ 
+<div id="athletecModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="ANGARA ATHLETES (5).png" alt="Angara Cup">
+
+        <h2>Angara Cup: Chess Tournament</h2>
+        <p class="modal-location">Graphic Design Material</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Angara%20Cup%3A%20Chess%20Tournament"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Artwork 18-->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="medal.png"
+                     alt="All Saint's Day">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                All Saint's Day
+            </h2>
+
+            <p class="description">
+                Graphic Design Material
+            </p>
+
+            <p class="details">
+                Holiday.
+            </p>
+
+            <div class="actions">
+
+                <a href="#saintModal" class="learn-more-btn">Learn more</a>
+ 
+<div id="saintModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="athletes (3).png" alt="All Saint's Day">
+
+        <h2>All Saint's Day</h2>
+        <p class="modal-location">Graphic Design Material</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=All%20Saint's%20Day"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <section class="artwork-intro">
+
+    <h2>Paint Works.</h2>
+    <br>
+    <h3>Discover my paintings, where colors, emotions, and imagination</h3>
+    <h3>blend to bring every canvas to life.</h3>
+
+        </section>
+        <div class="product-grid"></div>
+        <br>
+
+        <!---Artwork 19--->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="CONST.png"
+                     alt="Constellation">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+               Constellation Painting
+            </h2>
+
+            <p class="description">
+                Stars
+            </p>
+
+            <p class="details">
+                Mythological Figures, Animals, or Objects.
+            </p>
+
+            <div class="actions">
+
+                <a href="#constModal" class="learn-more-btn">Learn more</a>
+ 
+<div id="constModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="CONST.png" alt="Constellation Painting">
+
+        <h2>Constellation Painting</h2>
+        <p class="modal-location">Stars</p>
+
+        
+<div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Constellation%20Painting"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Artwork 20-->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="OIL.png"
+                     alt="Media Literacy Oil Paint">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Media Literacy Oil Paint
+            </h2>
+
+            <p class="description">
+                Oil Painting
+            </p>
+
+            <p class="details">
+                Advantage and Disadvantage of Media in our lives.
+            </p>
+
+            <div class="actions">
+
+                <a href="#oilModal" class="learn-more-btn">Learn more</a>
+
+<div id="oilModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="OIL.png" alt="Pisa Cathedral Pointillism">
+
+        <h2>Media Literacy Oil Paint</h2>
+        <p class="modal-location">Oil Painting</p>
+
+        <div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Media%20Literacy%20Oil%20Paint"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Artwork 21-->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="PAINT.png"
+                     alt="Wavy Paint">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Wavy Painting
+            </h2>
+
+            <p class="description">
+                Acrylic Painting
+            </p>
+
+            <p class="details">
+                Made for OS Wallpaper visuals through paint.
+            </p>
+
+            <div class="actions">
+
+                <a href="#paintModal" class="learn-more-btn">Learn more</a>
+
+<div id="paintModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="PAINT.png" alt="Wavy Paint">
+
+        <h2>Wavy Painting</h2>
+        <p class="modal-location">Acrylic Painting</p>
+
+        <div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Wavy%20Painting"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- Artwork 21-->
+
+        <article class="product-card">
+
+            <div class="product-image">
+
+                <img src="peynt.jpg"
+                     alt="Acrylic Paint">
+
+            </div>
+
+            <div class="indicators">
+
+                <span class="indicator green"></span>
+                <span class="indicator light"></span>
+                <span class="indicator dark"></span>
+
+            </div>
+
+            <h2>
+                Scenery Paint
+            </h2>
+
+            <p class="description">
+                Acrylic Painting
+            </p>
+
+            <p class="details">
+                Scenery Painting in canvas using acrylic paint.
+            </p>
+
+            <div class="actions">
+
+                <a href="#peyntModal" class="learn-more-btn">Learn more</a>
+
+<div id="peyntModal" class="artwork-modal">
+    <div class="modal-content">
+        <a href="#artwork-Modal" class="close-btn">&times;</a>
+
+        <img src="peynt.jpg" alt="Acrylic Paint">
+
+        <h2>Scenery Painting</h2>
+        <p class="modal-location">Acrylic Painting</p>
+
+        <div class="modal-description">
+
+    <p>
+        This artwork features a detailed pointillism illustration
+        of the historic Pisa Cathedral in Tuscany, Italy. Using
+        carefully placed dots and intricate linework, the drawing
+        captures the architectural details of the cathedral,
+        including its domes, arches, columns, and surrounding
+        buildings.
+    </p>
+
+    <p><strong>Materials Used:</strong></p>
+
+    <ul>
+        <li>Black ink pen</li>
+        <li>Drawing paper</li>
+        <li>Fine-point pen for stippling</li>
+    </ul>
+
+    <p><strong>Art Technique:</strong></p>
+
+    <p>
+        Pointillism and architectural line drawing.
+    </p>
+
+</div>
+    </div>
+</div>
+
+                <a href="bill.html?art=Scenery%20Paint"
+                   class="buy-link">
+                    Inquire →
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+<div id="artworkModal" class="modal">
+
+    <div class="modal-content">
+
+        <a href="#" class="close-btn">×</a>
+
+        <img src="men.jpg" alt="Men's Mental Health">
+
+        <h2>Men's Mental Health</h2>
+
+        <p>
+            We all matter.
+        </p>
+
+    </div>
+
+</div>
+
+
+<script src="search.js"></script>
+<script>
+/* People Online: remember tapped avatar, show green underline. Clears when leaving Artists. */
+(function () {
+    var KEY = "pmc_active_artist_v1";
+    function currentFile() {
+        var p = window.location.pathname.split("/").pop().split("?")[0].split("#")[0];
+        return (p || "index.html").toLowerCase();
+    }
+    function markActive() {
+        var saved = null;
+        try { saved = localStorage.getItem(KEY); } catch (e) {}
+        var page = currentFile();
+        Array.prototype.forEach.call(document.querySelectorAll(".person"), function (a) {
+            var href = (a.getAttribute("href") || "").split("?")[0].split("#")[0].toLowerCase();
+            var isHere = href === page;
+            var isSaved = saved && href === saved;
+            if (isHere || isSaved) a.classList.add("active");
+        });
+    }
+    Array.prototype.forEach.call(document.querySelectorAll(".person"), function (a) {
+        a.addEventListener("click", function () {
+            var href = (a.getAttribute("href") || "").split("?")[0].split("#")[0].toLowerCase();
+            try { localStorage.setItem(KEY, href); } catch (e) {}
+            Array.prototype.forEach.call(document.querySelectorAll(".person"), function (x) { x.classList.remove("active"); });
+            a.classList.add("active");
+        });
+    });
+    /* Clear underline when tapping outside Artists strip */
+    document.addEventListener("click", function (e) {
+        if (!e.target.closest || !e.target.closest(".people-online")) {
+            try { localStorage.removeItem(KEY); } catch (err) {}
+        }
+    });
+    markActive();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,2106 @@
+/* ================= FONTS ================= */
+@font-face {
+    font-family: "Surthin";
+    src: url("fonts/Surt-Normal-Regular-TRIAL.otf") format("opentype");
+}
+@font-face {
+    font-family: "Surt";
+    src: url("fonts/Surt-Normal-Regular-TRIAL.otf") format("opentype");
+}
+@font-face {
+    font-family: "SurtBold";
+    src: url("fonts/Surt-Normal-Bold-TRIAL.otf") format("opentype");
+}
+@font-face {
+    font-family: "Recife";
+    src: url("fonts/RecifeDisplay-BookItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Cabinet Grotesk";
+    src: url("fonts/CabinetGrotesk-Extralight.otf") format("opentype");
+}
+@font-face {
+    font-family: "Altera";
+    src: url("fonts/Altera.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Pinsans";
+    src: url("fonts/Pin-Sans-Medium.ttf") format("truetype");
+}
+
+/* ================= BASE ================= */
+html, body {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    /* Tinatanggal ang horizontal scrollbar sa page.
+       Ang "clip" (bagong fallback: hidden) ay hindi nagiging scroll container,
+       kaya hindi nasisira ang position: sticky ng nav at hero. */
+    overflow-x: hidden;
+    overflow-x: clip;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px; /* para hindi sumiksik sa ilalim ng sticky nav ang mga anchor */
+}
+
+body {
+    min-height: 100vh;
+
+    /* ===== UNIFIED GREEN PALETTE (lahat ng section dito kukuha) ===== */
+    --bg: #e9efe8;
+    --shadow-dark: #c6d2c4;
+    --shadow-light: #ffffff;
+    --ink: #1f2a1c;
+    --muted: #566253;
+    --accent: #4a9a50;
+    --accent-soft: #7ebb80;
+    --line: rgba(31, 70, 37, 0.14);
+    --green-900: #0f2413;
+    --green-800: #16331b;
+    --green-700: #1f4625;
+    --green-600: #25572c;
+    --green-500: #2e6d36;
+    --green-400: #4a9a50;
+    --green-300: #7ebb80;
+    --green-100: #dcede0;
+    --green-50: #f1f7f1;
+    --paper: #fbfdfb;
+
+    background: linear-gradient(160deg, #f3f7f2 0%, var(--green-50) 55%, #e4ece2 100%);
+}
+
+::selection {
+    background: var(--green-300);
+    color: var(--green-900);
+}
+
+/* ================= ICONS (Lucide) ================= */
+[data-lucide] {
+    color: currentColor;
+    vertical-align: middle;
+}
+
+
+
+.icon-xs {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2px;
+}
+
+.icon-sm {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.2px;
+}
+
+.icon-md {
+    width: 28px;
+    height: 28px;
+    stroke-width: 1.8px;
+    color: var(--accent);
+}
+
+.icon-inline {
+    margin-right: 8px;
+    vertical-align: -4px;
+}
+
+/* ================= GLOBAL POLISH ================= */
+a, button {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Green vertical scrollbar — walang horizontal (tinago sa taas/baba) */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--green-50);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-soft);
+    border-radius: 999px;
+    border: 2px solid var(--green-50);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-soft) var(--green-50);
+}
+
+/* ================= TOP BAR (STICKY GLASS NAV) ================= */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#topbar {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+    height: 64px;
+    padding: 0 24px;
+    box-sizing: border-box;
+    background: rgba(251, 253, 251, 0.82);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 8px 28px rgba(15, 36, 19, 0.07);
+    font-family: "Surt";
+    font-size: 1.05em;
+}
+
+.navbar {
+    height: auto;
+    padding: 0;
+    text-align: center;
+    color: inherit;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+#leftbar {
+    position: static;
+    transform: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-self: start;
+}
+
+#leftbar img {
+    border-radius: 10px;
+}
+
+#logo-text {
+    font-family: "Surt";
+    font-size: 1.05em;
+    letter-spacing: 0.04em;
+    color: var(--green-900);
+    margin: 0;
+}
+
+.rightbar {
+    position: static;
+    transform: none;
+    padding: 0;
+    text-align: right;
+    color: inherit;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-self: end;
+}
+
+.rightbar #sign-up {
+    background-color: var(--green-500);
+    color: #ffffff;
+    border: 1px solid var(--green-500);
+    border-radius: 999px;
+    padding: 0 18px;
+    display: inline-flex;
+    align-items: center;
+    height: 38px;
+    line-height: 1;
+    box-shadow: 0 6px 16px rgba(46, 109, 54, 0.28);
+}
+
+.rightbar #sign-up:hover {
+    background: var(--green-700);
+    border-color: var(--green-700);
+    transform: translateY(-1px);
+}
+
+.buttonbar {
+    display: inline-flex;
+    align-items: center;
+    color: var(--green-900);
+    padding: 8px 14px;
+    text-decoration: none;
+    font-family: "Surt";
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.buttonbar:hover {
+    color: #7ebb80;
+    border-bottom-color: var(--green-500);
+}
+
+/* ================= CONTENT 1 (HERO) ================= */
+#content1animate {
+    height: 150vh;
+    position: relative;
+    background-color: transparent;
+}
+
+#content1 {
+    position: sticky;
+    top: 64px;                      /* dumidikit sa ilalim ng sticky nav */
+    width: 100%;
+    height: calc(100vh - 64px);
+    margin: 0;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+#insidecontent1animate {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #2b2f2c;
+    transform-origin: center top;
+    will-change: transform, border-radius;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 56px;
+    box-sizing: border-box;
+}
+
+#insidecontent1animate video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+#insidecontent1animate::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 100%),
+        rgba(47, 93, 58, 0.18);
+}
+
+#welcome,
+.line,
+#welcomedescription {
+    position: relative;
+    z-index: 2;
+}
+
+#welcome {
+    font-family: "Recife";
+    font-size: clamp(2.4em, 5vw, 4.4em);
+    font-weight: 400;
+    line-height: 1.05;
+    color: #fcfcf7;
+    text-align: left;
+    margin: 0 0 22px clamp(20px, 4vw, 40px);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+
+.line {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, #fcfcf7, rgba(252, 252, 247, 0));
+    width: 70%;
+    margin: 0 0 22px clamp(20px, 4vw, 40px);
+}
+
+#welcomedescription {
+    font-family: "Cabinet Grotesk";
+    font-size: clamp(1.1em, 1.6vw, 1.5em);
+    color: #fcfcf7;
+    text-align: left;
+    white-space: normal;
+    margin: 0 0 0 clamp(20px, 4vw, 40px);
+    max-width: 700px;
+    line-height: 1.6;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* --- HERO EXTRAS: eyebrow, CTA buttons, scroll cue --- */
+.hero-eyebrow {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 8px;
+    margin: 0 0 18px clamp(20px, 4vw, 40px);
+    padding: 8px 16px;
+    border: 1px solid rgba(252, 252, 247, 0.35);
+    border-radius: 999px;
+    background: rgba(15, 36, 19, 0.35);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    font-family: "Surt";
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #eaf6ea;
+}
+
+.hero-eyebrow svg {
+    color: var(--green-300);
+}
+
+.hero-actions {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 30px 0 0 clamp(20px, 4vw, 40px);
+}
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    height: 52px;
+    padding: 0 30px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: "Surt";
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-btn svg {
+    transition: transform 0.25s ease;
+}
+
+.hero-btn:hover svg {
+    transform: translateX(4px);
+}
+
+.hero-btn-solid {
+    background: var(--green-400);
+    color: #ffffff;
+    border: 1px solid var(--green-400);
+    box-shadow: 0 14px 30px rgba(46, 109, 54, 0.4);
+}
+
+.hero-btn-solid:hover {
+    background: var(--green-500);
+    border-color: var(--green-500);
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(46, 109, 54, 0.5);
+}
+
+.hero-btn-ghost {
+    background: rgba(252, 252, 247, 0.08);
+    color: #fcfcf7;
+    border: 1px solid rgba(252, 252, 247, 0.55);
+}
+
+.hero-btn-ghost:hover {
+    background: #fcfcf7;
+    color: var(--green-900);
+    border-color: #fcfcf7;
+    transform: translateY(-2px);
+}
+
+.hero-btn-ghost:hover svg {
+    transform: none;
+}
+
+.scroll-cue {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(252, 252, 247, 0.45);
+    border-radius: 50%;
+    color: #fcfcf7;
+    background: rgba(15, 36, 19, 0.3);
+    animation: cue-bounce 1.8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes cue-bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 8px); }
+}
+
+/* ================ ABOUT US ===================== */
+#Aboutus {
+    min-height: 300px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--green-100);
+    padding: 72px clamp(20px, 5vw, 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-600);
+    overflow: hidden; /* safety: walang lumalabas na horizontal */
+}
+
+#aboutustext {
+    display: block;
+    width: 100%;
+    position: relative; /* anchor ng mga decorative hr — hindi na viewport */
+}
+
+#aboutustext hr {
+    display: flex;
+    border: none;
+    height: 0.5px;
+    background: rgba(31, 70, 37, 0.45);
+    margin: 0;
+}
+
+.about-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: clamp(40px, 7vw, 300px); /* responsive — dati 400px fixed, sumasagad sa maliit na screen */
+    max-width: 100%;
+}
+
+.about-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-row p {
+    flex: 1.4;
+    margin: 0;
+    color: var(--ink);
+    text-align: justify;
+    line-height: 1.7;
+    font-family: "Cabinet Grotesk";
+}
+
+/* Inayos ang HR widths para hindi mag-scroll */
+.hr-1 {
+    position: relative;
+    width: 50%;           
+    max-width: 500px;      
+    right: 40px;
+    bottom: 40px;
+    margin-left: -20px;    
+}
+
+.hr-2 {
+    position: absolute;
+    left: 70%;              
+    top: 0;
+    width: 25%;             
+}
+
+.hr-3 {
+    position: relative;
+    width: 80%;             
+    max-width: 700px;
+    left: 35px;
+}
+
+.hr-4 {
+    position: absolute;
+    width: 15%;             
+    max-width: 200px;
+    right: 0;               
+}
+
+#aboutustext h3 {
+    margin: 0px 250px 0px 0px;
+    text-align: right;
+    font-size: clamp(2.4em, 4vw, 4em);
+    letter-spacing: 0.08em;
+    font-family: "SurtBold";
+    display: flex;
+    align-items: left;
+    justify-content: flex-end;
+}
+
+.aboutusbutton {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 30px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #25572c;
+    cursor: pointer;
+}
+
+.btn-label {
+    display: grid;
+    place-items: center;
+    height: 50px;
+    width: min(400px, 60vw); /* hindi na lumalampas sa screen */
+    border: 2px solid var(--green-600);
+    border-radius: 999px;
+    transition: background 0.2s ease, color 0.2s ease;
+    font-family: "Cabinet Grotesk";
+}
+
+.btn-circle {
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #25572c;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.25s ease;
+}
+
+.aboutusbutton:hover .btn-label,
+.aboutusbutton:hover .btn-circle {
+    background: var(--green-900);
+    color: #fff;
+}
+
+.aboutusbutton:hover .btn-circle {
+    transform: rotate(45deg);
+}
+
+/* --- STATS ROW (engaging, may necessary na icons lang) --- */
+.about-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(24px, 5vw, 72px);
+    margin-top: 44px;
+}
+
+.about-stats .stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.about-stats .stat svg {
+    color: var(--green-500);
+    flex-shrink: 0;
+}
+
+.about-stats strong {
+    display: block;
+    font-family: "SurtBold";
+    font-size: clamp(1.6em, 2.4vw, 2.3em);
+    line-height: 1.1;
+    color: var(--green-700);
+}
+
+.about-stats span {
+    display: block;
+    font-family: "Pinsans";
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+}
+
+@media (max-width: 800px) {
+    .about-row { flex-direction: column; gap: 24px; }
+    .hr-2 { display: none; }
+    #aboutustext h3 { text-align: center; padding-right: 0; font-size: 3em; justify-content: center; }
+    .about-row p { text-align: center; }
+    .aboutusbutton { margin-left: 0; }
+    .hr-1, .hr-3, .hr-4 { width: 100%; margin-left: 0; right: 0; }
+    .about-stats { justify-content: center; }
+}
+
+/* ================= OUR TOP ARTWORKS =================== */
+#content3 {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--paper);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 20px;
+    box-sizing: border-box;
+}
+
+.content3tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    max-width: 80%;
+    width: 100%;
+}
+
+.ct3left {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 50px;
+    width: 55%;
+}
+
+.ct3col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ct3col-offset {
+    margin-top: 120px;
+}
+
+.ct3imgtab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.thin-line {
+    position: relative;
+    width: 70%;
+    border: 0;
+    border-top: 1.5px solid #1f4625;
+    margin: 5px 0px 15px -18px;
+    align-self: flex-start;
+}
+
+.img-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    background: var(--bg);
+    color: var(--accent);
+    border: 1px solid rgba(31, 70, 37, 0.2);
+    box-shadow: 10px 10px 18px rgba(31, 70, 37, 0.12),
+            -6px -6px 14px rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-wrapper:hover  {
+    transform: translateY(-4px);
+    box-shadow: 14px 16px 24px rgba(31, 70, 37, 0.18),
+            -8px -8px 16px rgba(255, 255, 255, 0.95);
+}
+
+.img-wrapper:hover .side-line {
+    transform: translateY(4px);
+}
+
+.side-line {
+    position: absolute;
+    left: -11px;
+    top: -11px;
+    bottom: 8px;
+    width: 0;
+    height: 70%;
+    margin: 0;
+    border: 0;
+    border-left: 1.5px solid #1f4625;
+    transition: transform 0.3s ease;
+}
+
+.ct3imgtab img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.05); /* buhay ang kulay ng artwork — hindi na 20% grayscale */
+}
+
+.vertical-text {
+    position: absolute;
+    right: -15px;
+    top: 5px;
+    writing-mode: vertical-rl;
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
+
+.name-text {
+    position: absolute;
+    bottom: -20px;
+    left: 0px;
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--muted);
+}
+
+.ct3right {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ct3right h2 {
+    font-size: 45px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: #2e6d36;
+    text-align: right;
+    font-family: "SurtBold";
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.ct3right p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #2f3a33;
+    text-align: justify;
+    margin-bottom: 30px;
+    font-family: "Cabinet Grotesk";
+}
+
+.artwork-circles {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;  
+    gap:-10px;            /* siguraduhing may gap */
+}
+
+.circle,
+.oval {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Default state ng circle at oval */
+.circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--accent);
+    border: 1px solid var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+               -5px -5px 10px var(--shadow-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.oval {
+    width: 300px;
+    height: 60px;
+    border-radius: 40px;
+    background: var(--bg);
+    color: var(--accent);
+    border: 1px solid var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+               -5px -5px 10px var(--shadow-light);
+}
+
+/* 🔥 GROUP HOVER — lahat aangat kapag may na-hover sa loob */
+.artwork-circles:has(.circle:hover, .oval:hover) .circle,
+.artwork-circles:has(.circle:hover, .oval:hover) .oval {
+    transform: translateY(-4px);
+    background: var(--green-500);
+    border-color: var(--green-500);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(46, 109, 54, 0.35);
+}
+
+
+/* Ginawa itong totoong CTA — hindi na puro dekorasyon */
+.oval {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: auto;
+    min-width: 300px;
+    height: 60px;
+    padding: 0 34px;
+    box-sizing: border-box;
+    border-radius: 40px;
+    text-decoration: none;
+    background: var(--bg);
+    color: var(--green-600);
+    border: 1px solid var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+               -5px -5px 10px var(--shadow-light);
+    font-family: "Surt";
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.oval svg {
+    transition: transform 0.25s ease;
+}
+
+.oval:hover {
+    background: var(--green-500);
+    border-color: var(--green-500);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(46, 109, 54, 0.35);
+}
+
+.oval:hover svg {
+    transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+    .content3tab {
+        flex-direction: column;
+        gap: 50px;
+    }
+    .ct3left, .ct3right {
+        width: 100%;
+    }
+    .ct3right h2 {
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* ================= CONTENT 4 (WHY CHOOSE) =================== */
+.page {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    box-sizing: border-box;
+}
+
+.page section { margin-bottom: 90px; }
+
+.sec-line {
+    width: 70%;
+    margin: 12px 0;
+    border: 0;
+    border-top: 1px solid rgba(31, 70, 37, 0.35);
+}
+.sec-line.full { width: 100%; }
+
+.why-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 12px;
+    height: 560px;
+}
+
+.why-col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.why-text { flex: 0 0 auto; }
+
+.why-text h2 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #2e6d36;
+    font-family: "SurtBold";
+}
+
+.why-text p {
+    margin: 0 0 14px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--muted);
+    font-family: "Pinsans";
+}
+
+.outline-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 40px;
+    border-radius: 999px;
+    font-size: 12px;
+    text-decoration: none;
+    font-family: "SurtBold";
+    background: var(--bg);
+    color: var(--green-600);
+    border: 1px solid var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+               -5px -5px 10px var(--shadow-light);
+
+}
+
+.outline-btn:hover {
+    background: var(--green-600);
+    color: #fff;
+    border-color: var(--green-600);
+}
+
+.why-img {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.why-img:hover {
+    filter: brightness(1.05) saturate(1.1);
+}
+
+.img-short { flex: 0.8; }
+.img-long  { flex: 1.1; }
+
+/* Quick feature list — check icons lang, walang sobra */
+.why-list {
+    list-style: none;
+    margin: 0 0 18px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.why-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Pinsans";
+    font-size: 12px;
+    color: var(--ink);
+}
+
+.why-list li svg {
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+/* ================= SECTION 2: MEET THE ARTIST ================= */
+#meetartist {
+    width: 100%;
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+.center-title {
+    margin: 0 0 10px;
+    text-align: center;
+    font-size: 80px;
+    font-weight: 800;
+    color: #232323;
+    font-family: "SurtBold";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-sub {
+    max-width: 460px;
+    margin: 0 auto 30px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--muted);
+    font-family: "Pinsans";
+}
+
+.artist-card {
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+    background: var(--green-800);
+    border: 1px solid rgba(126, 187, 128, 0.25);
+    border-radius: 16px;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 24px 55px rgba(15, 36, 19, 0.35);
+    transition: opacity 0.3s ease;
+}
+
+.artist-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.artist-info h2 {
+    margin: 0 0 -15px;
+    font-size: 50px;
+    flex-shrink: 0;
+    font-family: "SurtBold";
+    color: #fcfcf7;
+    font-weight: 400;
+}
+
+.artist-info h3 {
+    margin: 8px 0 10px;
+    font-size: 20px;
+    font-weight: 800;
+    flex-shrink: 0;
+    font-family: "Surt";
+    color: #fcfcf7;
+    display: flex;
+    align-items: center;
+}
+
+.artist-info p {
+    margin: 0 0 10px;
+    font-size: 11px;
+    line-height: 1.5;
+    flex-shrink: 0;
+    font-family: "Pinsans";
+    color: #fcfcf7;
+}
+
+#inquireBTN {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    width: auto;
+    min-width: 170px;
+    padding: 10px 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--green-700);
+    color: #fcfcf7;
+    border: none;
+    border-radius: 999px;
+    font-family: "Surt";
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 6px 6px 12px rgba(5, 12, 7, 0.7), -6px -6px 12px rgba(46, 109, 54, 0.35);
+    transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+#inquireBTN:hover {
+    background: var(--green-600);
+    box-shadow: 3px 3px 7px rgba(5, 12, 7, 0.7), -3px -3px 7px rgba(46, 109, 54, 0.35);
+    transform: translateY(1px);
+}
+
+#inquireBTN:active {
+    transform: translateY(1px);
+    box-shadow: inset 5px 5px 10px rgba(5, 12, 7, 0.7), inset -5px -5px 10px rgba(46, 109, 54, 0.35);
+}
+
+#artworkBTN {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    text-decoration: none;
+    width: auto;
+    min-width: 170px;
+    padding: 10px 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--green-700);
+    color: #fcfcf7;
+    border: none;
+    border-radius: 999px;
+    font-family: "Surt";
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 6px 6px 12px rgba(5, 12, 7, 0.7), -6px -6px 12px rgba(46, 109, 54, 0.35);
+    transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+#artworkBTN:hover {
+    background: var(--green-600);
+    box-shadow: 3px 3px 7px rgba(5, 12, 7, 0.7), -3px -3px 7px rgba(46, 109, 54, 0.35);
+    transform: translateY(1px);
+}
+
+#artworkBTN:active {
+    transform: translateY(1px);
+    box-shadow: inset 5px 5px 10px rgba(5, 12, 7, 0.7), inset -5px -5px 10px rgba(46, 109, 54, 0.35);
+}
+
+/* Button + social icons sa isang hanay */
+.artist-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.artist-socials {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.artist-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(245, 247, 245, 0.45);
+    background: rgba(126, 187, 128, 0.08);
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.artist-socials a:hover {
+    background: var(--green-300);
+    transform: translateY(-2px);
+}
+
+/* 🔥 FIX PARA SA ICON */
+.artisticonsoccials {
+    width: 20px;           /* Tamang laki para sa 38px na button */
+    height: 20px;
+    object-fit: contain;   /* Para hindi ma-stretch o maputol ang drawing */
+    display: block;
+    
+    /* Kung itim yung SVG file mo, gagawin itong puti/light green via filter */
+    filter: brightness(0) invert(1); 
+    opacity: 0.7;
+    transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+/* Pag hinover yung button, magiging dark green yung icon */
+.artist-socials a:hover .artisticonsoccials {
+    filter: brightness(0); /* Ginagawang pure black/dark */
+    opacity: 1;
+}
+
+#MTAsec-line {
+    border: none;
+    height: 1px;
+    background: #fcfcf7;
+    margin: 16px -24px;
+    flex-shrink: 0;
+    width: calc(100% + 48px);
+}
+
+.artist-darktab {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    margin: -15px -24px -24px;
+    padding: 5px 24px 0px;
+    background: var(--green-900);
+    box-shadow: inset 0 8px 14px rgba(0, 0, 0, 0.25);
+}
+
+.artistposts {
+    flex: 1;
+    min-height: 0;
+    margin-top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overscroll-behavior: contain;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+}
+
+.artistposts::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.artistposts-inner {
+    column-count: 3;
+    column-gap: 15px;
+    padding: 20px 4px 20px;
+}
+
+.artistposts-inner img {
+    width: 100%;
+    height: auto;
+    margin: 0 0 15px;
+    display: block;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid #eef3ec;
+    border-radius: 0px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.artistposts-inner img:hover {
+    transform: scale(1.02);
+}
+
+.artist-photo {
+    position: relative;
+    flex: 0 0 30%;
+}
+
+.artist-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.artist-card.fading {
+    opacity: 0;
+}
+
+/* ===== MEET THE ARTIST NAVIGATION ===== */
+.dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.dot,
+.dot-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    font-family: inherit;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #b7c6b6;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.dot:hover {
+    background: var(--green-800);
+    transform: scale(1.4);
+}
+
+.dot.active {
+    background: var(--green-800);
+    width: 24px;
+    border-radius: 999px;
+}
+
+.dot.active:hover {
+    transform: none;
+}
+
+.dot-arrow {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--green-800);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.dot-arrow i,
+.dot-arrow svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.4px;
+}
+
+.dot-arrow::before {
+    justify-content: center;
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.9), transparent 60%);
+    opacity: 0.6;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.dot-arrow:hover {
+    background: var(--green-800);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(15, 36, 19, 0.3), 0 10px 28px rgba(15, 36, 19, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-color: var(--green-800);
+}
+
+.dot-arrow:hover::before {
+    opacity: 0;
+}
+
+.dot-arrow:active {
+    transform: translateY(0) scale(0.96);
+    box-shadow: 0 2px 6px rgba(26, 58, 31, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.dot:focus-visible,
+.dot-arrow:focus-visible {
+    outline: 2px solid #4a9a50;
+    outline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+    .artist-card {
+        flex-direction: column;
+        height: auto;
+    }
+    .artist-photo {
+        flex: 0 0 auto;
+        height: 400px;
+    }
+    .artist-darktab {
+        min-height: 400px;
+    }
+    .dot-arrow {
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
+    }
+}
+
+/* ================= SECTION 3: ARTWORKS ================= */
+#artworks {
+    width: 100%;
+    /* margin-left: calc(50% - 50vw); REMOVED */
+    padding: 40px 0 30px;
+    box-sizing: border-box;
+
+}
+
+.art-inner {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 20px; /* Binigyan ng konting padding sa gilid */
+    box-sizing: border-box;
+}
+
+.left-title {
+    margin: 0 -20px; /* Pantay sa padding ng art-inner */
+    font-size: 50px;
+    font-weight: 800;
+    font-family: "SurtBold";
+    color: #232323;
+    display: flex;
+    align-items: center;
+}
+
+.art-top-line,
+.art-bottom-line {
+    margin: 10px -20px 0;
+    width: calc(100% + 40px); /* Pinalitan ang fixed 1200px */
+    border: 0;
+    border-top: 1px solid var(--green-500);
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 14px;
+    margin: 18px -20px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 10px 10px 20px 10px; 
+}
+
+.tags::-webkit-scrollbar { display: none; }
+
+.tag {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 30px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    font-family: "Surt";
+    background: var(--bg);
+    color: var(--green-600);
+    border: 1px solid var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+               -5px -5px 10px var(--shadow-light);
+}
+
+.tag:hover {
+    background: var(--green-900);
+    border-color: var(--green-900);
+    color: #fff;
+}
+
+.art-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    box-sizing: border-box;               /* KAILANGAN: kasama ng padding ang 100vw —
+                                             kung wala, 100vw + 240px padding ang lapad
+                                             at lalabas sa screen ang dulo ng track */
+
+    /* FULL-BLEED break-out — ang track ang sumasakop sa buong lapad ng screen
+       habang nag-i-scroll (parang Apple/Samsung product galleries).
+       Ginamit ang margin-inline (hindi margin shorthand) para hindi ma-overwrite. */
+    width: 100vw;
+    margin-block: 24px;                   /* patayong espasyo lang — hindi apektado ang break-out */
+    margin-inline: calc(50% - 50vw);      /* break-out trick: umabot sa gilid ng screen */
+
+    /* Pantay sa content edges ng .page (title, linya, at arrows sa baba):
+       .page = max-width 1300px na may 20px side padding → content = 1260px.
+       Kaya ang layo ng gilid ng screen papuntang content = (100vw - 1260px) / 2,
+       pero hindi bababa sa 20px kapag mas maliit ang screen. */
+    padding-left: max(20px, calc((100vw - 1260px) / 2));
+    padding-right: max(20px, calc((100vw - 1260px) / 2));
+
+    /* Snap points na nakatapat sa parehong content edges:
+       UMPISA — papatong ang unang card sa kaliwang gilid ng title/linya.
+       DULO   — itatama ng huling card ang kanang gilid ng arrows/linya. */
+    scroll-padding-left: max(20px, calc((100vw - 1260px) / 2));
+    scroll-padding-right: max(20px, calc((100vw - 1260px) / 2));
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+}
+
+.art-row::-webkit-scrollbar {
+    display: none;
+}
+
+.art-card {
+    flex: 0 0 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0 28px;
+    border-right: 1px solid rgba(31, 70, 37, 0.22);
+    scroll-snap-align: start;
+}
+
+/* Ang HULING card ay naka-snap sa KANANG gilid — kapag nasa dulo na ang scroll,
+   dito mismo magre-rest ang huling artwork: papantay ito sa arrows / bottom line
+   sa baba (gaya sa Apple at Samsung product pages). */
+.art-card:last-child {
+    scroll-snap-align: end;
+}
+
+/* Sa screens na mas mababa sa 1300px, ang .page box na ang buong screen —
+   mas eksaktong alignment ito kaysa sa 100vw (na may kasamang scrollbar width). */
+@media (max-width: 1300px) {
+    .art-row {
+        width: calc(100% + 40px);         /* .page box = buong screen sa halip na 100vw */
+        margin-inline: -20px;             /* sumingit sa gilid ng .page padding */
+        padding-left: 20px;               /* papantay sa title / linya / arrows */
+        padding-right: 20px;
+        scroll-padding-left: 20px;
+        scroll-padding-right: 20px;
+    }
+}
+
+.art-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.art-fit {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+}
+
+.art-img-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 560px;
+}
+
+.art-img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid rgba(31, 70, 37, 0.25);
+    background: var(--bg);
+    box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.art-card:hover .art-img {
+    transform: translateY(-5px);
+    box-shadow: 11px 13px 22px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+}
+
+.art-info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 18px;
+    width: 100%;
+    text-align: left;
+}
+
+.art-text { min-width: 0; }
+
+.art-name {
+    margin: 0;
+    font-family: "Pinsans";
+    font-size: clamp(20px, 1.8vw, 26px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.art-artist {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    font-family: "Surt", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.art-desc {
+    display: flex;
+    margin: 14px 0 0;
+    font-family: "Cabinet Grotesk";
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+    height: calc(1.6em * 3);
+}
+
+.art-buy {
+    margin-top : -80px ;
+    align-self: center;
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--accent);
+    font-family: "Surt", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    transition: box-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.art-buy:hover {
+    background: var(--green-900);
+    color: #fff;
+}
+
+.art-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 22px;
+    margin: 0 -20px;
+}
+
+.art-progress {
+    position: relative;
+    flex: 0 1 460px;
+    height: 10px;
+    border: 1px solid rgba(31, 70, 37, 0.4);
+    background: rgba(31, 70, 37, 0.07);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.art-thumb {
+    position: absolute;
+    height: 10px;
+    width: 60px;
+    border-radius: 999px;
+    background: var(--green-700);
+    cursor: grab;
+    touch-action: none;
+}
+
+.art-thumb:active { cursor: grabbing; }
+
+.art-arrows {
+    display: flex;
+    gap: 8px;
+    margin : 0 0px ;
+}
+
+.round-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Surt", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: var(--bg);
+    color: var(--accent);
+    border: 1px solid var(--bg);
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.round-btn i,
+.round-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.round-btn:hover {
+    background: var(--green-900);
+    border-color: var(--green-900);
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .art-card { flex-basis: 78vw; }
+    .art-controls { flex-direction: column; align-items: stretch; }
+    .art-progress { flex: none; width: 100%; }
+    .art-arrows { justify-content: flex-end; }
+    .scroll-cue { display: none; }   /* hindi nakikipagsabayan sa CTA buttons sa maliit na screen */
+}
+
+@media (max-width: 800px) {
+    .why-wrap { flex-direction: column; height: auto; }
+    .why-img { flex: none; height: 300px; }
+    .artist-card { flex-direction: column; height: auto; }
+    .artist-photo { flex: none; height: 320px; }
+    .artist-thumbs { height: 280px; flex: none; }
+}
+
+/* ================= CONTENT 5 =================== */
+#content5 {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 60vh;
+    padding: 100px 40px;
+    box-sizing: border-box;
+    background: var(--green-50);
+    border-top: 1px solid var(--line);
+    overflow-x: clip;
+}
+
+.c5-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.c5-left {
+    text-align: left;
+    padding-left: 100px;
+    min-width: 0;
+}
+
+.c5-eyebrow {
+    display: flex;
+    align-items: center;
+    margin: 0 0 14px;
+    font-family: "Surt";
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #4a9a50;
+}
+
+.c5-title {
+    margin: 0 0 18px;
+    font-family: "Recife", Georgia, serif;
+    font-size: clamp(2.2em, 4vw, 3.4em);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--ink);
+}
+
+.c5-text {
+    margin: 0;
+    max-width: 380px;
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-size: 1.15em;
+    line-height: 1.65;
+    color: var(--green-600);
+}
+
+#c5-button {
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border: 1px solid var(--green-800);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--green-800);
+    font-family: "Surt";
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+#c5-button:hover {
+    background: var(--green-800);
+    color: #fff;
+}
+
+.feedbackstack {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: 500px;
+    margin: 40px 0 40px 10px;
+    min-width: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.feedbacktab {
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    padding: 28px 32px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(155deg, var(--green-900) 0%, var(--green-800) 100%);
+    color: #fff;
+    border: 1px solid rgba(126, 187, 128, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 18px 36px rgba(15, 36, 19, 0.35);
+    transform-origin: center bottom;
+    transform: translateY(calc(var(--pos, 0) * -16px)) scale(calc(1 - var(--pos, 0) * 0.05));
+    opacity: calc(1 - var(--pos, 0) * 0.3);
+    z-index: calc(10 - var(--pos, 0));
+    transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.45s ease;
+}
+
+/* malaking quote watermark sa gilid */
+.feedbacktab::before {
+    content: "\201C";
+    position: absolute;
+    top: -14px;
+    right: 24px;
+    font-family: "Recife", Georgia, serif;
+    font-size: 130px;
+    line-height: 1;
+    color: rgba(126, 187, 128, 0.16);
+    pointer-events: none;
+}
+
+.feedbacktab[style*="--pos: 3"],
+.feedbacktab[style*="--pos: 4"],
+.feedbacktab[style*="--pos: 5"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.feedbacktab.leaving {
+    transform: translateX(55%) rotate(6deg);
+    opacity: 0;
+}
+
+.fb-msg {
+    margin: 0;
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #f4f4f4;
+}
+
+.fb-by { display: flex; align-items: baseline; gap: 10px; }
+.fb-name { font-family: "Surt"; font-size: 14px; color: #fff; }
+.fb-role { font-family: "Cabinet Grotesk", sans-serif; font-size: 12px; color: #7ebb80; }
+
+.fb-hint {
+    position: absolute;
+    right: 4px;
+    bottom: -30px;
+    display: flex;
+    align-items: center;
+    font-family: "Surt";
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-600);
+}
+
+/* 5-star rating sa bawat testimonial */
+.fb-stars {
+    display: flex;
+    gap: 4px;
+    position: relative;
+    z-index: 1;
+    color: var(--green-300);
+}
+
+.fb-stars svg {
+    fill: rgba(126, 187, 128, 0.4);
+}
+
+.fb-msg {
+    position: relative;
+    z-index: 1;
+}
+
+.feedbackstack:focus-visible .feedbacktab:first-child {
+    outline: 2px solid #7ebb80;
+    outline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+    .c5-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .c5-left { padding-left: 0; }
+    .feedbackstack { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .feedbacktab { transition: none; }
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: var(--green-900);
+    color: var(--green-100);
+    border-top: 3px solid var(--green-400);
+}
+
+.footer-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 64px 40px 36px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px;
+}
+
+.f-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.f-logo img {
+    border-radius: 10px;
+}
+
+.f-logo span {
+    font-family: "SurtBold";
+    font-size: 1.4em;
+    letter-spacing: 0.05em;
+    color: #fcfcf7;
+}
+
+.f-about {
+    margin: 0 0 20px;
+    max-width: 380px;
+    font-family: "Cabinet Grotesk";
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(220, 237, 224, 0.75);
+}
+
+.f-socials {
+    display: flex;
+    gap: 10px;
+}
+
+.f-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(126, 187, 128, 0.45);
+    color: var(--green-300);
+    background: rgba(126, 187, 128, 0.08);
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.f-socials a:hover {
+    background: var(--green-300);
+    color: var(--green-900);
+    transform: translateY(-3px);
+}
+
+.f-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 18px;
+    font-family: "Surt";
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green-300);
+}
+
+.f-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.f-links a,
+.f-links .f-static {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(220, 237, 224, 0.85);
+    text-decoration: none;
+    font-family: "Cabinet Grotesk";
+    font-size: 14px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.f-links a:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+.f-links svg {
+    color: var(--green-300);
+    flex-shrink: 0;
+}
+
+.f-bottom {
+    border-top: 1px solid rgba(126, 187, 128, 0.2);
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: "Cabinet Grotesk";
+    font-size: 13px;
+    color: rgba(220, 237, 224, 0.65);
+}
+
+.f-bottom span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.f-bottom svg {
+    color: var(--green-300);
+}
+
+/* ================= SCROLL REVEAL (engaging pero magaan) ================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (max-width: 900px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 48px 24px 28px;
+    }
+
+    .f-bottom {
+        justify-content: center;
+        text-align: center;
+        padding: 18px 24px;
+    }
+}
+
+/* ================= ACCESSIBILITY ================= */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .scroll-cue { animation: none; }
+}

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings | Michael Faustino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="stylesheet.css" />
+  </head>
+  <body class="site-page">
+    <section class="products-section">
+      <h1 class="lineup-title">Vision. Passion. Creation.</h1>
+
+      <div class="site-nav-row">
+        <nav class="category-tabs" aria-label="Main navigation">
+          <a href="allArtwork.html">All Artwork</a>
+          <a href="artist.html">Artist</a>
+          <a href="graphics.html">Graphics</a>
+          <a href="paint.html">Paints</a>
+          <a href="structural.html">Structural</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="bill.html">Billing</a>
+          <span class="dashboard-tab">Dashboard</span>
+        </nav>
+        <div class="account-actions" aria-label="Account and bag">
+          <a class="account-link" href="bill.html">Bag</a>
+          <a class="account-link" href="login_signup.html#signupContent"
+            >Sign up</a
+          >
+          <a class="account-link" href="login_signup.html#loginContent"
+            >Log in</a
+          >
+          <a
+            class="account-link settings-link"
+            href="settings.html"
+            aria-label="Settings"
+            aria-current="page"
+            title="Settings"
+          >
+            <img src="icon/settings.svg" alt="" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+
+      <main class="settings-content">
+        <header class="settings-heading">
+          <p class="settings-eyebrow">YOUR EXPERIENCE</p>
+          <h2>Settings</h2>
+          <p>Choose how artwork and this portfolio are presented.</p>
+        </header>
+
+        <div class="settings-grid">
+          <section class="settings-card" aria-labelledby="appearance-title">
+            <div class="settings-card-heading">
+              <span class="settings-symbol" aria-hidden="true">◐</span>
+              <div>
+                <h3 id="appearance-title">Appearance</h3>
+                <p>Choose a look for the portfolio.</p>
+              </div>
+            </div>
+            <div
+              class="settings-choice-row"
+              aria-label="Theme options, preview only"
+            >
+              <button
+                class="settings-choice is-selected"
+                type="button"
+                disabled
+              >
+                Light <span>Current</span>
+              </button>
+              <button class="settings-choice" type="button" disabled>
+                Dark
+              </button>
+            </div>
+          </section>
+
+          <section class="settings-card" aria-labelledby="display-title">
+            <div class="settings-card-heading">
+              <span class="settings-symbol" aria-hidden="true">▦</span>
+              <div>
+                <h3 id="display-title">Artwork display</h3>
+                <p>Choose how artwork is arranged.</p>
+              </div>
+            </div>
+            <div
+              class="settings-choice-row"
+              aria-label="Artwork display options, preview only"
+            >
+              <button
+                class="settings-choice is-selected"
+                type="button"
+                disabled
+              >
+                Gallery grid <span>Current</span>
+              </button>
+              <button class="settings-choice" type="button" disabled>
+                Compact
+              </button>
+            </div>
+          </section>
+
+          <section class="settings-card" aria-labelledby="text-size-title">
+            <div class="settings-card-heading">
+              <span class="settings-symbol" aria-hidden="true">Aa</span>
+              <div>
+                <h3 id="text-size-title">Text size</h3>
+                <p>Adjust the reading size.</p>
+              </div>
+            </div>
+            <div
+              class="settings-choice-row"
+              aria-label="Text size options, preview only"
+            >
+              <button class="settings-choice" type="button" disabled>
+                Small
+              </button>
+              <button
+                class="settings-choice is-selected"
+                type="button"
+                disabled
+              >
+                Regular <span>Current</span>
+              </button>
+              <button class="settings-choice" type="button" disabled>
+                Large
+              </button>
+            </div>
+          </section>
+
+          <section class="settings-card" aria-labelledby="language-title">
+            <div class="settings-card-heading">
+              <span class="settings-symbol" aria-hidden="true">文</span>
+              <div>
+                <h3 id="language-title">Language</h3>
+                <p>Choose your preferred language.</p>
+              </div>
+            </div>
+            <label class="settings-select-label" for="language"
+              >Display language</label
+            >
+            <select id="language" disabled>
+              <option selected>English</option>
+            </select>
+          </section>
+        </div>
+      </main>
+    </section>
+  </body>
+</html>
