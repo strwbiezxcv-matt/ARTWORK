@@ -124,7 +124,7 @@
       socials: {
         facebook: "https://www.facebook.com/share/19h38Yivi1/",
         instagram: "https://www.instagram.com/yovlaa_",
-        email: "",
+        email: "artsyeua@gmail.com",
         other: []
       },
       commission: {
