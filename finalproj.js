@@ -1,457 +1,413 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const database = window.PMCArtDatabase;
+  if (!database) throw new Error("PMC Art database did not load.");
+  const artists = database.getAllArtists();
+  const artworks = database.getAllArtworks();
 
-    /* ===== 1. LUCIDE ICONS =====
-       Kailangan itong tawagin — dati ay WALANG tumatawag ng createIcons()
-       kaya hindi talaga lumalabas ang kahit isang <i data-lucide> sa page. */
-    (function renderIcons(attempt) {
-        if (window.lucide && typeof window.lucide.createIcons === "function") {
-            window.lucide.createIcons();
-        } else if (attempt < 40) {          /* ~2s na hintay kung mabagal mag-load */
-            setTimeout(() => renderIcons(attempt + 1), 50);
-        }
-    })(0);
+  function markArtworkImage(image, artwork) {
+    image.dataset.artworkId = artwork.id;
+    image.setAttribute("role", "link");
+    image.setAttribute("aria-label", `View ${artwork.title} details`);
+    image.tabIndex = 0;
+    image.style.cursor = "pointer";
+  }
 
-    /* ===== 2. FOCUS EFFECT: blur, zoom, fade ===== */
-    const focusSection = document.getElementById('content2');
-    const galleryWindow = document.getElementById('gallview');
+  const heroWrap = document.getElementById("content1animate");
+  const heroFrame = document.getElementById("insidecontent1animate");
+  if (heroWrap && heroFrame) {
+    const updateHero = () => {
+      const distance = Math.max(1, heroWrap.offsetHeight - window.innerHeight);
+      const raw = (window.scrollY - heroWrap.offsetTop) / distance;
+      const progress = Math.min(Math.max(raw, 0), 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const scale = 1 - eased * 0.05;
+      heroFrame.style.transform = `scale(${scale.toFixed(4)})`;
+      heroFrame.style.borderRadius = `${(eased * 32 / scale).toFixed(1)}px`;
+    };
+    window.addEventListener("scroll", updateHero, { passive: true });
+    window.addEventListener("resize", updateHero);
+    updateHero();
+  }
 
-    const MAX_BLUR = 12;
-    const MIN_SCALE = 0.8;
-    const MAX_SCALE = 1.06;
-
-    if (focusSection && galleryWindow) {
-        let visible = false;
-        new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: 0 })
-            .observe(focusSection);
-
-        function updateFocus() {
-            if (visible) {
-                const area = galleryWindow.getBoundingClientRect();
-                const centerY = area.top + area.height / 2;
-                const reach = area.height / 2;
-
-                document.querySelectorAll('.gallery').forEach(img => {
-                    const r = img.getBoundingClientRect();
-                    const imgCenter = r.top + r.height / 2;
-                    const dist = Math.min(Math.abs(imgCenter - centerY) / reach, 1);
-
-                    const t = Math.pow(dist, 1.6);
-                    const opacity = Math.max(1 - Math.pow(dist, 2.2) * 1.15, 0);
-
-                    img.style.filter = `blur(${(t * MAX_BLUR).toFixed(2)}px)`;
-                    img.style.transform = `scale(${(MAX_SCALE - t * (MAX_SCALE - MIN_SCALE)).toFixed(3)})`;
-                    img.style.opacity = opacity.toFixed(2);
-                });
-            }
-            requestAnimationFrame(updateFocus);
-        }
-        requestAnimationFrame(updateFocus);
-    } else {
-        console.warn('Hindi nahanap: #content2 o #gallview');
-    }
-
-    /* ===== 3. HERO SHRINK ===== */
-    const heroWrap = document.getElementById('content1animate');
-    const heroFrame = document.getElementById('insidecontent1animate');
-
-    const HERO_MIN_SCALE = 0.95;
-    const HERO_MAX_RADIUS = 32;
-
-    if (heroWrap && heroFrame) {
-        function updateHero() {
-            const distance = heroWrap.offsetHeight - window.innerHeight;
-            const raw = (window.scrollY - heroWrap.offsetTop) / distance;
-            const progress = Math.min(Math.max(raw, 0), 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-
-            const scale = 1 - eased * (1 - HERO_MIN_SCALE);
-            heroFrame.style.transform = `scale(${scale.toFixed(4)})`;
-            heroFrame.style.borderRadius = `${(eased * HERO_MAX_RADIUS / scale).toFixed(1)}px`;
-        }
-
-        window.addEventListener('scroll', updateHero, { passive: true });
-        window.addEventListener('resize', updateHero);
-        updateHero();
-    } else {
-        console.warn('Hindi nahanap: #content1animate o #insidecontent1animate');
-    }
-
-    /* ===== 4. SCROLL REVEAL (engaging, pero hindi nag-aapekto sa reduced-motion) ===== */
-    try {
-        const revealTargets = document.querySelectorAll(
-            "#aboutustext .about-row, .about-stats, .content3tab, .why-wrap .why-col, " +
-            ".center-title, .center-sub, .dots, .left-title, .tags, .art-controls, .c5-left, .feedbackstack"
-        );
-        if (revealTargets.length && "IntersectionObserver" in window) {
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                        io.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-
-            revealTargets.forEach((el, i) => {
-                el.classList.add("reveal");
-                el.style.transitionDelay = (i % 3) * 90 + "ms";
-                io.observe(el);
-            });
-        }
-    } catch (err) {
-        console.warn("Reveal hindi gumana:", err);
-        document.querySelectorAll(".reveal").forEach((el) => el.classList.remove("reveal"));
-    }
-});
-
-
-
-
-// CONTENT 5: FEEDBACK STACK
-(function () {
-    const stack = document.getElementById("feedbackstack");
-    if (!stack) return;
-
-    const order = Array.from(stack.querySelectorAll(".feedbacktab"));
-    let busy = false;
-
-    function render() {
-        order.forEach((card, i) => card.style.setProperty("--pos", i));
-    }
-
-    function next() {
-        if (busy || order.length < 2) return;
-        busy = true;
-        const front = order[0];
-        front.classList.add("leaving");
-
-        setTimeout(() => {
-            order.push(order.shift());        // ang nasa harap ay pupunta sa likod
-            front.classList.remove("leaving");
-            render();
-            busy = false;
-        }, 280);
-    }
-
-    stack.addEventListener("click", next);
-    stack.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            next();
-        }
+  const revealTargets = document.querySelectorAll(
+    "#aboutustext .about-row, .about-stats, .content3tab, .why-wrap .why-col, " +
+    ".center-title, .center-sub, .dots, .left-title, .tags, .art-controls, .c5-left, .feedbackstack"
+  );
+  if ("IntersectionObserver" in window && revealTargets.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    revealTargets.forEach((element, index) => {
+      element.classList.add("reveal");
+      element.style.transitionDelay = `${(index % 3) * 90}ms`;
+      observer.observe(element);
     });
+  }
 
-    render();
-})();
+  const stack = document.getElementById("feedbackstack");
+  const cards = stack ? [...stack.querySelectorAll(".feedbacktab")] : [];
+  let busy = false;
+  const renderStack = () => cards.forEach((card, index) => card.style.setProperty("--pos", index));
+  const addTestimonialCard = ({ name, feedback }) => {
+    if (!stack || !cards.length) return;
+    const card = cards[0].cloneNode(true);
+    card.classList.remove("leaving");
+    card.style.removeProperty("--pos");
+    card.querySelector(".fb-stars")?.remove();
+    card.querySelector(".fb-msg").textContent = feedback;
+    card.querySelector(".fb-name").textContent = name;
+    card.querySelector(".fb-role").textContent = "Community feedback";
+    stack.insertBefore(card, stack.querySelector(".fb-hint"));
+    cards.unshift(card);
+    renderStack();
+  };
 
-
-(function () {
-    const artworks = [
-        { name: "Artname", artist: "Artist name", desc: "Short description", img: "images/michaelart1.jpg" },
-        { name: "Artname", artist: "Artist name", desc: "Short description", img: "images/michaelart2.jpg" },
-        { name: "Artname", artist: "Artist name", desc: "Short description", img: "images/michaelart3.jpg" },
-        { name: "Artname", artist: "Artist name", desc: "Short description", img: "images/michaelart4.jpg" },
-        { name: "Artname", artist: "Artist name", desc: "Short description", img: "images/michaelart5.jpg" },
-        { name: "Artname", artist: "Artist name", desc: "Short description", img: "images/michaelart6.jpg" },
-        { name: "Artname", artist: "Artist name", desc: "Short description", img: "images/mattbianzonart1.jpg" }
-    ];
-
-    const row = document.getElementById("artRow");
-    const track = document.getElementById("artProgress");
-    const thumb = document.getElementById("artThumb");
-    const prev = document.getElementById("artPrev");
-    const next = document.getElementById("artNext");
-    if (!row || !track || !thumb) return;
-
-    const template = row.querySelector(".art-card");
-    template.remove();
-
-    row.replaceChildren(...artworks.map((a) => {
-        const card = template.cloneNode(true);
-        const img = card.querySelector(".art-img");
-        img.src = a.img;
-        img.alt = a.name;
-        card.querySelector(".art-name").textContent = a.name;
-        const artistEl = card.querySelector(".art-artist");
-        const artistSpan = artistEl && artistEl.querySelector("span");
-        if (artistSpan) {
-            artistSpan.textContent = a.artist;    /* span lang ang pinalitan — hindi nawawala ang icon */
-        } else if (artistEl) {
-            artistEl.textContent = a.artist;
+  if (stack) {
+    const nextCard = () => {
+      if (busy || cards.length < 2) return;
+      busy = true;
+      const first = cards[0];
+      first.classList.add("leaving");
+      window.setTimeout(() => {
+        const firstIndex = cards.indexOf(first);
+        if (firstIndex !== -1) {
+          cards.splice(firstIndex, 1);
+          cards.push(first);
         }
-        card.querySelector(".art-desc").textContent = a.desc;
+        first.classList.remove("leaving");
+        renderStack();
+        busy = false;
+      }, 280);
+    };
+    stack.addEventListener("click", nextCard);
+    stack.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        nextCard();
+      }
+    });
+    renderStack();
+  }
+
+  const testimonialStorageKey = "pmcArtTestimonials";
+  const testimonialRecords = [];
+  let testimonialStorageError = null;
+  try {
+    const storedTestimonials = window.localStorage.getItem(testimonialStorageKey);
+    if (storedTestimonials) {
+      const parsedTestimonials = JSON.parse(storedTestimonials);
+      if (!Array.isArray(parsedTestimonials)) {
+        throw new TypeError("Saved testimonials must be an array.");
+      }
+      parsedTestimonials.forEach((record) => {
+        if (
+          record &&
+          typeof record.name === "string" &&
+          typeof record.feedback === "string" &&
+          record.name.trim() &&
+          record.feedback.trim()
+        ) {
+          testimonialRecords.push({
+            name: record.name.trim(),
+            feedback: record.feedback.trim()
+          });
+        }
+      });
+      if (testimonialRecords.length !== parsedTestimonials.length) {
+        testimonialStorageError = new TypeError("Some saved testimonials had invalid data.");
+      }
+    }
+  } catch (error) {
+    testimonialStorageError = error;
+    console.error("Unable to load saved testimonials from this browser.", error);
+  }
+  testimonialRecords.forEach(addTestimonialCard);
+
+  const testimonialModal = document.getElementById("testimonialModal");
+  const testimonialForm = document.getElementById("testimonialForm");
+  const testimonialStatus = document.getElementById("testimonialStatus");
+  const testimonialTrigger = document.getElementById("c5-button");
+  if (testimonialModal && testimonialForm && testimonialStatus && testimonialTrigger && stack) {
+    let previousBodyOverflow = "";
+    const storageWarning = () => testimonialStorageError
+      ? "Previously saved feedback could not be fully loaded. New entries will still be added to this page."
+      : "";
+    const closeTestimonialModal = () => {
+      testimonialModal.hidden = true;
+      document.body.style.overflow = previousBodyOverflow;
+      testimonialTrigger.focus();
+    };
+    testimonialTrigger.addEventListener("click", () => {
+      previousBodyOverflow = document.body.style.overflow;
+      testimonialModal.hidden = false;
+      document.body.style.overflow = "hidden";
+      testimonialStatus.textContent = storageWarning();
+      document.getElementById("testimonialName")?.focus();
+    });
+    testimonialModal.querySelectorAll("[data-modal-close]").forEach((button) => {
+      button.addEventListener("click", closeTestimonialModal);
+    });
+    testimonialModal.addEventListener("click", (event) => {
+      if (event.target === testimonialModal) closeTestimonialModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (!testimonialModal.hidden && event.key === "Escape") closeTestimonialModal();
+    });
+    testimonialForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!testimonialForm.reportValidity()) return;
+      const submission = new FormData(testimonialForm);
+      const name = submission.get("name")?.toString().trim();
+      const feedback = submission.get("feedback")?.toString().trim();
+      if (!name) {
+        testimonialStatus.textContent = "Please enter your name.";
+        document.getElementById("testimonialName")?.focus();
+        return;
+      }
+      if (!feedback) {
+        testimonialStatus.textContent = "Please enter your feedback.";
+        document.getElementById("testimonialFeedback")?.focus();
+        return;
+      }
+      const record = { name, feedback };
+      testimonialRecords.push(record);
+      addTestimonialCard(record);
+      try {
+        window.localStorage.setItem(testimonialStorageKey, JSON.stringify(testimonialRecords));
+        testimonialStorageError = null;
+        testimonialStatus.textContent = `Thank you, ${name}. Your testimonial is now in the rotating cards and saved in this browser only. It has not been sent to the PMC Art team.`;
+      } catch (error) {
+        testimonialStorageError = error;
+        console.error("Unable to save testimonial to this browser.", error);
+        testimonialStatus.textContent = `Your testimonial is in the rotating cards for this visit, but couldn't be saved in this browser. It won't remain after refreshing.`;
+      }
+    });
+  }
+
+  const featuredItems = [...document.querySelectorAll(".ct3imgtab")];
+  const distinctArtistArtworks = [];
+  const representedArtists = new Set();
+  artworks.forEach((artwork) => {
+    if (representedArtists.has(artwork.artistId)) return;
+    representedArtists.add(artwork.artistId);
+    distinctArtistArtworks.push(artwork);
+  });
+  featuredItems.forEach((item, index) => {
+    const artwork = distinctArtistArtworks[index];
+    if (!artwork) return;
+    const image = item.querySelector("img");
+    if (image) {
+      image.src = artwork.image;
+      image.alt = artwork.title;
+      markArtworkImage(image, artwork);
+    }
+    const title = item.querySelector(".vertical-text");
+    if (title) title.textContent = artwork.title;
+    const owner = item.querySelector(".name-text");
+    if (owner) owner.textContent = artwork.artist;
+  });
+  document.querySelectorAll(".why-img").forEach((image, index) => {
+    const artwork = distinctArtistArtworks[index];
+    if (!artwork) return;
+    image.src = artwork.image;
+    image.alt = artwork.title;
+    markArtworkImage(image, artwork);
+  });
+
+  const meetArtist = document.getElementById("meetartist");
+  if (meetArtist) {
+    const nameElement = meetArtist.querySelector(".artist-info h2");
+    const roleElement = meetArtist.querySelector(".artist-info h3 span");
+    const descriptionElement = meetArtist.querySelector(".artist-info > p");
+    const profileImage = meetArtist.querySelector(".artist-photo img");
+    const posts = meetArtist.querySelector(".artistposts-inner");
+    const dotContainer = meetArtist.querySelector(".dots");
+    const previous = dotContainer?.querySelector('[aria-label="Previous artist"]');
+    const next = dotContainer?.querySelector('[aria-label="Next artist"]');
+    let activeArtistIndex = Math.max(0, artists.findIndex((artist) => artist.id === "artist-mjb-002"));
+
+    if (dotContainer && nameElement && roleElement && descriptionElement && profileImage && posts) {
+      dotContainer.querySelectorAll(".dot").forEach((dot) => dot.remove());
+      const dots = artists.map((artist, index) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "dot";
+        dot.setAttribute("aria-label", `Show ${artist.name}`);
+        dot.addEventListener("click", () => showArtist(index));
+        dotContainer.insertBefore(dot, next);
+        return dot;
+      });
+
+      function showArtist(index) {
+        activeArtistIndex = (index + artists.length) % artists.length;
+        const artist = artists[activeArtistIndex];
+        nameElement.textContent = artist.name;
+        roleElement.textContent = artist.specialization;
+        descriptionElement.textContent = artist.description;
+        profileImage.hidden = !artist.profilePicture;
+        if (artist.profilePicture) profileImage.src = artist.profilePicture;
+        else profileImage.removeAttribute("src");
+        profileImage.alt = artist.profilePicture
+          ? `${artist.name} profile picture`
+          : `${artist.name} profile picture unavailable`;
+        posts.replaceChildren(...database.getArtworksByArtist(artist.id).map((artwork) => {
+          const image = document.createElement("img");
+          image.src = artwork.image;
+          image.alt = artwork.title;
+          markArtworkImage(image, artwork);
+          return image;
+        }));
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("active", dotIndex === activeArtistIndex);
+          dot.setAttribute("aria-pressed", String(dotIndex === activeArtistIndex));
+        });
+        const socials = database.getArtistSocials(artist.id);
+        meetArtist.querySelectorAll(".artist-socials a").forEach((link) => {
+          const key = link.getAttribute("aria-label").toLowerCase();
+          const href = socials[key];
+          link.hidden = !href;
+          link.style.display = href ? "" : "none";
+          if (href) link.href = href;
+          else link.removeAttribute("href");
+        });
+      }
+
+      previous?.addEventListener("click", () => showArtist(activeArtistIndex - 1));
+      next?.addEventListener("click", () => showArtist(activeArtistIndex + 1));
+      document.getElementById("inquireBTN")?.addEventListener("click", () => {
+        const artist = artists[activeArtistIndex];
+        sessionStorage.setItem("pmc-selected-artist", artist.id);
+        const target = new URL("nav-tab/commission tab/commission.html", window.location.href);
+        target.searchParams.set("artist", artist.id);
+        window.location.assign(target.href);
+      });
+      showArtist(activeArtistIndex);
+    }
+  }
+
+  const row = document.getElementById("artRow");
+  const progress = document.getElementById("artProgress");
+  const thumb = document.getElementById("artThumb");
+  const cardTemplate = row?.querySelector(".art-card");
+  const categoryControls = [...document.querySelectorAll("#artworks .tags [data-category]")];
+  if (row && cardTemplate && progress && thumb) {
+    cardTemplate.remove();
+    let selectedCategory = "all";
+
+    function renderArtworks() {
+      const records = selectedCategory === "all" ? artworks : database.filterArtworksByCategory(selectedCategory);
+      row.replaceChildren(...records.map((artwork) => {
+        const card = cardTemplate.cloneNode(true);
+        card.dataset.artworkId = artwork.id;
+        const image = card.querySelector(".art-img");
+        image.src = artwork.image;
+        image.alt = artwork.title;
+        markArtworkImage(image, artwork);
+        card.querySelector(".art-name").textContent = artwork.title;
+        card.querySelector(".art-artist span").textContent = artwork.artist;
+        card.querySelector(".art-desc").textContent = artwork.description;
         return card;
-    }));
-
-    function maxScroll() {
-        return row.scrollWidth - row.clientWidth;
+      }));
+      updateProgress();
+      if (window.lucide) window.lucide.createIcons({ attrs: { "stroke-width": 1.8 } });
     }
 
-    function update() {
-        const trackW = track.clientWidth;
-        const thumbW = Math.max(trackW * (row.clientWidth / row.scrollWidth), 40);
-        const max = maxScroll();
-        const pos = max > 0 ? (row.scrollLeft / max) * (trackW - thumbW) : 0;
-        thumb.style.width = thumbW + "px";
-        thumb.style.left = pos + "px";
+    function updateProgress() {
+      const trackWidth = progress.clientWidth;
+      const thumbWidth = row.scrollWidth
+        ? Math.max(trackWidth * (row.clientWidth / row.scrollWidth), 40)
+        : trackWidth;
+      const maxScroll = Math.max(0, row.scrollWidth - row.clientWidth);
+      const thumbPosition = maxScroll
+        ? (row.scrollLeft / maxScroll) * (trackWidth - thumbWidth)
+        : 0;
+      thumb.style.width = `${thumbWidth}px`;
+      thumb.style.left = `${thumbPosition}px`;
+      progress.setAttribute("aria-valuenow", String(Math.round(maxScroll ? (row.scrollLeft / maxScroll) * 100 : 0)));
     }
 
-    row.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    window.addEventListener("load", update);
+    progress.setAttribute("role", "slider");
+    progress.setAttribute("tabindex", "0");
+    progress.setAttribute("aria-label", "Scroll artworks");
+    progress.setAttribute("aria-controls", row.id);
+    progress.setAttribute("aria-valuemin", "0");
+    progress.setAttribute("aria-valuemax", "100");
 
-    let thumbDrag = false;
-    let thumbStartX = 0;
-    let thumbStartScroll = 0;
-
-    thumb.addEventListener("pointerdown", (e) => {
-        thumbDrag = true;
-        thumbStartX = e.clientX;
-        thumbStartScroll = row.scrollLeft;
-        row.style.scrollSnapType = "none";
-        thumb.setPointerCapture(e.pointerId);
-        e.stopPropagation();
-    });
-
-    thumb.addEventListener("pointermove", (e) => {
-        if (!thumbDrag) return;
-        const room = track.clientWidth - thumb.clientWidth;
-        if (room <= 0) return;
-        row.scrollLeft = thumbStartScroll + ((e.clientX - thumbStartX) / room) * maxScroll();
-    });
-
-    function endThumb() {
-        if (!thumbDrag) return;
-        thumbDrag = false;
-        row.style.scrollSnapType = "";
+    let progressDrag = null;
+    function moveArtworkProgress(event) {
+      if (!progressDrag || event.pointerId !== progressDrag.pointerId) return;
+      const maxThumbPosition = Math.max(0, progress.clientWidth - thumb.clientWidth);
+      const maxScroll = Math.max(0, row.scrollWidth - row.clientWidth);
+      const bounds = progress.getBoundingClientRect();
+      const thumbPosition = Math.min(
+        Math.max(event.clientX - bounds.left - progressDrag.offset, 0),
+        maxThumbPosition
+      );
+      row.scrollLeft = maxThumbPosition
+        ? (thumbPosition / maxThumbPosition) * maxScroll
+        : 0;
+      updateProgress();
     }
 
-    thumb.addEventListener("pointerup", endThumb);
-    thumb.addEventListener("pointercancel", endThumb);
-
-    track.addEventListener("click", (e) => {
-        if (e.target === thumb) return;
-        const rect = track.getBoundingClientRect();
-        const room = track.clientWidth - thumb.clientWidth;
-        const x = e.clientX - rect.left - thumb.clientWidth / 2;
-        row.scrollTo({ left: (x / room) * maxScroll(), behavior: "smooth" });
+    progress.addEventListener("pointerdown", (event) => {
+      if (!event.isPrimary || row.scrollWidth <= row.clientWidth) return;
+      event.preventDefault();
+      const thumbBounds = thumb.getBoundingClientRect();
+      progressDrag = {
+        pointerId: event.pointerId,
+        offset: event.target === thumb ? event.clientX - thumbBounds.left : thumb.clientWidth / 2
+      };
+      progress.classList.add("dragging");
+      progress.setPointerCapture(event.pointerId);
+      moveArtworkProgress(event);
+    });
+    progress.addEventListener("pointermove", moveArtworkProgress);
+    const finishArtworkProgress = (event) => {
+      if (!progressDrag || event.pointerId !== progressDrag.pointerId) return;
+      progressDrag = null;
+      progress.classList.remove("dragging");
+    };
+    progress.addEventListener("pointerup", finishArtworkProgress);
+    progress.addEventListener("pointercancel", finishArtworkProgress);
+    progress.addEventListener("keydown", (event) => {
+      const maxScroll = Math.max(0, row.scrollWidth - row.clientWidth);
+      if (event.key === "ArrowLeft") row.scrollBy({ left: -row.clientWidth * 0.1, behavior: "smooth" });
+      else if (event.key === "ArrowRight") row.scrollBy({ left: row.clientWidth * 0.1, behavior: "smooth" });
+      else if (event.key === "Home") row.scrollTo({ left: 0, behavior: "smooth" });
+      else if (event.key === "End") row.scrollTo({ left: maxScroll, behavior: "smooth" });
+      else return;
+      event.preventDefault();
     });
 
-    let rowDrag = false;
-    let rowStartX = 0;
-    let rowStartScroll = 0;
-    let moved = false;
-
-    row.addEventListener("pointerdown", (e) => {
-        if (e.pointerType !== "mouse" || e.target.closest("button")) return;
-        rowDrag = true;
-        moved = false;
-        rowStartX = e.clientX;
-        rowStartScroll = row.scrollLeft;
+    categoryControls.forEach((control) => {
+      control.addEventListener("click", (event) => {
+        event.preventDefault();
+        selectedCategory = control.dataset.category;
+        categoryControls.forEach((item) => item.classList.toggle("active", item === control));
+        renderArtworks();
+      });
     });
 
-    window.addEventListener("pointermove", (e) => {
-        if (!rowDrag) return;
-        const dx = e.clientX - rowStartX;
-        if (Math.abs(dx) > 4) {
-            moved = true;
-            row.classList.add("dragging");
-        }
-        row.scrollLeft = rowStartScroll - dx;
+    row.addEventListener("click", (event) => {
+      const buyButton = event.target.closest(".art-buy");
+      const card = buyButton?.closest("[data-artwork-id]");
+      if (!card) return;
+      sessionStorage.setItem("pmc-selected-artwork", card.dataset.artworkId);
+      window.location.href = "nav-tab/artwork tab/artinfo.html";
     });
 
-    window.addEventListener("pointerup", () => {
-        if (!rowDrag) return;
-        rowDrag = false;
-        row.classList.remove("dragging");
+    row.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    document.getElementById("artPrev")?.addEventListener("click", () => {
+      row.scrollBy({ left: -row.clientWidth * 0.8, behavior: "smooth" });
     });
-
-    function step(dir) {
-        const card = row.querySelector(".art-card");
-        row.scrollBy({ left: dir * card.offsetWidth, behavior: "smooth" });
-    }
-
-    prev.addEventListener("click", () => step(-1));
-    next.addEventListener("click", () => step(1));
-
-    row.addEventListener("click", (e) => {
-        const buyBtn = e.target.closest(".art-buy");
-        if (!buyBtn) return;
-        const name = buyBtn.closest(".art-card").querySelector(".art-name").textContent;
-        alert("Added to cart: " + name);
+    document.getElementById("artNext")?.addEventListener("click", () => {
+      row.scrollBy({ left: row.clientWidth * 0.8, behavior: "smooth" });
     });
-
-    update();
-})()
-
-
-// ================= MEET THE ARTIST CAROUSEL =================
-window.addEventListener("load", function () {
-    console.log("MTA: nag-start");
-
-    const section = document.getElementById("meetartist");
-    if (!section) {
-        console.error("MTA: Hindi mahanap ang #meetartist");
-        return;
-    }
-
-    const nameEl = section.querySelector(".artist-info h2");
-    const roleEl = section.querySelector(".artist-info h3");
-    const descEl = section.querySelector(".artist-info p");
-    const photoEl = section.querySelector(".artist-photo img");
-    const postsInner = section.querySelector(".artistposts-inner");
-    const dots = section.querySelectorAll(".dot");
-    const arrows = section.querySelectorAll(".dot-arrow");
-
-    console.log("MTA elements:", {
-        nameEl: !!nameEl,
-        roleEl: !!roleEl,
-        descEl: !!descEl,
-        photoEl: !!photoEl,
-        postsInner: !!postsInner,
-        dots: dots.length,
-        arrows: arrows.length
-    });
-
-    if (!nameEl || !roleEl || !descEl || !photoEl || !postsInner || arrows.length < 2) {
-        console.error("MTA: May kulang na HTML element");
-        return;
-    }
-
-    const artists = [
-        {
-            name: "MATT JULIUS BIANZON",
-            role: "Computer Engineer",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-            photo: "images/mattbianzonart1.jpg",
-            posts: [
-                "images/michaelart1.jpg",
-                "images/michaelart2.jpg",
-                "images/michaelart3.jpg",
-                "images/michaelart4.jpg",
-                "images/michaelart5.jpg",
-                "images/michaelart6.jpg"
-            ]
-        },
-        {
-            name: "MICHAEL JOHN SANTOS",
-            role: "UI/UX Designer",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            photo: "images/michaelart1.jpg",
-            posts: [
-                "images/michaelart2.jpg",
-                "images/michaelart3.jpg",
-                "images/michaelart4.jpg",
-                "images/michaelart5.jpg"
-            ]
-        },
-        {
-            name: "ARTIST THREE",
-            role: "Illustrator",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            photo: "images/michaelart3.jpg",
-            posts: [
-                "images/michaelart1.jpg",
-                "images/michaelart4.jpg",
-                "images/michaelart5.jpg",
-                "images/michaelart6.jpg"
-            ]
-        },
-        {
-            name: "ARTIST FOUR",
-            role: "Painter",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            photo: "images/michaelart4.jpg",
-            posts: [
-                "images/michaelart1.jpg",
-                "images/michaelart2.jpg",
-                "images/michaelart5.jpg"
-            ]
-        },
-        {
-            name: "ARTIST FIVE",
-            role: "Sculptor",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            photo: "images/michaelart5.jpg",
-            posts: [
-                "images/michaelart1.jpg",
-                "images/michaelart2.jpg",
-                "images/michaelart6.jpg"
-            ]
-        },
-         {
-            name: "ARTIST SIX",
-            role: "Sculptor",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            photo: "images/michaelart5.jpg",
-            posts: [
-                "images/michaelart1.jpg",
-                "images/michaelart2.jpg",
-                "images/michaelart6.jpg"
-            ]
-        }
-    ];
-
-    let current = 0;
-
-    function showArtist(index) {
-        const total = artists.length;
-        current = ((index % total) + total) % total;
-        const artist = artists[current];
-
-        nameEl.textContent = artist.name;
-        const roleSpan = roleEl.querySelector("span");
-        if (roleSpan) {
-            roleSpan.textContent = artist.role;   /* span lang ang pinalitan — hindi nawawala ang icon */
-        } else {
-            roleEl.textContent = artist.role;
-        }
-        descEl.textContent = artist.desc;
-        photoEl.src = artist.photo;
-        photoEl.alt = artist.name;
-
-        postsInner.innerHTML = "";
-        artist.posts.forEach(function (src, i) {
-            const img = document.createElement("img");
-            img.src = src;
-            img.alt = artist.name + " artwork " + (i + 1);
-            postsInner.appendChild(img);
-        });
-
-        dots.forEach(function (d, i) {
-            d.classList.toggle("active", i === current);
-        });
-
-        const posts = section.querySelector(".artistposts");
-        if (posts) posts.scrollTop = 0;
-
-        console.log("MTA: naka-display na ->", artist.name, "(index " + current + ")");
-    }
-
-    section.addEventListener("click", function (e) {
-        const arrow = e.target.closest(".dot-arrow");
-        const dot = e.target.closest(".dot");
-
-        if (arrow) {
-            const label = arrow.getAttribute("aria-label");
-            console.log("MTA: arrow click -", label);
-
-            if (label === "Previous artist") {
-                showArtist(current - 1);
-            } else {
-                showArtist(current + 1);
-            }
-            return;
-        }
-
-        if (dot) {
-            const allDots = Array.from(section.querySelectorAll(".dot"));
-            const idx = allDots.indexOf(dot);
-            console.log("MTA: dot click -", idx);
-            showArtist(idx);
-        }
-    });
-
-    showArtist(0);
-    console.log("MTA: tapos na mag-initialize");
+    renderArtworks();
+  }
 });

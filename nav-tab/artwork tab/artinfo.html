@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <script src="../../theme.js"></script>
+  <link rel="stylesheet" href="../../fonts.css">
+  <link rel="stylesheet" href="artinfo.css">
+  <link rel="stylesheet" href="../../site.css">
+  <link rel="stylesheet" href="../../commerce.css">
+  <link rel="stylesheet" href="../../footer.css">
+  <link rel="stylesheet" href="../../theme.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <script src="../../site.js" defer></script>
+  <script src="../../commerce.js" defer></script>
+</head>
+<body>
+<header class="site-header site-header--solid">
+  <div id="topbar">
+    <a id="leftbar" href="../../finalproj.html" aria-label="PMC Art home">
+      <img src="../../images/LOGO.png" alt="PMC art logo" width="50" height="50">
+      <span id="logo-text">ART</span>
+    </a>
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="../../finalproj.html" class="buttonbar">Home</a>
+      <a href="artwork.html" class="buttonbar" aria-current="page">Artworks</a>
+      <a href="../commission tab/commission.html" class="buttonbar">Commissions</a>
+    </nav>
+    <div class="rightbar" aria-label="Account">
+      <a class="buttonbar" href="../../ARTWORK-Mikes/login_signup.html?view=login">Login</a>
+      <a class="buttonbar" href="../../ARTWORK-Mikes/login_signup.html?view=signup">Sign Up</a>
+    </div>
+  </div>
+</header>
+
+<div class="product-page">
+
+  <!-- BACK BUTTON -->
+  <div class="back-btn-wrapper">
+    <button class="back-btn"></button>
+  </div>
+
+  <!-- TOP SECTION (Image & Details) -->
+        <section class="main-product-section">
+            <div class="product-image-container">
+            <div class="image-placeholder">
+              <img id="productImage" alt="Artwork">
+              <div class="zoom-lens" id="productZoomLens" aria-hidden="true" hidden></div>
+            </div>
+            </div>
+            <div class="zoom-preview" id="productZoomPreview" aria-hidden="true" hidden>
+              <img id="productZoomImage" alt="">
+            </div>
+
+            <div class="product-details">
+            <p class="profile-label" id="productCategory">Artwork category</p>
+            <h1 class="product-title" id="productTitle">Artwork title</h1>
+            <h2 class="product-category" id="productArtist">Artist name</h2>
+            
+            <div class="product-description" id="productDescription">
+                <p>Artwork details will appear here.</p>
+            </div>
+
+            <div class="product-actions">
+                <p class="product-status" id="productStatus"></p>
+                <button class="action-btn" id="addToCart" type="button">ADD TO CART</button>
+                <button class="action-btn" id="buyArtwork" type="button">BUY</button>
+            </div>
+            </div>
+        </section>
+
+  <!-- MIDDLE INFO CARDS -->
+  <section class="info-cards-row">
+    <div class="info-card">
+      <h3>Product Info</h3>
+      <p id="productInfo">Product details will appear here.</p>
+    </div>
+    <div class="info-card">
+      <h3>Painting materials</h3>
+      <p id="productMaterials">Materials will appear here.</p>
+    </div>
+    <div class="info-card">
+      <h3>Price &amp; availability</h3>
+      <p id="productPrice"></p>
+    </div>
+  </section>
+
+  <!-- Artist Banner-->
+  <section class="artist-banner">
+  <img id="artistCover" class="cover-bg" alt="Artist cover photo"> 
+
+  <div class="artist-img-placeholder">
+     <img id="artistProfile" alt="Artist profile picture">
+  </div>
+
+  <div class="artist-banner-content">
+    <h2 class="artist-name" id="artistName">Artist name</h2>
+    <p class="artist-role" id="artistSpecialization">Artist specialization</p>
+    <p class="artist-bio" id="artistBio"></p>
+    <a class="inquire-btn" id="artistCommissionLink" href="../commission tab/commission.html">Inquire Commission</a>
+  </div>
+</section>
+
+  <!-- DIVIDER -->
+  <hr class="section-divider">
+
+  <!-- ARTWORKS FROM SAME ARTIST -->
+    <section id="artworks">
+    <div class="art-inner">
+        <h2 class="left-title">Artworks from the Same Artist</h2>
+        <hr class="art-top-line">
+
+        <div class="tags" id="artworkCategories" aria-label="Artwork categories" role="group"></div>
+    </div>
+
+    <div class="art-row" id="artRow">
+        <article class="art-card">
+            <div class="art-frame">
+                <div class="art-fit">
+                    <div class="art-img-box" >
+                        <img class="art-img" alt="Artwork">
+                    </div>
+                    <div class="art-info1">
+                        <div class="art-text">
+                            <h3 class="art-name">Artname</h3>
+                            <p class="art-artist"><i data-lucide="user" class="icon-xs icon-inline"></i><span>Artist name</span></p>
+                            <p class="art-desc">Short description</p>
+                        </div>
+                        <button class="art-buy"><i data-lucide="shopping-bag" class="icon-xs"></i>Buy</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="art-inner">
+        <div class="art-controls">
+            <div class="art-progress" id="artProgress">
+                <div class="art-thumb" id="artThumb"></div>
+            </div>
+            <div class="art-arrows">
+                <button class="round-btn" id="artPrev"><i data-lucide="chevron-left"></i></button>
+                <button class="round-btn" id="artNext"><i data-lucide="chevron-right"></i></button>
+            </div>
+        </div>
+        <hr class="art-bottom-line">
+    </div>
+</section>
+</div><!-- /.page — sinara dito para hindi na kasama ang testimonials at footer sa 1300px container -->
+
+
+  <!-- DIVIDER -->
+  <hr class="section-divider">
+
+  <!-- YOU MAY ALSO LIKE -->
+  
+    <section class="artworks">
+      <div class="art-inner">
+        
+        <!-- ITAAS: Title at Search -->
+        <div class="artworks-header">
+          <h2 class="center-title">You May Also Like</h2>
+        </div>
+
+        <!-- LINYA -->
+        <hr class="art-top-line">
+        
+        
+        <!-- GRID -->
+        <div class="grid" id="artGrid">
+          <article class="card" id="artTemplate" style="display: none;">
+            <div class="frame">
+              <img class="art-img" src="" alt="">
+            </div>
+            <div class="art-info">
+              <div class="art-text">
+                <h3 class="art-name"></h3>
+                <p class="art-artist">
+                  <i data-lucide="user" class="icon-xs icon-inline"></i>
+                  <span class="product-artist"></span>
+                </p>
+                <p class="art-desc"></p>
+              </div>
+              <button class="art-buy"><i data-lucide="shopping-bag" class="icon-xs"></i>Buy</button>
+            </div>
+          </article>
+        </div>
+
+        <!-- ILALIM NA LINYA -->
+        <hr class="art-bottom-line" style="margin-top: 40px;">
+
+      </div>
+    </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="f-brand">
+        <div class="f-logo">
+          <img src="../../images/LOGO.png" alt="PMC art logo" width="42" height="42">
+          <span>PMC Art</span>
+        </div>
+        <p class="f-about">Original artworks, commissions, and curated collections — handmade with love by Filipino artists.</p>
+        <div class="f-socials">
+          <a href="#" aria-label="Facebook"><img src="../../icons/facebook-svgrepo-com.svg" class="artisticonsoccials" alt=""></a>
+          <a href="#" aria-label="Instagram"><img src="../../icons/instagram-svgrepo-com.svg" class="artisticonsoccials" alt=""></a>
+          <a href="#" aria-label="Email"><img src="../../icons/email-open-svgrepo-com.svg" class="artisticonsoccials" alt=""></a>
+        </div>
+      </div>
+      <nav class="f-col" aria-label="Explore">
+        <h4 class="f-title"><i data-lucide="compass" class="icon-xs"></i>Explore</h4>
+        <div class="f-links">
+          <a href="../../finalproj.html"><i data-lucide="house" class="icon-xs"></i>Home</a>
+          <a href="artwork.html"><i data-lucide="images" class="icon-xs"></i>Artwork</a>
+          <a href="../commission tab/commission.html"><i data-lucide="palette" class="icon-xs"></i>Commission</a>
+        </div>
+      </nav>
+      <div class="f-col">
+        <h4 class="f-title"><i data-lucide="mail" class="icon-xs"></i>Contact</h4>
+        <div class="f-links">
+          <a href="mailto:hello@pmcart.com"><i data-lucide="mail" class="icon-xs"></i>hello@pmcart.com</a>
+          <a href="tel:+639123456789"><i data-lucide="phone" class="icon-xs"></i>+63 912 345 6789</a>
+          <span class="f-static"><i data-lucide="map-pin" class="icon-xs"></i>Manila, Philippines</span>
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom"><span>&copy; 2026 PMC Art. All rights reserved.</span></div>
+  </footer>
+
+  <script src="../../artist-database.js"></script>
+  <script src="artinfo.js"></script>
+
+</body>
+</html>

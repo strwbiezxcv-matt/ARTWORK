@@ -1,0 +1,147 @@
+footer {
+    background: var(--green-900);
+    color: var(--green-100);
+    border-top: 3px solid var(--green-400);
+}
+
+.footer-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 64px 40px 36px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px;
+}
+
+.f-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.f-logo img { border-radius: 10px; }
+
+.f-logo span {
+    font-family: "SurtBold";
+    font-size: 1.4em;
+    letter-spacing: 0.05em;
+    color: #fcfcf7;
+}
+
+.f-about {
+    margin: 0 0 20px;
+    max-width: 380px;
+    font-family: "Cabinet Grotesk";
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(220, 237, 224, 0.75);
+}
+
+.f-socials {
+    display: flex;
+    gap: 10px;
+}
+
+.f-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(126, 187, 128, 0.45);
+    color: var(--green-300);
+    background: rgba(126, 187, 128, 0.08);
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.f-socials img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+    transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+.f-socials a:hover {
+    background: var(--green-300);
+    color: var(--green-900);
+    transform: translateY(-3px);
+}
+
+.f-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 18px;
+    font-family: "Surt";
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green-300);
+}
+
+.f-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.f-links a,
+.f-links .f-static {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(220, 237, 224, 0.85);
+    text-decoration: none;
+    font-family: "Cabinet Grotesk";
+    font-size: 14px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.f-links a:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+.f-links svg {
+    color: var(--green-300);
+    flex-shrink: 0;
+}
+
+.f-bottom {
+    border-top: 1px solid rgba(126, 187, 128, 0.2);
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: "Cabinet Grotesk";
+    font-size: 13px;
+    color: rgba(220, 237, 224, 0.65);
+}
+
+.f-bottom span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.f-bottom svg { color: var(--green-300); }
+
+@media (max-width: 900px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 48px 24px 28px;
+    }
+
+    .f-bottom {
+        justify-content: center;
+        text-align: center;
+        padding: 18px 24px;
+    }
+}

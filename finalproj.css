@@ -1,44 +1,16 @@
-/* ================= FONTS ================= */
-@font-face {
-    font-family: "Surthin";
-    src: url("fonts/Surt-Normal-Regular-TRIAL.otf") format("opentype");
-}
-@font-face {
-    font-family: "Surt";
-    src: url("fonts/Surt-Normal-Regular-TRIAL.otf") format("opentype");
-}
-@font-face {
-    font-family: "SurtBold";
-    src: url("fonts/Surt-Normal-Bold-TRIAL.otf") format("opentype");
-}
-@font-face {
-    font-family: "Recife";
-    src: url("fonts/RecifeDisplay-BookItalic.ttf") format("truetype");
-}
-@font-face {
-    font-family: "Cabinet Grotesk";
-    src: url("fonts/CabinetGrotesk-Extralight.otf") format("opentype");
-}
 @font-face {
     font-family: "Altera";
     src: url("fonts/Altera.ttf") format("truetype");
 }
 
-@font-face {
-    font-family: "Pinsans";
-    src: url("fonts/Pin-Sans-Medium.ttf") format("truetype");
-}
+
+
 
 /* ================= BASE ================= */
 html, body {
     margin: 0;
     padding: 0;
     max-width: 100%;
-    /* Tinatanggal ang horizontal scrollbar sa page.
-       Ang "clip" (bagong fallback: hidden) ay hindi nagiging scroll container,
-       kaya hindi nasisira ang position: sticky ng nav at hero. */
-    overflow-x: hidden;
-    overflow-x: clip;
 }
 
 html {
@@ -48,6 +20,7 @@ html {
 
 body {
     min-height: 100vh;
+    font-family: "Surt";
 
     /* ===== UNIFIED GREEN PALETTE (lahat ng section dito kukuha) ===== */
     --bg: #e9efe8;
@@ -82,6 +55,8 @@ body {
     color: currentColor;
     vertical-align: middle;
 }
+
+
 
 .icon-xs {
     width: 14px;
@@ -142,128 +117,20 @@ a:focus-visible, button:focus-visible {
     scrollbar-color: var(--accent-soft) var(--green-50);
 }
 
-/* ================= TOP BAR (STICKY GLASS NAV) ================= */
-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-#topbar {
-    position: relative;
-    z-index: 10;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 16px;
-    height: 64px;
-    padding: 0 24px;
-    box-sizing: border-box;
-    background: rgba(251, 253, 251, 0.82);
-    -webkit-backdrop-filter: blur(14px) saturate(1.2);
-    backdrop-filter: blur(14px) saturate(1.2);
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 8px 28px rgba(15, 36, 19, 0.07);
-    font-family: "Surt";
-    font-size: 1.05em;
-}
-
-.navbar {
-    height: auto;
-    padding: 0;
-    text-align: center;
-    color: inherit;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-}
-
-#leftbar {
-    position: static;
-    transform: none;
-    margin: 0;
-    padding: 0;
-    gap: 10px;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    justify-self: start;
-}
-
-#leftbar img {
-    border-radius: 10px;
-}
-
-#logo-text {
-    font-family: "Surt";
-    font-size: 1.05em;
-    letter-spacing: 0.04em;
-    color: var(--green-900);
-    margin: 0;
-}
-
-.rightbar {
-    position: static;
-    transform: none;
-    padding: 0;
-    text-align: right;
-    color: inherit;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    justify-self: end;
-}
-
-.rightbar #sign-up {
-    background-color: var(--green-500);
-    color: #ffffff;
-    border: 1px solid var(--green-500);
-    border-radius: 999px;
-    padding: 0 18px;
-    display: inline-flex;
-    align-items: center;
-    height: 38px;
-    line-height: 1;
-    box-shadow: 0 6px 16px rgba(46, 109, 54, 0.28);
-}
-
-.rightbar #sign-up:hover {
-    background: var(--green-700);
-    border-color: var(--green-700);
-    transform: translateY(-1px);
-}
-
-.buttonbar {
-    display: inline-flex;
-    align-items: center;
-    color: var(--green-900);
-    padding: 8px 14px;
-    text-decoration: none;
-    font-family: "Surt";
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-}
-
-.buttonbar:hover {
-    color: #7ebb80;
-    border-bottom-color: var(--green-500);
-}
-
 /* ================= CONTENT 1 (HERO) ================= */
 #content1animate {
     height: 150vh;
     position: relative;
     background-color: transparent;
+
+    
 }
 
 #content1 {
     position: sticky;
-    top: 64px;                      /* dumidikit sa ilalim ng sticky nav */
+    top:0px ;                      /* dumidikit sa ilalim ng sticky nav */
     width: 100%;
-    height: calc(100vh - 64px);
+    height: 100vh;
     margin: 0;
     overflow: hidden;
     background-color: transparent;
@@ -282,6 +149,8 @@ header {
     justify-content: flex-end;
     padding-bottom: 56px;
     box-sizing: border-box;
+    
+
 }
 
 #insidecontent1animate video {
@@ -313,6 +182,7 @@ header {
 
 #welcome {
     font-family: "Recife";
+    font-style: italic;
     font-size: clamp(2.4em, 5vw, 4.4em);
     font-weight: 400;
     line-height: 1.05;
@@ -496,11 +366,14 @@ header {
 
 .about-row p {
     flex: 1.4;
+    min-width: 0;
+    max-width: 100%;
     margin: 0;
     color: var(--ink);
     text-align: justify;
     line-height: 1.7;
     font-family: "Cabinet Grotesk";
+    overflow-wrap: anywhere;
 }
 
 /* Inayos ang HR widths para hindi mag-scroll */
@@ -535,7 +408,7 @@ header {
 }
 
 #aboutustext h3 {
-    margin: 0px 250px 0px 0px;
+    margin: 0px 180px 0px 0px;
     text-align: right;
     font-size: clamp(2.4em, 4vw, 4em);
     letter-spacing: 0.08em;
@@ -543,6 +416,7 @@ header {
     display: flex;
     align-items: left;
     justify-content: flex-end;
+    white-space: nowrap;
 }
 
 .aboutusbutton {
@@ -553,6 +427,7 @@ header {
     text-decoration: none;
     color: #25572c;
     cursor: pointer;
+    background: transparent !important;
 }
 
 .btn-label {
@@ -579,7 +454,8 @@ header {
 
 .aboutusbutton:hover .btn-label,
 .aboutusbutton:hover .btn-circle {
-    background: var(--green-900);
+    background: var(--green-500);
+    border-color: var(--green-500);
     color: #fff;
 }
 
@@ -608,7 +484,7 @@ header {
 
 .about-stats strong {
     display: block;
-    font-family: "SurtBold";
+    font-family: "Surt";
     font-size: clamp(1.6em, 2.4vw, 2.3em);
     line-height: 1.1;
     color: var(--green-700);
@@ -625,10 +501,17 @@ header {
 @media (max-width: 800px) {
     .about-row { flex-direction: column; gap: 24px; }
     .hr-2 { display: none; }
-    #aboutustext h3 { text-align: center; padding-right: 0; font-size: 3em; justify-content: center; }
+    #aboutustext h3 {
+        margin: 0;
+        text-align: center;
+        font-size: clamp(2rem, 7vw, 3rem);
+        justify-content: center;
+        white-space: normal;
+    }
     .about-row p { text-align: center; }
     .aboutusbutton { margin-left: 0; }
     .hr-1, .hr-3, .hr-4 { width: 100%; margin-left: 0; right: 0; }
+    .hr-3 { left: 0; }
     .about-stats { justify-content: center; }
 }
 
@@ -704,14 +587,14 @@ header {
     color: var(--accent);
     border: 1px solid rgba(31, 70, 37, 0.2);
     box-shadow: 10px 10px 18px rgba(31, 70, 37, 0.12),
-            -6px -6px 14px rgba(255, 255, 255, 0.9);
+            -1px -1px 3px rgba(255, 255, 255, 0.9);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .img-wrapper:hover  {
     transform: translateY(-4px);
-    box-shadow: 14px 16px 24px rgba(31, 70, 37, 0.18),
-            -8px -8px 16px rgba(255, 255, 255, 0.95);
+    box-shadow: 10px 10px 18px rgba(31, 70, 37, 0.12),
+            -1px -1px 3px rgba(255, 255, 255, 0.9);
 }
 
 .img-wrapper:hover .side-line {
@@ -753,8 +636,9 @@ header {
     position: absolute;
     bottom: -20px;
     left: 0px;
-    font-size: 10px;
-    font-weight: bold;
+    font-family: "Pinsans";
+    font-size: 13px;
+    font-weight: 500;
     color: var(--muted);
 }
 
@@ -797,7 +681,7 @@ header {
 
 .circle,
 .oval {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 /* Default state ng circle at oval */
@@ -813,6 +697,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .oval {
@@ -916,6 +801,7 @@ header {
     align-items: stretch;
     gap: 12px;
     height: 560px;
+    background: transparent !important;
 }
 
 .why-col {
@@ -939,19 +825,20 @@ header {
 
 .why-text p {
     margin: 0 0 14px;
-    font-size: 11px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.6;
     color: var(--muted);
-    font-family: "Pinsans";
+    font-family: "Cabinet Grotesk";
 }
 
 .outline-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 40px;
+    padding: 10px 30px;
     border-radius: 999px;
-    font-size: 12px;
+    font-size: 16px;
+    font-weight: 700;
     text-decoration: none;
     font-family: "SurtBold";
     background: var(--bg);
@@ -959,13 +846,28 @@ header {
     border: 1px solid var(--bg);
     box-shadow: 5px 5px 10px var(--shadow-dark),
                -5px -5px 10px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
 }
 
 .outline-btn:hover {
-    background: var(--green-600);
+    background: var(--green-900);
     color: #fff;
-    border-color: var(--green-600);
+    border-color: var(--green-900);
+    transform: translateY(-5px);
+}
+
+.outline-btn:active,
+#c5-button:active {
+    transform: translateY(1px);
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.22), inset -3px -3px 6px rgba(255, 255, 255, 0.45);
+}
+
+.outline-btn.active,
+#c5-button.active {
+    background: var(--green-700);
+    border-color: var(--green-700);
+    color: #ffffff;
 }
 
 .why-img {
@@ -999,8 +901,8 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-family: "Pinsans";
-    font-size: 12px;
+    font-family: "Cabinet Grotesk";
+    font-size: 13px;
     color: var(--ink);
 }
 
@@ -1032,10 +934,10 @@ header {
     max-width: 460px;
     margin: 0 auto 30px;
     text-align: center;
-    font-size: 11px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.6;
     color: var(--muted);
-    font-family: "Pinsans";
+    font-family: "Cabinet Grotesk";
 }
 
 .artist-card {
@@ -1065,7 +967,7 @@ header {
     margin: 0 0 -15px;
     font-size: 50px;
     flex-shrink: 0;
-    font-family: "SurtBold";
+    font-family: "Pinsans";
     color: #fcfcf7;
     font-weight: 400;
 }
@@ -1075,7 +977,7 @@ header {
     font-size: 20px;
     font-weight: 800;
     flex-shrink: 0;
-    font-family: "Surt";
+    font-family: "Surthin";
     color: #fcfcf7;
     display: flex;
     align-items: center;
@@ -1083,10 +985,10 @@ header {
 
 .artist-info p {
     margin: 0 0 10px;
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.5;
     flex-shrink: 0;
-    font-family: "Pinsans";
+    font-family: "Cabinet Grotesk";
     color: #fcfcf7;
 }
 
@@ -1112,42 +1014,6 @@ header {
     cursor: pointer;
     box-shadow: 6px 6px 12px rgba(5, 12, 7, 0.7), -6px -6px 12px rgba(46, 109, 54, 0.35);
     transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
-}
-
-#artworkBTN {
-    appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-    text-decoration: none;
-    width: auto;
-    min-width: 170px;
-    padding: 10px 28px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: var(--green-700);
-    color: #fcfcf7;
-    border: none;
-    border-radius: 999px;
-    font-family: "Surt";
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    box-shadow: 6px 6px 12px rgba(5, 12, 7, 0.7), -6px -6px 12px rgba(46, 109, 54, 0.35);
-    transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
-}
-
-#artworkBTN:hover {
-    background: var(--green-600);
-    box-shadow: 3px 3px 7px rgba(5, 12, 7, 0.7), -3px -3px 7px rgba(46, 109, 54, 0.35);
-    transform: translateY(1px);
-}
-
-#artworkBTN:active {
-    transform: translateY(1px);
-    box-shadow: inset 5px 5px 10px rgba(5, 12, 7, 0.7), inset -5px -5px 10px rgba(46, 109, 54, 0.35);
 }
 
 #inquireBTN:hover {
@@ -1412,7 +1278,8 @@ header {
     /* margin-left: calc(50% - 50vw); REMOVED */
     padding: 40px 0 30px;
     box-sizing: border-box;
-
+    background-color: var(--paper);
+    background: transparent !important;
 }
 
 .art-inner {
@@ -1470,41 +1337,43 @@ header {
     border: 1px solid var(--bg);
     box-shadow: 5px 5px 10px var(--shadow-dark),
                -5px -5px 10px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tag:hover {
+    transform: translateY(-5px);
     background: var(--green-900);
     border-color: var(--green-900);
     color: #fff;
+
 }
 
 .art-row {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    box-sizing: border-box;               /* KAILANGAN: kasama ng padding ang 100vw —
-                                             kung wala, 100vw + 240px padding ang lapad
-                                             at lalabas sa screen ang dulo ng track */
+    box-sizing: border-box;               /* kasama ang padding sa lapad ng visible viewport */
 
     /* FULL-BLEED break-out — ang track ang sumasakop sa buong lapad ng screen
        habang nag-i-scroll (parang Apple/Samsung product galleries).
        Ginamit ang margin-inline (hindi margin shorthand) para hindi ma-overwrite. */
-    width: 100vw;
-    margin-block: 24px;                   /* patayong espasyo lang — hindi apektado ang break-out */
-    margin-inline: calc(50% - 50vw);      /* break-out trick: umabot sa gilid ng screen */
+    width: var(--site-viewport-width, 100vw);
+    margin-block: 16px;                   /* kasama ng padding, pinananatili ang dating taas ng row */
+    margin-inline: calc(50% - var(--site-viewport-half-width, 50vw));
+    padding-block: 8px;
 
     /* Pantay sa content edges ng .page (title, linya, at arrows sa baba):
        .page = max-width 1300px na may 20px side padding → content = 1260px.
-       Kaya ang layo ng gilid ng screen papuntang content = (100vw - 1260px) / 2,
+       Kaya ang layo ng gilid ng screen papuntang content = viewport half-width - 630px,
        pero hindi bababa sa 20px kapag mas maliit ang screen. */
-    padding-left: max(20px, calc((100vw - 1260px) / 2));
-    padding-right: max(20px, calc((100vw - 1260px) / 2));
+    padding-left: max(20px, calc(var(--site-viewport-half-width, 50vw) - 630px));
+    padding-right: max(20px, calc(var(--site-viewport-half-width, 50vw) - 630px));
 
     /* Snap points na nakatapat sa parehong content edges:
        UMPISA — papatong ang unang card sa kaliwang gilid ng title/linya.
        DULO   — itatama ng huling card ang kanang gilid ng arrows/linya. */
-    scroll-padding-left: max(20px, calc((100vw - 1260px) / 2));
-    scroll-padding-right: max(20px, calc((100vw - 1260px) / 2));
+    scroll-padding-left: max(20px, calc(var(--site-viewport-half-width, 50vw) - 630px));
+    scroll-padding-right: max(20px, calc(var(--site-viewport-half-width, 50vw) - 630px));
 
     overflow-x: auto;
     overflow-y: hidden;
@@ -1526,6 +1395,7 @@ header {
     padding: 0 28px;
     border-right: 1px solid rgba(31, 70, 37, 0.22);
     scroll-snap-align: start;
+    background: transparent !important;
 }
 
 /* Ang HULING card ay naka-snap sa KANANG gilid — kapag nasa dulo na ang scroll,
@@ -1535,12 +1405,25 @@ header {
     scroll-snap-align: end;
 }
 
-/* Sa screens na mas mababa sa 1300px, ang .page box na ang buong screen —
-   mas eksaktong alignment ito kaysa sa 100vw (na may kasamang scrollbar width). */
+/* Sa screens na mas mababa sa 1300px, ang .page box na ang buong screen. */
 @media (max-width: 1300px) {
-    .art-row {
-        width: calc(100% + 40px);         /* .page box = buong screen sa halip na 100vw */
-        margin-inline: -20px;             /* sumingit sa gilid ng .page padding */
+    .page {
+        overflow-x: clip;
+    }
+
+    .page > #artworks {
+        width: calc(100% + 40px);
+        margin-inline: -20px;
+        overflow-x: clip;
+    }
+
+    .page > #artworks .art-inner {
+        padding-inline: 40px;
+    }
+
+    .page > #artworks .art-row {
+        width: 100%;
+        margin-inline: 0;
         padding-left: 20px;               /* papantay sa title / linya / arrows */
         padding-right: 20px;
         scroll-padding-left: 20px;
@@ -1617,8 +1500,8 @@ header {
     align-items: center;
     gap: 6px;
     margin: 0;
-    font-family: "Surt", sans-serif;
-    font-size: 10px;
+    font-family: "Pinsans";
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -1647,7 +1530,7 @@ header {
     border-radius: 999px;
     background: var(--bg);
     color: var(--accent);
-    font-family: "Surt", sans-serif;
+    font-family: "Surt";
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -1693,6 +1576,7 @@ header {
 }
 
 .art-thumb:active { cursor: grabbing; }
+.art-progress.dragging .art-thumb { cursor: grabbing; transition: none; }
 
 .art-arrows {
     display: flex;
@@ -1707,7 +1591,7 @@ header {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: "Surt", sans-serif;
+    font-family: "Surt";
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -1737,6 +1621,24 @@ header {
     .art-controls { flex-direction: column; align-items: stretch; }
     .art-progress { flex: none; width: 100%; }
     .art-arrows { justify-content: flex-end; }
+    #content3 .ct3right h2 {
+        display: block;
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+        line-height: 1.15;
+        text-align: center;
+        overflow-wrap: anywhere;
+    }
+    #meetartist .center-title {
+        display: block;
+        font-size: clamp(1.75rem, 8vw, 3rem);
+        line-height: 1.15;
+        text-wrap: balance;
+    }
+    #artworks .left-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
     .scroll-cue { display: none; }   /* hindi nakikipagsabayan sa CTA buttons sa maliit na screen */
 }
 
@@ -1746,6 +1648,12 @@ header {
     .artist-card { flex-direction: column; height: auto; }
     .artist-photo { flex: none; height: 320px; }
     .artist-thumbs { height: 280px; flex: none; }
+    .artist-info h2 {
+        margin-bottom: 4px;
+        font-size: clamp(1.75rem, 6vw, 3rem);
+        line-height: 1.1;
+        overflow-wrap: anywhere;
+    }
 }
 
 /* ================= CONTENT 5 =================== */
@@ -1789,7 +1697,7 @@ header {
 
 .c5-title {
     margin: 0 0 18px;
-    font-family: "Recife", Georgia, serif;
+    font-family: "SurtBold";
     font-size: clamp(2.2em, 4vw, 3.4em);
     font-weight: 400;
     line-height: 1.1;
@@ -1799,7 +1707,7 @@ header {
 .c5-text {
     margin: 0;
     max-width: 380px;
-    font-family: "Cabinet Grotesk", sans-serif;
+    font-family: "Cabinet Grotesk";
     font-size: 1.15em;
     line-height: 1.65;
     color: var(--green-600);
@@ -1810,19 +1718,24 @@ header {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 24px;
-    border: 1px solid var(--green-800);
+    padding: 10px 30px;
+    border: 1px solid var(--bg);
     border-radius: 999px;
-    background: transparent;
-    color: var(--green-800);
-    font-family: "Surt";
+    background: var(--bg);
+    color: var(--green-600);
+    font-family: "SurtBold";
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.2s ease, color 0.2s ease;
 }
 
 #c5-button:hover {
-    background: var(--green-800);
+    background: var(--green-900);
+    border-color: var(--green-900);
     color: #fff;
+    transform: translateY(-5px);
 }
 
 .feedbackstack {
@@ -1863,7 +1776,7 @@ header {
     position: absolute;
     top: -14px;
     right: 24px;
-    font-family: "Recife", Georgia, serif;
+    font-family: "SurtBold";
     font-size: 130px;
     line-height: 1;
     color: rgba(126, 187, 128, 0.16);
@@ -1884,15 +1797,20 @@ header {
 
 .fb-msg {
     margin: 0;
-    font-family: "Cabinet Grotesk", sans-serif;
+    font-family: "Cabinet Grotesk";
     font-size: 17px;
     line-height: 1.6;
     color: #f4f4f4;
+    max-height: 62%;
+    overflow-y: auto;
+    overflow-wrap: anywhere;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
 }
 
-.fb-by { display: flex; align-items: baseline; gap: 10px; }
-.fb-name { font-family: "Surt"; font-size: 14px; color: #fff; }
-.fb-role { font-family: "Cabinet Grotesk", sans-serif; font-size: 12px; color: #7ebb80; }
+.fb-by { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; min-width: 0; }
+.fb-name { font-family: "Surt"; font-size: 14px; color: #fff; overflow-wrap: anywhere; }
+.fb-role { font-family: "Cabinet Grotesk"; font-size: 12px; color: #7ebb80; }
 
 .fb-hint {
     position: absolute;
@@ -1930,6 +1848,139 @@ header {
     outline-offset: 4px;
 }
 
+.testimonial-modal {
+    position: fixed;
+    z-index: 1400;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    background: rgba(8, 14, 9, 0.58);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.testimonial-modal[hidden] {
+    display: none;
+}
+
+.testimonial-dialog {
+    box-sizing: border-box;
+    width: min(560px, 100%);
+    max-height: min(90vh, 760px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: clamp(24px, 5vw, 36px);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    border-radius: 18px;
+    background: var(--surface-raised);
+    color: var(--ink);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+}
+
+.testimonial-dialog h2 {
+    margin: 8px 0 10px;
+    color: var(--ink);
+    font-family: "SurtBold";
+}
+
+.testimonial-dialog > p {
+    margin: 0 0 20px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.testimonial-close,
+.testimonial-submit {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+    font: inherit;
+}
+
+.testimonial-close {
+    display: block;
+    margin-left: auto;
+    padding: 8px 18px;
+    min-height: 44px;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+#testimonialForm {
+    display: grid;
+    gap: 10px;
+}
+
+#testimonialForm label {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+#testimonialForm input,
+#testimonialForm textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+}
+
+#testimonialForm textarea {
+    min-height: 132px;
+    resize: vertical;
+}
+
+.testimonial-status {
+    min-height: 2.8em;
+    margin: 2px 0 0;
+    color: var(--accent);
+    line-height: 1.4;
+}
+
+.testimonial-submit {
+    justify-self: end;
+    padding: 10px 24px;
+    min-height: 44px;
+    background: var(--green-600);
+    color: #fff;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.testimonial-close:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--surface-raised);
+}
+
+.testimonial-submit:hover {
+    border-color: var(--accent);
+    background: var(--accent);
+    transform: translateY(-1px);
+}
+
+.testimonial-close:focus-visible,
+.testimonial-submit:focus-visible,
+#testimonialForm :is(input, textarea):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+    .testimonial-modal { padding: 12px; }
+    .testimonial-dialog {
+        max-height: calc(100vh - 24px);
+        padding: 22px;
+        border-radius: 16px;
+    }
+}
+
 @media (max-width: 900px) {
     .c5-wrap { grid-template-columns: 1fr; gap: 40px; }
     .c5-left { padding-left: 0; }
@@ -1938,136 +1989,6 @@ header {
 
 @media (prefers-reduced-motion: reduce) {
     .feedbacktab { transition: none; }
-}
-
-/* ================= FOOTER ================= */
-footer {
-    background: var(--green-900);
-    color: var(--green-100);
-    border-top: 3px solid var(--green-400);
-}
-
-.footer-inner {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 64px 40px 36px;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 48px;
-}
-
-.f-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
-}
-
-.f-logo img {
-    border-radius: 10px;
-}
-
-.f-logo span {
-    font-family: "SurtBold";
-    font-size: 1.4em;
-    letter-spacing: 0.05em;
-    color: #fcfcf7;
-}
-
-.f-about {
-    margin: 0 0 20px;
-    max-width: 380px;
-    font-family: "Cabinet Grotesk";
-    font-size: 14px;
-    line-height: 1.7;
-    color: rgba(220, 237, 224, 0.75);
-}
-
-.f-socials {
-    display: flex;
-    gap: 10px;
-}
-
-.f-socials a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid rgba(126, 187, 128, 0.45);
-    color: var(--green-300);
-    background: rgba(126, 187, 128, 0.08);
-    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
-}
-
-.f-socials a:hover {
-    background: var(--green-300);
-    color: var(--green-900);
-    transform: translateY(-3px);
-}
-
-.f-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0 0 18px;
-    font-family: "Surt";
-    font-size: 13px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--green-300);
-}
-
-.f-links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.f-links a,
-.f-links .f-static {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: rgba(220, 237, 224, 0.85);
-    text-decoration: none;
-    font-family: "Cabinet Grotesk";
-    font-size: 14px;
-    transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.f-links a:hover {
-    color: #ffffff;
-    transform: translateX(4px);
-}
-
-.f-links svg {
-    color: var(--green-300);
-    flex-shrink: 0;
-}
-
-.f-bottom {
-    border-top: 1px solid rgba(126, 187, 128, 0.2);
-    padding: 18px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    font-family: "Cabinet Grotesk";
-    font-size: 13px;
-    color: rgba(220, 237, 224, 0.65);
-}
-
-.f-bottom span {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-}
-
-.f-bottom svg {
-    color: var(--green-300);
 }
 
 /* ================= SCROLL REVEAL (engaging pero magaan) ================= */
@@ -2080,20 +2001,6 @@ footer {
 .reveal.is-visible {
     opacity: 1;
     transform: none;
-}
-
-@media (max-width: 900px) {
-    .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        padding: 48px 24px 28px;
-    }
-
-    .f-bottom {
-        justify-content: center;
-        text-align: center;
-        padding: 18px 24px;
-    }
 }
 
 /* ================= ACCESSIBILITY ================= */

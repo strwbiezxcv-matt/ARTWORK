@@ -1,0 +1,1154 @@
+
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Surt";
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #111;
+  /* ----- COLORS ----- */
+  --bg: #e9efe8;
+  --shadow-dark: #c6d2c4;
+  --shadow-light: #ffffff;
+  --ink: #1f2a1c;
+  --muted: #566253;
+  --accent: #4a9a50;
+  --accent-soft: #7ebb80;
+  --line: rgba(31, 70, 37, 0.14);
+  --green-900: #0f2413;
+  --green-800: #16331b;
+  --green-700: #1f4625;
+  --green-600: #25572c;
+  --green-500: #2e6d36;
+  --green-400: #4a9a50;
+  --green-300: #7ebb80;
+  --green-100: #dcede0;
+  --green-50: #f1f7f1;
+  --paper: #fbfdfb;
+
+  /* ----- NEOMORPHISM TOKENS (iisang source para pare-pareho ang itsura) ----- */
+  --neo-raised:       6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+  --neo-raised-sm:    4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+  --neo-raised-lg:    10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+  --neo-hover:        0 10px 22px rgba(15, 36, 19, 0.28), -4px -4px 10px var(--shadow-light);
+  --neo-inset:        inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+  --neo-pressed:      inset 4px 4px 9px rgba(0, 0, 0, 0.35), inset -3px -3px 6px rgba(255, 255, 255, 0.08);
+  --neo-edge:         1px solid rgba(255, 255, 255, 0.75);
+
+  --radius-card: 18px;
+}
+
+/* ================= ICONS (Lucide) ================= */
+[data-lucide] {
+  color: currentColor;
+  vertical-align: middle;
+}
+.icon-xs { width: 14px; height: 14px; stroke-width: 2px; }
+.icon-sm { width: 18px; height: 18px; stroke-width: 2.2px; }
+.icon-inline { margin-right: 8px; vertical-align: -4px; }
+
+/* ================= PAGE WRAPPER ================= */
+.product-page {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px 20px 20px;
+  background: transparent !important;
+}
+
+
+/* ================= NEOMORPHIC BUTTONS (shared) =================
+   Lahat ng buttons dito: raised sa normal, tataas at magiging dark green
+   kapag hinover, at "pipindot" (inset) kapag kinlick. */
+.back-btn,
+.action-btn,
+.inquire-btn,
+.tag,
+.pill,
+.art-buy,
+.round-btn {
+  font-family: "Surt";
+  background: var(--bg);
+  color: var(--accent);
+  border: var(--neo-edge);
+  cursor: pointer;
+  box-shadow: var(--neo-raised);
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+              color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.back-btn:hover,
+.action-btn:hover,
+.inquire-btn:hover,
+.tag:hover,
+.pill:hover,
+.art-buy:hover,
+.round-btn:hover {
+  background: var(--green-700);
+  border-color: var(--green-700);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: var(--neo-hover);
+}
+
+.back-btn:active,
+.action-btn:active,
+.inquire-btn:active,
+.tag:active,
+.pill:active,
+.art-buy:active,
+.round-btn:active {
+  transform: translateY(1px);
+  box-shadow: var(--neo-pressed);
+}
+
+.back-btn:focus-visible,
+.action-btn:focus-visible,
+.inquire-btn:focus-visible,
+.tag:focus-visible,
+.pill:focus-visible,
+.art-buy:focus-visible,
+.round-btn:focus-visible,
+.icon-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+
+/* ================= BACK BUTTON ================= */
+.back-btn-wrapper {
+  margin-bottom: 36px;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Walang laman ang button sa HTML, kaya arrow + label ang ilalagay dito */
+.back-btn:empty::before {
+  content: "\2190  Back";
+}
+
+
+/* ================= MAIN PRODUCT SECTION ================= */
+.main-product-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  width: 100%;
+  margin: 0 0 60px;
+}
+
+.product-image-container {
+  flex: 0 0 45%;
+  max-width: 550px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: transparent;
+  border: none;
+}
+
+.image-placeholder {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: transparent;
+}
+
+.image-placeholder img {
+  display: block;
+  max-width: 100%;
+  max-height: 720px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  padding: 20px;
+  background: var(--bg);
+  border: 1px solid rgba(31, 70, 37, 0.2);
+  box-shadow: 12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-placeholder img:hover {
+  transform: translateY(-5px);
+  box-shadow: 15px 15px 30px var(--shadow-dark), -15px -15px 30px var(--shadow-light);
+}
+
+.zoom-lens {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 0 1px rgba(15, 36, 19, 0.35);
+  pointer-events: none;
+}
+
+.zoom-preview {
+  position: fixed;
+  z-index: 1200;
+  top: clamp(72px, 14vh, 140px);
+  right: clamp(16px, 4vw, 56px);
+  width: min(320px, 28vw);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-raised);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+}
+
+.zoom-preview img {
+  position: absolute;
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  object-fit: fill;
+  box-shadow: none;
+  transition: none;
+}
+
+.zoom-preview img:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* ================= PRODUCT DETAILS ================= */
+.product-details {
+  flex: 1;
+  min-width: 0;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Plain text na lang (walang pill) */
+.profile-label {
+  align-self: flex-start;
+  font-family: "Surt";
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green-600);
+  margin-bottom: 14px;
+}
+
+.product-title {
+  font-family: "Pinsans";
+  font-size: clamp(32px, 5.5vw, 68px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-soft)!important;
+  margin-bottom: 8px;
+  overflow-wrap: anywhere;
+}
+
+.product-category {
+  font-family: "Surt";
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.product-description {
+  margin-bottom: 36px;
+  padding-left: 18px;
+  border-left: 3px solid var(--accent-soft);
+}
+
+.product-description p {
+  font-family: "Cabinet Grotesk";
+  font-size: 15px;
+  color: #333;
+  line-height: 1.7;
+  text-align: justify;
+  text-align-last: left;
+}
+
+.product-description p:first-child {
+  font-family: "Surt";
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green-600);
+  margin-bottom: 6px;
+}
+
+.product-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.product-status {
+  grid-column: 1 / -1;
+}
+
+.action-btn {
+  width: 100%;
+  min-width: 0;
+  height: 56px;
+  padding: 0 30px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+
+/* ================= INFO CARDS ================= */
+.info-cards-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 60px;
+}
+
+.info-card {
+  min-height: 200px;
+  padding: 28px;
+  border-radius: var(--radius-card);
+  background: var(--bg);
+  border: var(--neo-edge);
+  color: var(--ink);
+  box-shadow: var(--neo-raised);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--neo-raised-lg);
+}
+
+.info-card h3 {
+  font-family: "SurtBold";
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-600);
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+
+/* ================= ARTIST BANNER ================= */
+.artist-banner {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  height: auto;
+  min-height: 400px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(37, 87, 44, 0.35);
+  box-shadow: var(--neo-raised-lg);
+}
+
+.artist-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* RGB ng --accent-soft (#7ebb80) */
+  background: linear-gradient(
+    to top,
+    rgba(126, 187, 128, 0.98) 1%,
+    rgba(126, 187, 128, 0.7) 40%,
+    rgba(126, 187, 128, 0) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.artist-img-placeholder {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 400px;
+  width: 400px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.artist-img-placeholder img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+.artist-banner-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  padding: 40px 48px 40px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.artist-name {
+  font-family: "Pinsans";
+  font-size: clamp(34px, 5vw, 62px);
+  font-weight: 800;
+  line-height: 1.05;
+  color: black!important;
+  margin: 0 0 8px;
+}
+
+.artist-role {
+  font-family: "Surt";
+  font-size: 22px;
+  color: #222;
+  margin-bottom: 26px;
+}
+
+.artist-bio {
+  max-width: 60ch;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.inquire-btn {
+  text-decoration: none;
+  margin-top: 12px;
+  align-self: flex-start;
+  padding: 16px 36px;
+  line-height: 1.35;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  /* Mas matingkad na anino dahil green ang background ng banner */
+  box-shadow: 6px 6px 14px rgba(15, 36, 19, 0.25), -4px -4px 10px rgba(255, 255, 255, 0.4);
+}
+
+
+/* ================= DIVIDERS ================= */
+.section-divider {
+  width: 100%;
+  max-width: 1260px;
+  height: 1px;
+  margin: 50px auto;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--green-500), transparent);
+  opacity: 0.6;
+}
+
+/* Yung divider na nasa labas ng .product-page */
+body > .section-divider {
+  width: calc(100% - 40px);
+}
+
+
+/* ================= SHARED: SECTION HEADINGS & LINES ================= */
+.art-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.left-title,
+.center-title {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-family: "SurtBold";
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #232323;
+}
+
+.art-top-line,
+.art-bottom-line {
+  width: 100%;
+  margin: 14px 0 0;
+  border: 0;
+  border-top: 1px solid var(--green-600);
+}
+
+
+/* ================= SAME ARTIST SECTION (CAROUSEL) ================= */
+#artworks {
+  width: 100%;
+  padding: 20px 0 10px;
+}
+
+/* Nasa loob na ng .product-page (may padding na), kaya walang dagdag na padding dito
+   para pantay ang kaliwa/kanang gilid ng title, linya, tags at arrows. */
+#artworks .art-inner {
+  max-width: none;
+  padding: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+  margin: 0 -10px;               /* may espasyo para sa anino pero pantay pa rin ang gilid */
+  padding: 18px 10px 26px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tags::-webkit-scrollbar { display: none; }
+
+.tag {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 30px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--green-600);
+}
+
+.tags .tag {
+  background: var(--bg);
+  border: 1px solid var(--bg);
+  box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+}
+
+.tags .tag:hover {
+  background: var(--green-900);
+  border-color: var(--green-900);
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+.tag.active,
+.tag[aria-pressed="true"] {
+  background: var(--green-700);
+  border-color: var(--green-700);
+  color: #fff;
+  
+}
+
+.art-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  box-sizing: border-box;
+
+  /* FULL-BLEED: umaabot sa gilid ng screen habang nag-i-scroll */
+  width: var(--site-viewport-width, 100vw);
+  margin-block: 8px;
+  margin-inline: calc(50% - var(--site-viewport-half-width, 50vw));
+
+  /* Pantay sa content edge ng .product-page (1300px - 2 x 20px padding = 1260px) */
+  padding-top: 24px;
+  padding-bottom: 28px;            /* espasyo para sa anino / hover lift */
+  padding-left: max(20px, calc(var(--site-viewport-half-width, 50vw) - 630px));
+  padding-right: max(20px, calc(var(--site-viewport-half-width, 50vw) - 630px));
+  scroll-padding-left: max(20px, calc(var(--site-viewport-half-width, 50vw) - 630px));
+  scroll-padding-right: max(20px, calc(var(--site-viewport-half-width, 50vw) - 630px));
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+}
+
+.art-row::-webkit-scrollbar { display: none; }
+
+/* Habang dina-drag (class galing sa JS) */
+.art-row.dragging {
+  cursor: grabbing;
+}
+
+.art-progress.dragging .art-thumb {
+  cursor: grabbing;
+  transition: none;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+/* Sa screens na mas mababa sa 1300px, ang .product-page na ang buong screen */
+@media (max-width: 1300px) {
+  .art-row {
+    width: calc(100% + 40px);
+    margin-inline: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    scroll-padding-left: 20px;
+    scroll-padding-right: 20px;
+  }
+}
+
+.art-card {
+  flex: 0 0 440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 28px;
+  border-right: 1px solid rgba(31, 70, 37, 0.22);
+  scroll-snap-align: start;
+  background: transparent !important;
+}
+
+/* Ang huling card ay nagre-rest sa kanang gilid (pantay sa arrows / bottom line) */
+.art-card:last-child {
+  scroll-snap-align: end;
+}
+
+.art-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.art-fit {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.art-img-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 560px;
+}
+
+
+/* ================= ARTWORK IMAGE (carousel + grid) ================= */
+.art-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  padding: 14px;
+  background: var(--bg);
+  border: 1px solid rgba(31, 70, 37, 0.2);
+  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.art-card:hover .art-img,
+.card:hover .art-img {
+  transform: translateY(-5px);
+  box-shadow: 13px 15px 26px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
+}
+
+/* ================= ARTWORK TEXT + BUY (carousel + grid) =================
+   Kaliwa: name / artist / description   |   Kanan: Buy button */
+.art-info,
+.art-info1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20x;
+  width: 100%;
+  margin-top: 28px;
+}
+
+.art-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.art-name {
+  max-width: 100%;
+  margin: 0 0 10px;
+  font-family: "Pinsans";
+  font-size: clamp(26px, 2.4vw, 34px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.art-artist {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  margin: 0 0 12px;
+  font-family: "Surt";
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.art-artist .icon-inline { margin-right: 0; width: 18px; height: 18px; }
+
+.art-desc {
+  margin: 0;
+  font-family: "Cabinet Grotesk";
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--muted);
+  text-align: left;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.art-buy {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+
+/* ================= CAROUSEL CONTROLS ================= */
+.art-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0;
+  padding-bottom: 6px;
+}
+
+/* Simple slidebar: lubog na track + green na thumb */
+.art-progress {
+  position: relative;
+  flex: 0 1 460px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--bg);
+  box-shadow: var(--neo-inset);
+  cursor: pointer;
+}
+
+.art-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--green-600);
+  cursor: grab;
+  touch-action: none;
+}
+
+.art-thumb:active { cursor: grabbing; }
+
+.art-arrows {
+  display: flex;
+  gap: 12px;
+}
+
+.round-btn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.round-btn i,
+.round-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+#artworks .art-bottom-line {
+  margin-top: 20px;
+}
+
+
+/* ================= YOU MAY ALSO LIKE ================= */
+.artworks {
+  width: 100%;
+  padding: 20px 0 70px;
+  background: #ffffff;
+}
+
+.artworks-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-bottom: 0;
+}
+
+.artworks-header .center-title {
+  justify-content: flex-end;
+  width: 100%;
+  text-align: right;
+}
+
+/* PILLS ROW */
+.pill-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 24px 0;
+}
+
+.pill {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 30px;
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* ---------- RECOMMENDATIONS: MATCH THE ARTWORK GRID ---------- */
+#artGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  background: transparent !important;
+
+}
+
+#artGrid .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+  border-right: 1px solid rgba(31, 70, 37, 0.22);
+  border-bottom: 1px solid rgba(31, 70, 37, 0.22);
+  box-sizing: border-box;
+    background: transparent !important;
+
+}
+
+#artGrid .card:nth-child(3n) {
+  border-right: none;
+}
+
+#artGrid .card:nth-child(3n + 1):nth-last-child(-n + 3),
+#artGrid .card:nth-child(3n + 1):nth-last-child(-n + 3) ~ .card {
+  border-bottom: none;
+}
+
+#artGrid .frame {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#artGrid .frame .art-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  padding: 15px;
+  border: 1px solid rgba(31, 70, 37, 0.25);
+  background: var(--bg);
+  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+}
+
+#artGrid .card:hover .art-img {
+  transform: none;
+  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+}
+
+#artGrid .card .art-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: auto;
+}
+
+#artGrid .card .art-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+#artGrid .card .art-name {
+  margin: 0 0 8px;
+  font-family: "Pinsans";
+  font-size: 26px;
+  font-weight: 600;
+  color: #111;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+#artGrid .card .art-artist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 0 12px;
+  font-family: "Surt";
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+#artGrid .card .art-desc {
+  margin: 0;
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted);
+  text-align: center;
+}
+
+#artGrid .card .art-buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--accent);
+  font-family: "Surt";
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.2s ease, background 0.2s ease;
+}
+
+#artGrid .card .art-buy:hover {
+  transform: translateY(-3px);
+  box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  background: var(--green-900);
+  color: #fff;
+}
+
+#artGrid .card .art-buy:active {
+  transform: translateY(1px);
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2), inset -4px -4px 8px rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- SEARCH BOX + ICON BUTTON ---------- */
+.search-sort-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--bg);
+  box-shadow: var(--neo-inset);
+}
+
+.search-box input {
+  width: 200px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  color: #111;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: var(--neo-edge);
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: var(--neo-raised-sm);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-btn:hover { transform: translateY(-2px); box-shadow: var(--neo-raised); }
+.icon-btn:active { transform: translateY(1px); box-shadow: var(--neo-inset); }
+
+.icon-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1100px) {
+  #artGrid { grid-template-columns: repeat(2, 1fr); }
+  #artGrid .card:nth-child(3n) { border-right: 1px solid rgba(31, 70, 37, 0.22); }
+  #artGrid .card:nth-child(2n) { border-right: none; }
+  #artGrid .frame { height: 450px; }
+  #artGrid .card:nth-child(2n + 1):nth-last-child(-n + 2),
+  #artGrid .card:nth-child(2n + 1):nth-last-child(-n + 2) ~ .card {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-product-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .product-image-container {
+    flex: 0 0 auto;          /* sa column, ang flex-basis ay magiging taas — kaya auto */
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .image-placeholder { justify-content: center; }
+
+  .product-details {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .info-cards-row { grid-template-columns: 1fr; }
+
+  .artist-banner {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .artist-img-placeholder {
+    flex: none;
+    width: 100%;
+    height: 300px;
+  }
+
+  .artist-banner-content {
+    align-items: center;
+    text-align: center;
+    padding: 24px 24px 40px;
+  }
+
+  .inquire-btn { align-self: center; }
+}
+
+@media (max-width: 800px) {
+  .artworks-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  #artGrid { grid-template-columns: 1fr; }
+  #artGrid .card { border-right: none; }
+  #artGrid .card { border-bottom: 1px solid rgba(31, 70, 37, 0.22); }
+  #artGrid .card:nth-child(2n + 1):nth-last-child(-n + 2):not(:last-child) {
+    border-bottom: 1px solid rgba(31, 70, 37, 0.22);
+  }
+  #artGrid .card:last-child { border-bottom: none; }
+  #artGrid .frame { height: 400px; }
+  .left-title,
+  .center-title { font-size: 40px; }
+}
+
+@media (max-width: 600px) {
+  .product-page { padding-top: 24px; }
+  .product-actions { gap: 12px; }
+  .action-btn { padding: 0 12px; font-size: 12px; }
+
+  .art-card { flex-basis: 78vw; }
+  .art-img-box { height: 420px; }
+
+  .art-controls { flex-direction: column; align-items: stretch; }
+  .art-progress { flex: none; width: 100%; }
+  .art-arrows { justify-content: flex-end; }
+
+  .art-info { flex-wrap: wrap; }
+}

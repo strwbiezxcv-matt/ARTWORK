@@ -4,33 +4,40 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> PMC art</title>
+        <script src="theme.js"></script>
+        <link rel="stylesheet" href="fonts.css">
         <link rel="stylesheet" href="finalproj.css">
+        <link rel="stylesheet" href="site.css">
+        <link rel="stylesheet" href="commerce.css">
+        <link rel="stylesheet" href="footer.css">
+        <link rel="stylesheet" href="theme.css">
         <link rel="icon" type="image/jpg" href="images/website logo tab.png">
         <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+        <script src="site.js" defer></script>
+        <script src="commerce.js" defer></script>
     </head>
     <body>
 
         <!-- Animated background canvas -->
         
-
         <!-- HEADER -->
-        <header>
+        <header class="site-header site-header--overlay">
             <div id="topbar">
 
-                <div id="leftbar">
-                    <img src="images/LOGO.png" alt="PMC art logo" width="45" height="45">
-                    <p id="logo-text">PMC Art</p>
-                </div>
+                <a id="leftbar" href="finalproj.html" aria-label="PMC Art home">
+                    <img src="images/LOGO.png" alt="PMC art logo" width="50" height="50">
+                    <span id="logo-text">ART</span>
+                </a>
 
-                <nav class="navbar">
-                    <a href="index2.html" class="buttonbar"><i data-lucide="house" class="icon-xs icon-inline"></i>Home</a>
-                    <a href="general.html" class="buttonbar"><i data-lucide="images" class="icon-xs icon-inline"></i>Artwork</a>
-                    <a href="index2.html" class="buttonbar"><i data-lucide="palette" class="icon-xs icon-inline"></i>Commissions</a>
+                <nav class="navbar" aria-label="Main navigation">
+                    <a href="finalproj.html" class="buttonbar">Home</a>
+                    <a href="nav-tab/artwork tab/artwork.html" class="buttonbar">Artworks</a>
+                    <a href="nav-tab/commission tab/commission.html" class="buttonbar">Commissions</a>
                 </nav>
 
-                <div class="rightbar">
-                    <a href="index2.html" class="buttonbar"><i data-lucide="log-in" class="icon-xs icon-inline"></i>Login</a>
-                    <a href="index2.html" id="sign-up" class="buttonbar"><i data-lucide="user-plus" class="icon-xs icon-inline"></i>Sign Up</a>
+                <div class="rightbar" aria-label="Account">
+                    <a class="buttonbar" href="ARTWORK-Mikes/login_signup.html?view=login">Login</a>
+                    <a class="buttonbar" href="ARTWORK-Mikes/login_signup.html?view=signup">Sign Up</a>
                 </div>
             </div>
         </header>
@@ -40,6 +47,11 @@
             <div class="container" id="content1">
                 <div id="insidecontent1animate">
 
+                    <video autoplay muted loop playsinline preload="auto" poster="images/hero-poster.jpg">
+                        <source src="images/coverartoverall.mp4" type="video/mp4">
+                    </video>
+
+                    
                     <p class="hero-eyebrow"><i data-lucide="sparkles" class="icon-xs"></i>Curated art for every space</p>
                     <h1 id="welcome">Welcome to PMC Art</h1>
                     <hr class="line">
@@ -72,13 +84,22 @@
                                 <span class="btn-circle"><i data-lucide="arrow-right" class="icon-sm"></i></span>
                             </a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi eos, aspernatur voluptates voluptatem rem cum impedit porro odio vitae recusandae eveniet voluptas aliquid magnam non labore libero voluptate, inventore iure. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor perferendis modi unde perspiciatis alias error provident ex voluptatem, temporibus deleniti, dicta, ipsa porro harum aperiam similique. Sunt totam amet quia?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam libero vero laboriosam illum reprehenderit doloribus tenetur, sapiente suscipit quas, quam possimus aliquid eum corporis illo optio id? Quidem, perferendis inventore?</p>
+                        <p>PMC Art began as a small group of friends who shared one love: making art. The name comes from the people behind it: Paule, the two Michaels (one of them Michael John), Matt, and Chena. Put their initials together and you get PMC. What started as a circle of creatives sharing sketches and ideas has grown into a home for original artworks and custom commissions.
+Every piece on our platform is made by Filipino artists who care about their craft, from sketches and digital art to paintings, graphics, and plates. We believe art should feel personal, so you can browse finished pieces or commission something made just for you, and talk directly with the artist behind it.
+At PMC Art, we want art to be easy to find, easy to buy, and easy to love. Whether you are decorating your space, starting a collection, or looking for someone to bring your idea to life, we are glad to have you here.</p>
                     </div>
 
                     <div class="about-stats">
                         <div class="stat">
                             <i data-lucide="images" class="icon-md"></i>
                             <div><strong>500+</strong><span>Original artworks</span></div>
+
+
+
+
+
+
+                            
                         </div>
                         <div class="stat">
                             <i data-lucide="users" class="icon-md"></i>
@@ -109,9 +130,9 @@
                     <hr class="thin-line">
                     <div class="img-wrapper">
                         <hr class="side-line">
-                        <img src="images/michaelart1.jpg" alt="Artwork 1">
-                        <span class="vertical-text">michaelart1</span>
-                        <span class="name-text">MATT JUL...</span>
+                        <img alt="">
+                        <span class="vertical-text"></span>
+                        <span class="name-text"></span>
                     </div>
                 </div>
 
@@ -120,9 +141,9 @@
                     <hr class="thin-line">
                     <div class="img-wrapper">
                         <hr class="side-line">
-                        <img src="images/michaelart3.jpg" alt="Artwork 3">
-                        <span class="vertical-text">michaelart3</span>
-                        <span class="name-text">MATT JUL...</span>
+                        <img alt="">
+                        <span class="vertical-text"></span>
+                        <span class="name-text"></span>
                     </div>
                 </div>
             </div>
@@ -133,9 +154,9 @@
                     <hr class="thin-line">
                     <div class="img-wrapper">
                         <hr class="side-line">
-                        <img src="images/michaelart6.jpg" alt="Artwork 2">
-                        <span class="vertical-text">michaelart6</span>
-                        <span class="name-text">MATT JUL...</span>
+                        <img alt="">
+                        <span class="vertical-text"></span>
+                        <span class="name-text"></span>
                     </div>
                 </div>
 
@@ -144,9 +165,9 @@
                     <hr class="thin-line">
                     <div class="img-wrapper">
                         <hr class="side-line">
-                        <img src="images/mattbianzonart1.jpg" alt="Matt Artwork 1">
-                        <span class="vertical-text">mattbianzonart1</span>
-                        <span class="name-text">MATT JUL...</span>
+                        <img alt="">
+                        <span class="vertical-text"></span>
+                        <span class="name-text"></span>
                     </div>
                 </div>
             </div>
@@ -156,7 +177,7 @@
         <!-- RIGHT COLUMN: TEXT -->
         <div class="ct3right">
             <h2>OUR TOP ARTWORKS</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim temporibus culpa laboriosam eveniet atque facere facilis laudantium exercitationem dignissimos, ullam, a minus suscipit eaque officiis corporis neque consectetur eius? Quos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi exercitationem vel, asperiores quos id itaque impedit veniam voluptates assumenda. Ex reiciendis odit quis veniam, fugit porro autem modi velit omnis?</p>
+            <p>The pieces our community loves most, handpicked for their craft and story. From sketches to digital art and paintings, these are our Filipino artists at their best. Find the one that speaks to you.</p>
 
             <div class="artwork-circles">
                 <div class="circle"><i data-lucide="sparkles" class="icon-sm circle-icon"></i></div>
@@ -178,7 +199,7 @@
                 <div class="why-text">
                     <h2>WHY CHOOSE OUR ARTWORKS ?</h2>
                     <hr class="sec-line">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                    <p>Every piece at PMC Art is made by real Filipino artists who put time and heart into their work. You get original art with a story behind it, not mass-produced prints. You can buy a finished piece or commission something made just for you, and each order is handled with care from the artist's hands to your door.</p>
                     <ul class="why-list">
                         <li><i data-lucide="circle-check" class="icon-sm"></i>100% original, hand-made pieces</li>
                         <li><i data-lucide="circle-check" class="icon-sm"></i>Museum-grade materials</li>
@@ -186,18 +207,18 @@
                     </ul>
                     <a href="#" class="outline-btn"><i data-lucide="arrow-up-right" class="icon-xs icon-inline"></i>Learn more</a>
                 </div>
-                <img class="why-img" src="images/michaelart1.jpg" alt="Artwork 1">
+                <img class="why-img" alt="">
             </div>
 
             <!-- gitnang column: dalawang larawan -->
             <div class="why-col">
-                <img class="why-img img-short" src="images/michaelart2.jpg" alt="Artwork 2">
-                <img class="why-img img-long" src="images/michaelart3.jpg" alt="Artwork 3">
+                <img class="why-img img-short" alt="">
+                <img class="why-img img-long" alt="">
             </div>
 
             <!-- kanang column: matangkad na larawan -->
             <div class="why-col">
-                <img class="why-img" src="images/mattbianzonart1.jpg" alt="Artwork 4">
+                <img class="why-img" alt="">
             </div>
 
         </div>
@@ -206,23 +227,22 @@
     <!-- ========== SECTION 2: MEET THE ARTIST ========== -->
     <section id="meetartist">
     <h2 class="center-title">MEET THE ARTIST</h2>
-    <p class="center-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p class="center-sub">Get to know the talented Filipino artists behind every piece. Browse their work, learn about their style, and reach out to start a commission.</p>
 
     <div class="artist-card">
 
         <!-- kaliwa: info at thumbnails (PINTEREST STYLE)  -->
         <div class="artist-info">
-            <h2>MATT JULIUS BIANZON</h2>
-            <h3><span>Computer Engineer</span></h3>
+            <h2></h2>
+            <h3><span></span></h3>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            <p></p>
             <div class="artist-actions">
-                <a href="#artworks" id="artworkBTN"><i data-lucide="images" class="icon-sm"></i>ARTWORK</a>
                 <button id ="inquireBTN"><i data-lucide="message-circle" class="icon-sm"></i>INQUIRE</button>
                 <div class="artist-socials">
-                    <a href="#" aria-label="Facebook"> <img src = "icons/facebook-svgrepo-com.svg" class = "artisticonsoccials"></a>
-                    <a href="#" aria-label="Instagram"><img src = "icons/instagram-svgrepo-com.svg" class = "artisticonsoccials"></a>
-                    <a href="#" aria-label="Twitter"><img src = "icons/email-open-svgrepo-com.svg"class = "artisticonsoccials"></a>
+                    <a href="#" aria-label="Facebook" hidden> <img src = "icons/facebook-svgrepo-com.svg" class = "artisticonsoccials"></a>
+                    <a href="#" aria-label="Instagram" hidden><img src = "icons/instagram-svgrepo-com.svg" class = "artisticonsoccials"></a>
+                    <a href="#" aria-label="Email" hidden><img src = "icons/email-open-svgrepo-com.svg"class = "artisticonsoccials"></a>
                 </div>
             </div>
             <hr id ="MTAsec-line">
@@ -231,16 +251,6 @@
             <div class="artist-darktab">
                 <div class="artistposts">
                     <div class="artistposts-inner">
-                        <img src="images/michaelart1.jpg" alt="post 1">
-                        <img src="images/michaelart2.jpg" alt="post 2">
-                        <img src="images/michaelart3.jpg" alt="post 3">
-                        <img src="images/michaelart4.jpg" alt="post 4">
-                        <img src="images/michaelart5.jpg" alt="post 5">
-                        <img src="images/michaelart6.jpg" alt="post 6">
-                        <img src="images/mattbianzonart1.jpg" alt="post 7">
-                        <img src="images/michaelart1.jpg" alt="post 8">
-                        <img src="images/michaelart2.jpg" alt="post 9">
-                        <img src="images/michaelart3.jpg" alt="post 10">
                     </div>
                 </div>
             </div>
@@ -249,7 +259,7 @@
 
         <!-- kanan: malaking larawan + inquire -->
         <div class="artist-photo">
-            <img src="images/mattbianzonart1.jpg" alt="Matt Julius Bianzon">
+            <img alt="Artist profile picture">
         </div>
 
     </div>
@@ -257,12 +267,6 @@
     <!-- dots at arrows -->
     <div class="dots">
         <span class="dot-arrow" aria-label="Previous artist"><i data-lucide="chevron-left"></i></span>
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
         <span class="dot-arrow" aria-label="Next artist"><i data-lucide="chevron-right"></i></span>
     </div>
 </section>
@@ -273,12 +277,12 @@
         <hr class="art-top-line">
 
         <div class="tags">
-            <a href="#" class="tag"><i data-lucide="pen-line" class="icon-sm"></i>Pen Artworks</a>
-            <a href="#" class="tag"><i data-lucide="monitor" class="icon-sm"></i>Digital Artworks</a>
-            <a href="#" class="tag"><i data-lucide="shapes" class="icon-sm"></i>Clay Artworks</a>
-            <a href="#" class="tag"><i data-lucide="pencil" class="icon-sm"></i>Drawings</a>
-            <a href="#" class="tag"><i data-lucide="droplet" class="icon-sm"></i>Watercolor</a>
-            <a href="#" class="tag"><i data-lucide="hammer" class="icon-sm"></i>Sculptures</a>
+            <button type="button" class="tag active" data-category="all">All Artworks</button>
+            <button type="button" class="tag" data-category="Sketch">Sketch</button>
+            <button type="button" class="tag" data-category="Digital Art">Digital Art</button>
+            <button type="button" class="tag" data-category="Painting">Painting</button>
+            <button type="button" class="tag" data-category="Graphics">Graphics</button>
+            <button type="button" class="tag" data-category="Plates">Plates</button>
         </div>
     </div>
 
@@ -287,13 +291,13 @@
             <div class="art-frame">
                 <div class="art-fit">
                     <div class="art-img-box" >
-                        <img class="art-img" src="images/michaelart1.jpg" alt="Artwork">
+                        <img class="art-img" alt="">
                     </div>
                     <div class="art-info">
                         <div class="art-text">
-                            <h3 class="art-name">Artname</h3>
-                            <p class="art-artist"><i data-lucide="user" class="icon-xs icon-inline"></i><span>Artist name</span></p>
-                            <p class="art-desc">Short description</p>
+                            <h3 class="art-name"></h3>
+                            <p class="art-artist"><i data-lucide="user" class="icon-xs icon-inline"></i><span></span></p>
+                            <p class="art-desc"></p>
                         </div>
                         <button class="art-buy"><i data-lucide="shopping-bag" class="icon-xs"></i>Buy</button>
                     </div>
@@ -325,7 +329,7 @@
             <p class="c5-eyebrow">Testimonials</p>
             <h2 class="c5-title">This is our happy clients</h2>
             <p class="c5-text">Read what the people we've worked with have to say about their experience.</p>
-            <button id="c5-button"><i data-lucide="message-square-quote" class="icon-sm"></i>See more</button>
+            <button id="c5-button" type="button"><i data-lucide="message-square-plus" class="icon-sm"></i>Make Testimonials</button>
         </div>
 
         <div class="feedbackstack" id="feedbackstack" tabindex="0" aria-label="Client feedback, click to see next">
@@ -370,6 +374,21 @@
         
     </div>
 </section>
+<div class="testimonial-modal" id="testimonialModal" hidden>
+    <section class="testimonial-dialog" role="dialog" aria-modal="true" aria-labelledby="testimonialTitle">
+        <button class="testimonial-close" type="button" data-modal-close aria-label="Back to homepage">Back</button>
+        <h2 id="testimonialTitle">Share your feedback</h2>
+        <p>Your feedback can be about our website, an artwork, or a commission. Submissions are saved only in this browser and are not sent to PMC Art or shared with other visitors.</p>
+        <form id="testimonialForm">
+            <label for="testimonialName">Name</label>
+            <input id="testimonialName" name="name" type="text" autocomplete="name" required>
+            <label for="testimonialFeedback">Feedback</label>
+            <textarea id="testimonialFeedback" name="feedback" rows="5" required></textarea>
+            <p class="testimonial-status" id="testimonialStatus" role="status" aria-live="polite"></p>
+            <button class="testimonial-submit" type="submit">Submit</button>
+        </form>
+    </section>
+</div>
 <footer>
     <div class="footer-inner">
 
@@ -389,10 +408,9 @@
         <nav class="f-col">
             <h4 class="f-title"><i data-lucide="compass" class="icon-xs"></i>Explore</h4>
             <div class="f-links">
-                <a href="#"><i data-lucide="house" class="icon-xs"></i>Home</a>
-                <a href="#artworks"><i data-lucide="images" class="icon-xs"></i>Artworks</a>
-                <a href="#"><i data-lucide="palette" class="icon-xs"></i>Commissions</a>
-                <a href="#meetartist"><i data-lucide="brush" class="icon-xs"></i>Meet the artist</a>
+                <a href="finalproj.html"><i data-lucide="house" class="icon-xs"></i>Home</a>
+                <a href="nav-tab/artwork tab/artwork.html"><i data-lucide="images" class="icon-xs"></i>Artwork</a>
+                <a href="nav-tab/commission tab/commission.html"><i data-lucide="palette" class="icon-xs"></i>Commission</a>
             </div>
         </nav>
 
@@ -414,6 +432,7 @@
 
 
 
+        <script src="artist-database.js"></script>
         <script src="finalproj.js"></script>
 
         

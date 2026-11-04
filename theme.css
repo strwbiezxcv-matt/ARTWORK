@@ -1,0 +1,777 @@
+:root {
+  color-scheme: light;
+}
+
+html[data-theme="light"] body {
+  --bg: #f1f3f0;
+  --shadow-dark: #d3d8d1;
+  --shadow-light: #ffffff;
+  --ink: #202820;
+  --muted: #59635a;
+  --accent: #376d3e;
+  --accent-soft: #78a97d;
+  --line: rgba(32, 54, 35, 0.16);
+  --green-900: #17321c;
+  --green-800: #21452a;
+  --green-700: #2e5e37;
+  --green-600: #376d3e;
+  --green-500: #4a8051;
+  --green-400: #63966a;
+  --green-300: #9cbea0;
+  --green-100: #e8eee6;
+  --green-50: #f6f8f5;
+  --paper: #ffffff;
+  --surface: #ffffff;
+  --surface-raised: #f6f8f5;
+  --page-background: #f4f6f3;
+  --gray: #e1e5df;
+  color: var(--ink);
+  background: var(--page-background);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body {
+  --bg: #202622;
+  --shadow-dark: #111512;
+  --shadow-light: #2b332d;
+  --ink: #edf2ee;
+  --muted: #b7c1b9;
+  --accent: #a3d3a3;
+  --accent-soft: #80b886;
+  --line: rgba(231, 239, 233, 0.16);
+  --green-900: #090d0a;
+  --green-800: #111813;
+  --green-700: #1c2920;
+  --green-600: #2b4831;
+  --green-500: #42774b;
+  --green-400: #72a879;
+  --green-300: #9dcc9f;
+  --green-100: #243128;
+  --green-50: #151b17;
+  --paper: #171d19;
+  --surface: #171d19;
+  --surface-raised: #222a24;
+  --page-background: #101411;
+  --gray: #29312b;
+  color: var(--ink);
+  background: var(--page-background);
+}
+
+html[data-theme] body {
+  color: var(--ink);
+  background: var(--page-background);
+}
+
+html[data-theme] :is(
+  .page,
+  .profile,
+  .commissions,
+  .commission-overview,
+  .artworks,
+  .product-page,
+  .info-card,
+  .art-card,
+  .ccard,
+  .modal-box,
+  .modal-right,
+  .pmc-popover,
+  .pmc-settings-sidebar,
+  .form-panel,
+  .bill-wrap .card
+) {
+  background-color: var(--surface);
+  color: var(--ink);
+}
+
+html[data-theme] :is(#Layout1, #content3, #content5) {
+  background-color: var(--surface);
+  color: var(--ink);
+}
+
+html[data-theme] :is(#Aboutus, .texthead, .art-gallery-section, .hero) {
+  color: var(--ink);
+}
+
+html[data-theme="light"] #Aboutus,
+html[data-theme="light"] .texthead,
+html[data-theme="dark"] #Aboutus,
+html[data-theme="dark"] .texthead {
+  background-color: var(--green-300);
+}
+
+
+html[data-theme="dark"] #Aboutus,
+html[data-theme="dark"] .artworks,
+html[data-theme="dark"] .page,
+html[data-theme="dark"] #Layout1,
+html[data-theme="dark"] .profile,
+html[data-theme="dark"] .commissions,
+html[data-theme="dark"] .product-page {
+  background-color: var(--page-background);
+}
+
+html[data-theme="dark"] #Aboutus {
+  background-color: var(--surface-raised);
+}
+
+html[data-theme="dark"] :is(
+  .art-gallery-section,
+  .artist-row ,
+  .all-artist,
+  .content3tab,
+  .why-wrap,
+  .feedbacktab,
+  .commission-overview,
+  .ccard,
+  .cbar,
+  .info-card,
+  .pmc-popover,
+  .pmc-settings-sidebar,
+  .modal-box,
+  .modal-right,
+  .form-panel,
+  .bill-wrap .card
+) {
+  background-color: var(--surface-raised);
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-theme="dark"] :is(.artist-card) {
+  background-color: var(--green-700);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] :is(.grid .card, #artGrid .card) {
+  background-color: var(--surface-raised);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] :is(#content3, #content5) {
+  background-color: var(--surface-raised);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+html[data-theme="light"] :is(.artist-row .artist-card, .all-artist, .ccard, .cbar, .info-card, .modal-right) {
+  background-color: var(--surface-raised);
+  border-color: var(--line);
+}
+
+html[data-theme="light"] :is(
+  .product-title,
+  .product-description p,
+  .left-title,
+  .center-title,
+  .art-name,
+  .art-desc,
+  .texthead h1,
+  .sort-label,
+  .artist-info,
+  .commissions-title,
+  .profile-label,
+  .profile-name,
+  .profile-role,
+  .profile-bio,
+  .artist-name,
+  .artist-role,
+  .cbar h3,
+  .m-subtitle,
+  .m-artist,
+  .m-list,
+  .m-lets-talk,
+  .about-row p,
+  .ct3right h2,
+  .ct3right p,
+  .why-text h2,
+  .why-text p,
+  .center-sub,
+  .artist-name,
+  .artist-role,
+  .product-status,
+  .product-category,
+  .info-card,
+  .product-details,
+  .commission-overview
+) {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] :is(
+  .art-name,
+  .art-artist,
+  .art-desc,
+  .product-title,
+  .product-category,
+  .product-description p,
+  .product-status,
+  .profile-label,
+  .profile-name,
+  .profile-role,
+  .profile-bio,
+  .artist-name,
+  .artist-role,
+  .artist-info,
+  .left-title,
+  .center-title,
+  .texthead h1,
+  .sort-label,
+  .commissions-title,
+  .commission-overview,
+  .cbar h3,
+  .m-subtitle,
+  .m-title,
+  .m-artist,
+  .m-list,
+  .m-lets-talk,
+  .modal-text-content,
+  .about-row p,
+
+  .ct3right h2,
+  .ct3right p,
+  .why-text h2,
+  .why-text p,
+  .center-sub,
+  .c5-title,
+  .c5-text,
+  .c5-eyebrow,
+  .fb-msg,
+  .fb-name,
+  .fb-role,
+  .stat strong,
+  .stat span,
+  .form-panel,
+  .form-intro,
+  .local-demo-note,
+  .account-link,
+  .form-label,
+  .bill-wrap,
+  .pmc-popover,
+  .pmc-settings-sidebar,
+  .pmc-account-details p,
+  .pmc-local-notice,
+  .pmc-empty-state
+) {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] #aboutustext h3 {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .auth-page :is(h1, h2, h3, p, label, small) {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .bill-wrap :is(h1, h2, h3, p, label, small, span) {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] #artGrid .card :is(.art-name, .art-artist, .art-desc) {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] :is(input, select, textarea) {
+  background-color: var(--page-background);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] :is(input, textarea)::placeholder {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .bill-wrap .field input:not([type="checkbox"]) {
+  background-color: var(--page-background);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .bill-wrap .field input:not([type="checkbox"])::placeholder {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .bill-wrap .submit-btn,
+html[data-theme="dark"] .bill-wrap .qty :is(.qty-btn, .qty-value) {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .bill-main > .card:nth-child(-n + 3) h3::before {
+  background-color: var(--green-900);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] :is(.search-box, .commissions-line, .art-top-line, .art-bottom-line, .section-divider) {
+  border-color: var(--line);
+}
+
+html[data-theme="dark"] .search-box input {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .product-page .info-card h3 {
+  color: var(--green-300);
+}
+
+html[data-theme="dark"] .bill-wrap .estimate-note {
+  border-left-color: var(--green-400);
+  background: var(--surface-raised);
+  color: var(--ink);
+}
+
+html[data-theme] body .page:has(.bill-main) {
+  background-color: transparent;
+}
+
+html[data-theme="dark"] body .artworks .search-btn img {
+  filter: brightness(0) invert(1);
+}
+
+html[data-theme="dark"] #meetartist #inquireBTN,
+html[data-theme="dark"] #meetartist .dot,
+html[data-theme="dark"] #meetartist .dot-arrow {
+  background-color: var(--green-400);
+  color: var(--green-900);
+}
+
+html[data-theme="dark"] #meetartist .dot.active {
+  background-color: var(--green-300);
+}
+
+html[data-theme="dark"] #meetartist :is(#inquireBTN, .dot-arrow):hover {
+  background-color: var(--green-300);
+  color: var(--green-900);
+}
+
+html[data-theme="dark"] #meetartist .dot:hover {
+  background-color: var(--green-300);
+}
+
+html[data-theme="dark"] #meetartist .dot-arrow:hover svg {
+  color: var(--green-900);
+}
+
+html[data-theme="light"] .profile .socials img {
+  filter: brightness(0) saturate(100%);
+}
+
+html[data-theme="dark"] .profile .socials img {
+  filter: brightness(0) invert(1);
+}
+
+html[data-theme="dark"] :is(.search-box .icon-btn, .tag, .pill, .art-buy, .action-btn, .inquire-btn, .round-btn, .arrow) {
+  background-color: var(--surface-raised);
+  border-color: var(--line);
+  color: var(--ink);
+  box-shadow: 4px 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme="dark"] :is(.tag.active, .tag[aria-pressed="true"], .pill:hover, .art-buy:hover, .action-btn:hover, .inquire-btn:hover, .round-btn:hover, .arrow:hover) {
+  background-color: var(--green-600);
+  border-color: var(--green-600);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] :is(.hero-btn-solid, .aboutusbutton, .btn-label, .btn-circle) {
+  background-color: var(--surface-raised);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .hero-btn-ghost:hover {
+  background-color: var(--surface-raised);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .hero-btn-solid:hover {
+  background-color: var(--surface-raised);
+  border-color: var(--green-600);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] body .page .art-gallery-section {
+  background-color: var(--page-background);
+}
+
+html[data-theme="dark"] #content5 {
+  background-color: #090d0a;
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .artist-banner {
+  background-color: var(--surface-raised);
+}
+
+html[data-theme="dark"] .artist-banner::after {
+  background: linear-gradient(to top, rgba(16, 20, 17, 0.98) 1%, rgba(16, 20, 17, 0.72) 40%, rgba(16, 20, 17, 0) 100%);
+}
+
+html[data-theme="dark"] .hero {
+  background: linear-gradient(to bottom, var(--page-background), var(--surface-raised));
+}
+
+html[data-theme="dark"] .hero-bg::after {
+  background: linear-gradient(to bottom, rgba(16, 20, 17, 0) 45%, rgba(16, 20, 17, 0.88) 100%);
+}
+
+html[data-theme="dark"] .hero.has-cover .hero-bg::after {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(9, 13, 10, 0.88));
+}
+
+html[data-theme="dark"] .modal-left {
+  background-color: var(--surface-raised);
+}
+
+html[data-theme="dark"] :is(.back-btn-pill, .back-btn-pill svg) {
+  border-color: var(--line);
+  color: var(--ink);
+  stroke: var(--ink);
+}
+
+html[data-theme="dark"] :is(.m-action-btn, .m-social-circle) {
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .m-action-btn:hover {
+  background-color: var(--green-600);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .m-social-circle:hover {
+  background-color: var(--green-600);
+  border-color: var(--green-600);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] footer {
+  background: #151d17;
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .pmc-popover,
+html[data-theme="dark"] .pmc-settings-sidebar {
+  border-color: var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] :is(.pmc-account-details p, .pmc-product-detail span, .pmc-local-notice, .pmc-empty-state) {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] :is(.pmc-remove-item, .pmc-panel-action, .pmc-logout, .pmc-close-sidebar, .pmc-order-status) {
+  color: var(--accent);
+}
+
+html[data-theme] .pmc-appearance input {
+  accent-color: var(--accent);
+}
+
+html[data-theme="dark"] .pmc-panel-action:hover:not(:disabled) {
+  background: var(--green-600);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .pmc-product-row > img,
+html[data-theme="dark"] .image-placeholder img,
+html[data-theme="dark"] .art-img {
+  border-color: var(--line);
+}
+
+html[data-theme="light"] :is(.pmc-popover, .pmc-settings-sidebar) {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+html[data-theme="light"] footer {
+  background: var(--green-900);
+  color: var(--green-100);
+}
+
+html[data-theme="dark"] #meetartist .dot-arrow {
+  background: var(--surface-raised);
+  color: var(--ink);
+  box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.3), -3px -3px 8px rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] #meetartist .dot-arrow:hover {
+  background: var(--green-600);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] #content3 .oval {
+  background: var(--surface-raised);
+  border-color: var(--line);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] #content3 .oval:hover {
+  background: var(--green-600);
+  border-color: var(--green-600);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] #Aboutus .aboutusbutton:hover :is(.btn-label, .btn-circle) {
+  background: var(--green-600);
+  border-color: var(--green-600);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] :is(.outline-btn, #c5-button) {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.28), -4px -4px 9px rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme="dark"] #c5-button {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] :is(.outline-btn:hover, #c5-button:hover, .outline-btn.active, #c5-button.active) {
+  background: var(--green-600);
+  border-color: var(--green-600);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] :is(.outline-btn:active, #c5-button:active) {
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.35), inset -3px -3px 6px rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme] .page > #artworks {
+  background-color: var(--surface);
+}
+
+html[data-theme] .page > #artworks .art-row {
+  background-color: inherit;
+}
+
+html[data-theme="dark"] .page > #artworks {
+  background-color: var(--surface-raised);
+}
+
+html[data-theme] body .page:has(#Layout1),
+html[data-theme] body #Layout1,
+html[data-theme] body #Layout1 .texthead {
+  background-color: transparent;
+}
+
+html[data-theme] body .artworks:has(#artGrid),
+html[data-theme] body .artworks:has(#artGrid) #artGrid {
+  background-color: transparent;
+}
+
+html[data-theme="light"] .bill-wrap .card.summary {
+  background: var(--surface-raised);
+  border-color: var(--line);
+  box-shadow: 5px 5px 12px var(--shadow-dark), -5px -5px 12px var(--shadow-light);
+  color: var(--ink);
+}
+
+html[data-theme="light"] .bill-wrap .card.summary :is(h3, .summary-item, .summary-line, .summary-note),
+html[data-theme="light"] .bill-wrap .card.summary :is(.summary-item strong, .summary-line strong) {
+  color: var(--ink);
+}
+
+html[data-theme="light"] .bill-wrap .card.summary .summary-line.total strong {
+  color: var(--green-700);
+}
+
+html[data-theme="dark"] body .bill-wrap .card.summary {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+html[data-theme="dark"] .bill-wrap .card.summary :is(.summary-item, .summary-line, .summary-note) {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .auth-page .input {
+  background-color: #ffffff;
+  border-color: #aab5aa;
+  color: #1f2a1c;
+}
+
+html[data-theme="dark"] .auth-page .input::placeholder {
+  color: #68766b;
+}
+
+html[data-theme="dark"] .auth-page .password-button {
+  background: var(--green-500);
+  border-color: var(--green-500);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .auth-page .password-button:hover {
+  background: var(--green-600);
+  border-color: var(--green-600);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .auth-page #loginContent > h2 {
+  color: var(--green-300);
+}
+
+html[data-theme="dark"] .auth-page .form-panel :is(.form-intro, .account-link, .check-label, .local-demo-note) {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .auth-page .form-panel :is(.text-button, .form-options a, .terms-check a, .field-hint strong, .message) {
+  color: var(--green-300);
+}
+
+html[data-theme="dark"] .auth-page .form-panel :is(.text-button:hover, .form-options a:hover, .terms-check a:hover) {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .modal-logo .modal-logo-light,
+html[data-theme="light"] .modal-logo .modal-logo-dark {
+  display: none;
+}
+
+html[data-theme="dark"] .modal-logo .modal-logo-dark,
+html[data-theme="light"] .modal-logo .modal-logo-light {
+  display: block;
+}
+
+html[data-theme="dark"] .back-btn-pill {
+  background: var(--surface-raised);
+  border-color: var(--line);
+  color: var(--ink);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme="dark"] .back-btn-pill:hover {
+  background: var(--green-600);
+  border-color: var(--green-600);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .back-btn-pill:hover svg {
+  color: #ffffff;
+  stroke: #ffffff;
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar:vertical {
+  display: none;
+  width: 0;
+}
+
+html[data-theme="dark"] .site-header #topbar {
+  --nav-text: #f2f6f2;
+  --nav-text-shadow: none;
+  background: rgba(14, 18, 15, calc(var(--nav-progress, 0) * 0.96));
+  border-bottom-color: rgba(231, 239, 233, calc(var(--nav-progress, 0) * 0.14));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, calc(var(--nav-progress, 0) * 0.25));
+}
+
+html[data-theme="light"] .site-header:not(.site-header--artist-transparent) #topbar {
+  --nav-text: color-mix(in srgb, #fcfcf7 calc((1 - var(--nav-progress, 0)) * 100%), var(--green-900));
+  --nav-text-shadow: 0 1px 8px rgba(0, 0, 0, calc((1 - var(--nav-progress, 0)) * 0.45));
+}
+
+html[data-theme="dark"] .site-header--artist-transparent #topbar {
+  --nav-text: #ffffff;
+  --nav-text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
+}
+
+html[data-theme="light"] .site-header--artist-transparent #topbar {
+  --nav-text: #ffffff;
+  --nav-text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
+}
+
+html[data-theme] .site-header--artist-transparent #topbar :is(img, svg) {
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.75));
+}
+
+html[data-theme] .site-header--artist-aware #topbar .pmc-account-icon {
+  color: var(--nav-text);
+}
+
+html[data-theme] .site-header--overlay #topbar .pmc-account-icon {
+  color: var(--nav-text);
+}
+
+html[data-theme="dark"] .artist-card .artist-info {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .all-artist .all-icon {
+  filter: brightness(0) invert(1);
+}
+
+html[data-theme="dark"] .f-logo span,
+html[data-theme="dark"] .f-about,
+html[data-theme="dark"] .f-links a,
+html[data-theme="dark"] .f-links .f-static,
+html[data-theme="dark"] .f-bottom {
+  color: var(--green-100);
+}
+
+html[data-theme="dark"] footer :is(h1, h2, h3, h4, h5, h6, p, a, span, small, strong, em, label, li) {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] footer :is(.f-logo span, .f-about, .f-title, .f-links a, .f-links .f-static, .f-bottom) {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] body .artworks:has(#artGrid) {
+  background: var(--page-background);
+}
+
+html[data-theme] img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html[data-theme="dark"] ::selection {
+  background: var(--green-600);
+  color: #ffffff;
+}
+
+html[data-theme="light"] .texthead {
+  background-color: var(--green-600);
+}
+
+html[data-theme="light"] :is(
+  #aboutustext h3,
+  .ct3right h2,
+  .why-text h2,
+  .c5-title,
+  .left-title,
+  .center-title,
+  .commissions-title
+) {
+  color: var(--green-600);
+}
+
+html[data-theme="dark"] :is(
+  #aboutustext h3,
+  .ct3right h2,
+  .why-text h2,
+  .c5-title,
+  .left-title,
+  .center-title,
+  .commissions-title
+) {
+  color: var(--green-300);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme] *,
+  html[data-theme] *::before,
+  html[data-theme] *::after {
+    transition-duration: 0.01ms;
+  }
+}

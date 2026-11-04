@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "Surthin";
+  src: url("fonts/Surt-Expanded-Extralight-TRIAL.otf") format("opentype");
+  font-style: normal;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Surt";
+  src: url("fonts/Surt-Normal-Regular-TRIAL.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SurtBold";
+  src: url("fonts/Surt-Normal-Bold-TRIAL.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Recife";
+  src: url("fonts/RecifeDisplay-BookItalic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("fonts/CabinetGrotesk-Extralight.otf") format("opentype");
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pinsans";
+  src: url("fonts/Pin-Sans-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pinsans";
+  src: url("fonts/Pin-Sans-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pinsans";
+  src: url("fonts/Pin-Sans-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}

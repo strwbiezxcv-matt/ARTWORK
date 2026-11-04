@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMC Art | Commissions</title>
+  <script src="../../theme.js"></script>
+  <link rel="stylesheet" href="../../fonts.css">
+  <link rel="stylesheet" href="commission.css">
+  <link rel="stylesheet" href="../../site.css">
+  <link rel="stylesheet" href="../../commerce.css">
+  <link rel="stylesheet" href="../../footer.css">
+  <link rel="stylesheet" href="../../theme.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <script src="../../site.js" defer></script>
+  <script src="../../commerce.js" defer></script>
+</head>
+<body>
+
+  <!-- Reusable SVG icons -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="icon-logo" viewBox="0 0 32 32">
+      <path d="M4 8 L14 3 L24 8 L24 12 L14 17 L4 12 Z" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M4 12 L4 24 L14 29" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M17 18 C21 15 28 17 27 23 C26 28 19 29 17 26" fill="none" stroke="#1f9d2f" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-art" viewBox="0 0 32 32">
+      <rect x="3" y="6" width="22" height="18" rx="2" fill="none" stroke="#222" stroke-width="2"/>
+      <path d="M5 21 L11 14 L15 19 L18 16 L24 22" fill="none" stroke="#222" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="10" cy="11" r="2" fill="none" stroke="#222" stroke-width="2"/>
+      <path d="M17 24 L29 10 L32 13 L20 27 L16 28 Z" fill="#e8edf3" stroke="#222" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <!-- TOP BAR -->
+  <header class="site-header site-header--solid site-header--artist-aware">
+    <div id="topbar">
+      <a id="leftbar" href="../../finalproj.html" aria-label="PMC Art home">
+        <img src="../../images/LOGO.png" alt="PMC art logo" width="50" height="50">
+        <span id="logo-text">ART</span>
+      </a>
+      <nav class="navbar" aria-label="Main navigation">
+        <a href="../../finalproj.html" class="buttonbar">Home</a>
+        <a href="../artwork tab/artwork.html" class="buttonbar">Artworks</a>
+        <a href="commission.html" class="buttonbar" aria-current="page">Commissions</a>
+      </nav>
+      <div class="rightbar" aria-label="Account">
+        <a class="buttonbar" href="../../ARTWORK-Mikes/login_signup.html?view=login">Login</a>
+        <a class="buttonbar" href="../../ARTWORK-Mikes/login_signup.html?view=signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- LAYOUT 1 | HERO + CAROUSEL -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img id="heroCover" alt="" hidden>
+    </div>
+
+    <div class="hero-content">
+      <div class="carousel" id="carousel">
+        <div class="carousel-track" id="track">
+
+          <!-- ALL ARTIST CARD (DEFAULT) -->
+          <article class="card card-all" data-artist="all" data-cover="">
+            <img src="../../images/Profile Icon/allartisticon.png" alt="All Artist" class="card-img">
+            <h3>All Artist</h3>
+            <svg class="card-logo"><use href="#icon-logo"/></svg>
+            <span class="card-link">See All ?</span>
+            <a href="#" class="card-btn" aria-label="See all artwork"><svg><use href="#icon-art"/></svg></a>
+          </article>
+
+        </div>
+
+        <div class="carousel-controls" id="carouselControls">
+          <div class="progress"><span class="progress-thumb" id="thumb"></span></div>
+          <div class="arrows">
+            <button type="button" class="arrow" id="prev" aria-label="Previous">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"/></svg>
+            </button>
+            <button type="button" class="arrow" id="next" aria-label="Next">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYOUT 2 | PROFILE -->
+  <section class="profile" id="artistProfileView" hidden>
+    <div class="profile-inner">
+      <div class="profile-left">
+        <p class="profile-label">Profile info</p>
+        <h1 class="profile-name" id="profileName"></h1>
+        <p class="profile-role" id="profileRole"></p>
+        <p class="profile-bio" id="profileBio"></p>
+        <div class="socials" id="profileSocials">
+        <a class="social" data-social="facebook" aria-label="Facebook" hidden>
+          <img src="../../icons/facebook-svgrepo-com.svg" alt="">
+        </a>
+        <a class="social" data-social="instagram" aria-label="Instagram" hidden>
+          <img src="../../icons/instagram-svgrepo-com.svg" alt="">
+        </a>
+        <a class="social" data-social="email" aria-label="Email" hidden>
+          <img src="../../icons/email-open-svgrepo-com.svg" alt="">
+        </a>
+      </div>
+
+        <div class="thumbs">
+          <div class="ph"></div>
+          <div class="ph"></div>
+          <div class="ph"></div>
+        </div>
+      </div>
+
+      <div class="profile-right">
+        <div class="mcol mcol-a">
+          <div class="ph"></div>
+          <div class="ph"></div>
+          <div class="ph"></div>
+          <div class="ph" aria-hidden="true"></div>
+          <div class="ph" aria-hidden="true"></div>
+          <div class="ph" aria-hidden="true"></div>
+        </div>
+
+        <div class="mcol mcol-b">
+          <div class="ph"></div>
+          <div class="ph"></div>
+          <div class="ph"></div>
+          <div class="ph" aria-hidden="true"></div>
+          <div class="ph" aria-hidden="true"></div>
+          <div class="ph" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYOUT 3 | COMMISSIONS -->
+  <section class="commissions">
+    <div class="container">
+      <h2 class="commissions-title">COMMISSIONS</h2>
+      <hr class="commissions-line">
+
+    <div class="commission-overview" id="generalCommissionView" hidden>
+      <h3 id="generalCommissionTitle"></h3>
+      <p id="generalCommissionDescription"></p>
+      <p><strong>Availability:</strong> <span id="generalCommissionAvailability"></span></p>
+      <p><strong>Pricing:</strong> <span id="generalCommissionPricing"></span></p>
+      <p><strong>Services:</strong> <span id="generalCommissionServices"></span></p>
+      <p><strong>Materials:</strong> <span id="generalCommissionMaterials"></span></p>
+      <ul id="generalCommissionGuidelines"></ul>
+    </div>
+
+      <div class="commission-grid">
+        <div class="ccol">
+        </div>
+
+        <div class="ccol">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="f-brand">
+        <div class="f-logo">
+          <img src="../../images/LOGO.png" alt="PMC art logo" width="42" height="42">
+          <span>PMC Art</span>
+        </div>
+        <p class="f-about">Original artworks, commissions, and curated collections — handmade with love by Filipino artists.</p>
+        <div class="f-socials">
+          <a href="#" aria-label="Facebook"><img src="../../icons/facebook-svgrepo-com.svg" class="artisticonsoccials" alt=""></a>
+          <a href="#" aria-label="Instagram"><img src="../../icons/instagram-svgrepo-com.svg" class="artisticonsoccials" alt=""></a>
+          <a href="#" aria-label="Email"><img src="../../icons/email-open-svgrepo-com.svg" class="artisticonsoccials" alt=""></a>
+        </div>
+      </div>
+      <nav class="f-col" aria-label="Explore">
+        <h4 class="f-title"><i data-lucide="compass" class="icon-xs"></i>Explore</h4>
+        <div class="f-links">
+          <a href="../../finalproj.html"><i data-lucide="house" class="icon-xs"></i>Home</a>
+          <a href="../artwork tab/artwork.html"><i data-lucide="images" class="icon-xs"></i>Artwork</a>
+          <a href="commission.html"><i data-lucide="palette" class="icon-xs"></i>Commission</a>
+        </div>
+      </nav>
+      <div class="f-col">
+        <h4 class="f-title"><i data-lucide="mail" class="icon-xs"></i>Contact</h4>
+        <div class="f-links">
+          <a href="mailto:hello@pmcart.com"><i data-lucide="mail" class="icon-xs"></i>hello@pmcart.com</a>
+          <a href="tel:+639123456789"><i data-lucide="phone" class="icon-xs"></i>+63 912 345 6789</a>
+          <span class="f-static"><i data-lucide="map-pin" class="icon-xs"></i>Manila, Philippines</span>
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom"><span>&copy; 2026 PMC Art. All rights reserved.</span></div>
+  </footer>
+
+  <!-- ================= MODAL OVERLAY ================= -->
+  <div class="modal-overlay" id="modalOverlay">
+    
+    <!-- 1. COMMISSION INFO MODAL -->
+    <div class="modal-box" id="modalCommission">
+      
+      <div class="modal-left">
+        <img id="commissionSlideshowImage" class="commission-slideshow-image" alt="Related commission artwork" role="button" tabindex="0">
+        
+        <!-- Back / Close Button -->
+        <button class="back-btn-pill close-modal-btn" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18 L9 12 L15 6"/>
+          </svg>
+        </button>
+        
+      </div>
+      
+      <div class="modal-right">
+        <div class="modal-text-content">
+          <h4 class="m-subtitle">Commission info</h4>
+          <h2 class="m-title" id="commissionModalTitle"></h2>
+          <p class="m-artist" id="commissionModalArtist"></p>
+          
+          <ul class="m-list" id="commissionModalList"></ul>
+
+          <button class="m-action-btn" id="switchToInquire">Inquire</button>
+        </div>
+      </div>
+      <div class="modal-logo" aria-hidden="true">
+        <img class="modal-logo-light" src="../../icons/pmciconblack.png" alt="">
+        <img class="modal-logo-dark" src="../../icons/pmciconwhite.png" alt="">
+      </div>
+    </div>
+
+    <!-- 2. INQUIRE MODAL -->
+    <div class="modal-box" id="modalInquire" style="display: none;">
+      
+      <div class="modal-left">
+        <img id="inquireArtistProfile" class="inquire-profile-image" alt="Selected artist profile picture">
+        
+        <!-- Back / Close Button -->
+        <button class="back-btn-pill close-modal-btn" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18 L9 12 L15 6"/>
+          </svg>
+        </button>
+        
+      </div>
+
+      <div class="modal-right">
+        <div class="modal-text-content">
+          <h4 class="m-subtitle">Inquire</h4>
+          <h2 class="m-title" id="inquireModalName"></h2>
+          <p class="m-artist" id="inquireModalAvailability"></p>
+          
+          <p class="m-lets-talk">| Let's talk now</p>
+
+          <div class="m-socials">
+            <a href="#" class="m-social-circle" data-social="facebook" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" class="m-social-circle" data-social="instagram" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="m-social-circle" data-social="email" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-logo" aria-hidden="true">
+        <img class="modal-logo-light" src="../../icons/pmciconblack.png" alt="">
+        <img class="modal-logo-dark" src="../../icons/pmciconwhite.png" alt="">
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../../artist-database.js"></script>
+  <script src="commission.js"></script>
+</body>
+</html>
