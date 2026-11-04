@@ -14,7 +14,7 @@
       socials: {
         facebook: "https://www.facebook.com/michaeljohn.aquino.santos/",
         instagram: "https://www.instagram.com/_k.ae.ll/",
-        email: "mailto:michaeljohnsantosss965@com",
+        email: "mailto:michaeljohnsantosss965@gmail.com",
         other: []
       },
       commission: {
@@ -57,7 +57,7 @@
       specialization: "Illustration, Painting, Sketching",
       socials: {
         facebook: "https://www.facebook.com/michael.faustino.77/",
-        instagram: "",
+        instagram: "https://www.instagram.com/mikes_mf01/",
         email: "mailto:faustinomichaelliuenne@gmail.com",
         other: []
       },
@@ -78,9 +78,9 @@
       description: "Paule Daniel Reyes works across painting and sketching, creating portraits, character art, and tribute pieces. His portfolio explores familiar subjects through detailed compositions and expressive imagery.",
       specialization: "Sketching, Digital Art, Character Art",
       socials: {
-        facebook: "",
-        instagram: "",
-        email: "",
+        facebook: "https://www.facebook.com/share/1FrCmtbe4w/",
+        instagram: "https://www.instagram.com/thisis.danyel?dlrf=NHZ5ZHg3amhzZWIw",
+        email: "1029pauledanielr@gmail.com",
         other: []
       },
       commission: {
@@ -100,9 +100,9 @@
       description: "Maria Corinna Chena Balagtas creates paintings and sketches, including portraits, architectural studies, and character drawings. Her work pairs careful observation with attention to detail.",
       specialization: "Painting, Sketching, Portraiture",
       socials: {
-        facebook: "",
-        instagram: "",
-        email: "",
+        facebook: "https://www.facebook.com/luna.chnxx",
+        instagram: "https://www.instagram.com/chiilisauxe?cplk=MWY5YzB1cGF1cXpmNQ==",
+        email: "chenabalagtas17@gmail.com",
         other: []
       },
       commission: {
@@ -122,8 +122,8 @@
       description: "Eula Silvestre's portfolio spans drawing, painting, and architectural studies, including plans, patterns, and portraits. Her work explores structure, detail, and a variety of subjects and styles",
       specialization: "Digital Art, Drawing, Architectural Illustration",
       socials: {
-        facebook: "",
-        instagram: "",
+        facebook: "https://www.facebook.com/share/19h38Yivi1/",
+        instagram: "https://www.instagram.com/yovlaa_",
         email: "",
         other: []
       },
